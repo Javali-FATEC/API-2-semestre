@@ -4,7 +4,7 @@
 
 Integrante | Linkedin
  -----------|---------|
-Vinícius Augusto da Silva Monteiro | [link](https://www.linkedin.com/in/ricardo-campos-ba56091b5/) |
+Vinícius Augusto da Silva Monteiro | [link](https://www.linkedin.com/in/viniciusvasm/) |
 Ricardo Campos |[link](https://www.linkedin.com/in/ricardo-campos-ba56091b5/)|
 Carla Daiane |[link](https://www.linkedin.com/in/carla-daiane/)|
 Elbert Jean |[link](https://www.linkedin.com/in/elbert-jean-1757b017b/)|

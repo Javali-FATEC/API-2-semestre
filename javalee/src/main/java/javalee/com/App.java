@@ -18,11 +18,13 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        Image image = new Image(getClass().getResourceAsStream("javalee.jpg"));
+
+        stage.getIcons().add(image);
+
         scene = new Scene(loadFXML("importCSV"));
         stage.setScene(scene);
         // stage.getIcons().add(new Image("/javalee.jpg"));
-        // C:\Users\vinic\OneDrive\Área de Trabalho\fatec\2º semestre\API-2-semestre\javalee\src\images\javalee.jpg
-        // C:\Users\vinic\OneDrive\Área de Trabalho\fatec\2º semestre\API-2-semestre\javalee\src\main\java\javalee\com\App.java
         stage.setTitle("Importar CSV");
         stage.show();
     }

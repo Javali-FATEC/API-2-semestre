@@ -1,14 +1,12 @@
 package javalee.com;
 
-import java.io.IOException;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 
 public class ImportCSVController {
-    ObservableList<String> separateRowsCSV = FXCollections.observableArrayList(",", ";"); 
+    ObservableList<String> separateRowsCSV = FXCollections.observableArrayList("virgula ( , )", "ponto e virgula ( ; )"); 
 
     @FXML
     private ChoiceBox<String> separateChoiceBox;
@@ -16,10 +14,5 @@ public class ImportCSVController {
     @FXML
     private void initialize(){
         separateChoiceBox.setItems(separateRowsCSV);
-    }
-
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
     }
 }

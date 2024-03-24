@@ -16,12 +16,7 @@
       <Label layoutX="181.0" layoutY="23.0" prefHeight="17.0" prefWidth="126.0" text="Interador do Arquivo" />
       <Button fx:id="importCSV" layoutX="350.0" layoutY="46.0" mnemonicParsing="false" text="Importar CSV" />
       <Separator layoutX="14.0" layoutY="109.0" prefHeight="0.0" prefWidth="1271.0" />
-      <TableView layoutX="14.0" layoutY="121.0" prefHeight="513.0" prefWidth="1271.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
+      <TableView layoutX="14.0" layoutY="121.0" prefHeight="513.0" prefWidth="1271.0"></TableView>
       <Label layoutX="14.0" layoutY="82.0" text="Problemas no Arquivo" />
    </children>
 </AnchorPane>

@@ -32,15 +32,4 @@ public class ExtractDataFileName {
     public String getStation() {
         return station;
     }
-
-    public static void main(String[] args) {
-        ExtractDataFileName data1 = new ExtractDataFileName("83726_SC");
-        System.out.println("Estação: " + data1.getStation() + " | Cidade: " + data1.getCity());
-
-        ExtractDataFileName data2 = new ExtractDataFileName("A728_TBT");
-        System.out.println("Estação: " + data2.getStation() + " | Cidade: " + data2.getCity());
-
-        ExtractDataFileName data3 = new ExtractDataFileName("A1701_SP");
-        System.out.println("Estação: " + data3.getStation() + " | Cidade: " + data3.getCity());
-    }
 }

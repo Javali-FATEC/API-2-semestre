@@ -3,20 +3,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ImportCSVController">
+<AnchorPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ImportCSVController">
    <children>
-      <ChoiceBox fx:id="configuracaoArquivo" layoutX="14.0" layoutY="46.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="separateChoiceBox" layoutX="181.0" layoutY="46.0" prefWidth="150.0" />
-      <Label layoutX="14.0" layoutY="23.0" text="Configuração do Arquivo" />
-      <Label layoutX="181.0" layoutY="23.0" prefHeight="17.0" prefWidth="126.0" text="Interador do Arquivo" />
-      <Button fx:id="importCSV" layoutX="350.0" layoutY="46.0" mnemonicParsing="false" text="Importar CSV" />
-      <Separator layoutX="14.0" layoutY="109.0" prefHeight="0.0" prefWidth="1271.0" />
-      <TableView layoutX="14.0" layoutY="121.0" prefHeight="513.0" prefWidth="1271.0"></TableView>
-      <Label layoutX="14.0" layoutY="82.0" text="Problemas no Arquivo" />
+      <ChoiceBox fx:id="typeCsvChoiceBox" layoutX="62.0" layoutY="67.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="separateChoiceBox" layoutX="62.0" layoutY="136.0" prefWidth="150.0" />
+      <Label layoutX="71.0" layoutY="50.0" text="Configuração do Arquivo" />
+      <Label layoutX="74.0" layoutY="119.0" prefHeight="17.0" prefWidth="126.0" text="Interador do Arquivo" />
+      <Button fx:id="openWindowAnalysis" layoutX="94.0" layoutY="196.0" mnemonicParsing="false" text="Importar Dados" onAction="#openNewWindow" />
    </children>
 </AnchorPane>

@@ -16,6 +16,7 @@ public class App extends Application {
 
     private static Scene scene;
 
+    //importCSV.fxml
     @Override
     public void start(Stage stage) throws IOException {
         Image image = new Image(getClass().getResourceAsStream("javalee.jpg"));
@@ -33,6 +34,14 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
+    static void openWindowAnalysis(String analysisInterface) throws IOException{
+        Stage stage = new Stage();
+        Parent root = loadFXML(analysisInterface);
+        stage.setScene(new Scene(root));
+        stage.setTitle("Dados Importados");
+        stage.show();
+    }
+
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
@@ -41,5 +50,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }

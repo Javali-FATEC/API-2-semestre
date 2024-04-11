@@ -11,6 +11,6 @@
       <ChoiceBox fx:id="separateChoiceBox" layoutX="62.0" layoutY="136.0" prefWidth="150.0" />
       <Label layoutX="71.0" layoutY="50.0" text="Configuração do Arquivo" />
       <Label layoutX="74.0" layoutY="119.0" prefHeight="17.0" prefWidth="126.0" text="Interador do Arquivo" />
-      <Button fx:id="openWindowAnalysis" layoutX="94.0" layoutY="196.0" mnemonicParsing="false" text="Importar Dados" onAction="#openNewWindow" />
+      <Button fx:id="openWindowAnalysis" layoutX="94.0" layoutY="196.0" mnemonicParsing="false" text="Importar Dados" onAction="#handleSelectFile" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package javalee.com;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.collections.FXCollections;
@@ -7,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.stage.FileChooser;
 
 public class ImportCSVController {
     ObservableList<String> separateRowsCSV = FXCollections.observableArrayList("virgula ( , )", "ponto e virgula ( ; )"); 
@@ -30,6 +32,18 @@ public class ImportCSVController {
             App.openWindowAnalysis("analysisInterface");
         } catch (IOException e){
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleSelectFile(ActionEvent event){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Selecionar Arquivo CSV");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Arquivo CSV", "*.csv"));
+        File selecteFile = fileChooser.showOpenDialog(null);
+
+        if (selecteFile != null){
+            openNewWindow(event);
         }
     }
 }

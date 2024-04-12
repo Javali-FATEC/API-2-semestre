@@ -34,11 +34,27 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    static void openWindowAnalysis(String analysisInterface) throws IOException{
+    static void openWindowAnalysis(String analysisInterface, DataFile dataFile) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(analysisInterface + ".fxml"));
         Stage stage = new Stage();
-        Parent root = loadFXML(analysisInterface);
-        stage.setScene(new Scene(root));
-        stage.setTitle("Dados Importados");
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        AnalysisController controller = fxmlLoader.getController();
+        controller.setDataFile(dataFile);
+
+        stage.setTitle("Dados Importados - " + dataFile.getSiglaCidade() + "/" + dataFile.getIdEstacao());
+        stage.show();
+    }
+
+    static void openPreviewData(String opernPreviewDataInterface, DataFile dataFile) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        PreviewDataController controller = fxmlLoader.getController();
+        controller.setDataFile(dataFile);
+
+        stage.setTitle("Dados Importados - " + dataFile.getSiglaCidade() + "/" + dataFile.getIdEstacao());
         stage.show();
     }
 

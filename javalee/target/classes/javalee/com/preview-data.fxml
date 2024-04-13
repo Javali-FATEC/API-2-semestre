@@ -7,14 +7,14 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<AnchorPane fx:id="previewData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" 
+<AnchorPane fx:id="previewData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" 
 fx:controller="javalee.com.PreviewDataController">
    <children>
-      <ChoiceBox fx:id="typeMeasurement" layoutX="14.0" layoutY="67.0" prefWidth="150.0" onAction="#handleTypeMeasurementChange"/>
+      <Label layoutX="14.0" layoutY="10.0" text="Selecione um tipo de medição:" />
+      <ChoiceBox fx:id="typeMeasurement" layoutX="14.0" layoutY="27.0" prefWidth="460.0" onAction="#handleTypeMeasurementChange"/>
 
-      <Label layoutX="14.0" layoutY="50.0" text="Selecione um tipo de medição:" />
-      <Label fx:id="typeMeasurementLabel" layoutX="14.0" layoutY="100.0" text="Relatório Temperatura" />
-      <TableView fx:id="tableDataMeasurement" layoutX="14.0" layoutY="130.0" prefHeight="300.0" prefWidth="500.0">
+      <Label fx:id="typeMeasurementLabel" layoutX="14.0" layoutY="60.0" text="Relatório Temperatura" />
+      <TableView fx:id="tableDataMeasurement" layoutX="14.0" layoutY="90.0" prefHeight="490.0" prefWidth="500.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Data" />
           <TableColumn prefWidth="75.0" text="Hora" />

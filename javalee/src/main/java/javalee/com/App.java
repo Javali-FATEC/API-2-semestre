@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.util.Map;
+
 import java.io.IOException;
 
 /**
@@ -55,6 +57,18 @@ public class App extends Application {
         controller.setDataFile(dataFile);
 
         stage.setTitle("Dados Importados - " + dataFile.getSiglaCidade() + "/" + dataFile.getIdEstacao());
+        stage.show();
+    }
+
+    static void openSeeInconsistencies(String opernPreviewDataInterface, Map<String, String> lineErrors) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        SeeInconsistenciesController controller = fxmlLoader.getController();
+        controller.setLineErrors(lineErrors);
+
+        stage.setTitle("Lista de Inconsistncias");
         stage.show();
     }
 

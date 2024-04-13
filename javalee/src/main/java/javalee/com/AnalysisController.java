@@ -35,5 +35,15 @@ public class AnalysisController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void seeInconsistencies(ActionEvent event){
+        System.out.println(this.dataFile.getIdEstacao());
+        try{
+            App.openSeeInconsistencies("see-inconsistencies",this.dataFile.getLineErros());
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
 

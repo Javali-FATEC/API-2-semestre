@@ -37,7 +37,21 @@ public class PreviewDataController implements Initializable{
             "Insolação",
             "Temperatura Máxima",
             "Temperatura Mínima",
-            "Chuva"
+            "Chuva",
+            "Temperatura Instantânea",
+            "Umidade Relativa Instantânea",
+            "Umidade Relativa Máxima",
+            "Umidade Relativa Mínima",
+            "Ponto de Orvalho Instantâneo",
+            "Ponto de Orvalho Máximo",
+            "Ponto de Orvalho Mínimo",
+            "Pressão Atmosférica Instantânea",
+            "Pressão Atmosférica Máxima",
+            "Pressão Atmosférica Mínima",
+            "Velocidade do Vento",
+            "Direção do Vento",
+            "Rajada de Vento",
+            "Radiação Solar"
         ); 
     
     @FXML

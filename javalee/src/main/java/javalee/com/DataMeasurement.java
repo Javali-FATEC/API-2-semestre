@@ -11,7 +11,14 @@ public class DataMeasurement {
         this.typeMeasurement = typeMeasurement;
         try
         {
-            this.value = Float.parseFloat(value.replace(',', '.'));
+            if(value == "")
+            {
+                this.value = null;
+            }
+            else
+            {
+                this.value = Float.parseFloat(value.replace(',', '.'));
+            }
         }catch( NumberFormatException e)
         {
             this.value = null;
@@ -42,7 +49,7 @@ public class DataMeasurement {
         if(value == null){
             return null;
         }
-        return String.valueOf(value);
+        return String.valueOf(value).replace('.', ',');
     }
     public String getHour(){
         return hour;

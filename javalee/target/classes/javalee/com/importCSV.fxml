@@ -8,6 +8,7 @@
 <AnchorPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ImportCSVController">
    <children>
       <ChoiceBox fx:id="typeCsvChoiceBox" layoutX="62.0" layoutY="67.0" prefWidth="150.0" />
+      <Button fx:id="openWindowAnalysis" layoutX="220.0" layoutY="67.0" mnemonicParsing="false" text="?" onAction="#openToolTip" />
       <ChoiceBox fx:id="separateChoiceBox" layoutX="62.0" layoutY="136.0" prefWidth="150.0" />
       <Label layoutX="71.0" layoutY="50.0" text="Configuração do Arquivo" />
       <Label layoutX="74.0" layoutY="119.0" prefHeight="17.0" prefWidth="126.0" text="Interador do Arquivo" />

@@ -70,7 +70,6 @@ public class PreviewDataController implements Initializable{
 
     public void setDataFile(DataFile dataFile) {
         this.dataFile = dataFile;
-        listaDados("Temperatura");
     }
 
     public void handleTypeMeasurementChange(){

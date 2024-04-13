@@ -60,6 +60,15 @@ public class App extends Application {
         stage.show();
     }
 
+    static void openWindowToolTip(String opernPreviewDataInterface) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        stage.setTitle("Padrões Usados");
+        stage.show();
+    }
+
     static void openSeeInconsistencies(String opernPreviewDataInterface, Map<String, String> lineErrors) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();

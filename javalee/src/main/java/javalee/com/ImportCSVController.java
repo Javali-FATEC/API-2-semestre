@@ -43,6 +43,15 @@ public class ImportCSVController {
     }
 
     @FXML
+    private void openToolTip(ActionEvent event){
+        try{
+            App.openWindowToolTip("open-tool-tip");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void handleSelectFile(ActionEvent event){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Selecionar Arquivo CSV");

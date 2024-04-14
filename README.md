@@ -1,5 +1,5 @@
 # Javali
-![Alt text](2.png)
+![Alt text](readme_assets/2.png)
 Trabalho de API do 2º semestre da FATEC.
 
 ## Desafio
@@ -50,16 +50,34 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 
 # Produto
 
+### Backlog
+| **Como**    | **Eu quero**                                                                                           | **Valor**                                                                                | **Prioridade** | **Sprint** | **Status** |
+|-------------|--------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------|------------|------------|
+| Pesquisador | Interpretar um documento CSV que contem dados metereólogicos                                           | Facilitar a leitura dos documentos das estações                                          | Alta           | 1          | Pendente   |
+| Pesquisador | Gerar relatórios de valor médio das variáveis climáticas por cidade                                    | Agilidade na leitura e na interpretação de dados uteis envolvendo uma analise da cidade  | Alta           | 2          | Pendente   |
+| Pesquisador | Gerar relatório de situação                                                                            | Agilidade em obter os dados relacionados relacionados a situação atual                   | Alta           | 2          | Pendente   |
+| Pesquisador | Gerar relatório para se plotar um gráfico boxplot                                                      | Agilidade em obter os dados para plottar um gráfico util para analise de dados           | Alta           | 3          | Pendente   |
+| Pesquisador | Gerenciar valores limites a serem utilizados como parametro para definir valores de risco nas medições | Ter valores possivelmente suspeitos de acordo com a nescessidade                         | Média          | 3          | Pendente   |
+| Pesquisador | Alterar valores de risco nas medições                                                                  | Manter dados com melhor verificação em todos os relatórios                               | Média          | 4          | Pendente   |
+| Pesquisador | Gerir as cidades e as estações, tal como a relações entre estação e cidade                             | Informações mais completas e personalizadas sobre as estações e cidades                  | Baixa          | 4          | Pendente   |
+| Pesquisador | Gerir as unidades de medida usadas no sistema.                                                         | Informações mais completas referente as unidades usadas no relatóro                      | Baixa          | 4          | Pendente   |
+
 
 ### Tecnologias e Ferramentas Utilizadas
 
+![Alt text](readme_assets/ferramentas.png)
 
+### Modelo Entidade relação
+![Wireframe](readme_assets/mer.png)
 
 ### Como configurar e rodar o projeto localmente
 
+🚧🔨 Em Construção 🔧🚧
+👷‍♂️ Estamos trabalhando duro para trazer todas as informações! 💪✨ 
 
 ### Wireframe do Produto
 
+[Wireframe](readme_assets/API.pdf)
 
 
 ## Equipe

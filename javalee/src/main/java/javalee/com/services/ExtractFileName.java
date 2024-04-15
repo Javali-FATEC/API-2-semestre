@@ -1,19 +1,21 @@
-package javalee.com;
+package javalee.com.services;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ExtractDataFileName {
+import javalee.com.exceptions.*;
+
+public class ExtractFileName {
     private String fileName;
     private String city;
     private String station;
 
-    public ExtractDataFileName(String fileName) throws ExceptionInvalidFileName {
+    public ExtractFileName(String fileName) throws ExceptionFileNameInvalid {
         this.fileName = fileName;
         extractData();
     }
 
-    private void extractData() throws ExceptionInvalidFileName {
+    private void extractData() throws ExceptionFileNameInvalid {
         String regex = "([A-Za-z0-9]+)_([A-Za-z]+)";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(fileName);
@@ -22,7 +24,7 @@ public class ExtractDataFileName {
             station = matcher.group(1);
             city = matcher.group(2);
         } else {
-            throw new ExceptionInvalidFileName("Nome do arquivo inválido"); 
+            throw new ExceptionFileNameInvalid("Nome do arquivo inválido"); 
         }
     }
 

@@ -1,4 +1,4 @@
-package javalee.com;
+package javalee.com.exceptions;
 
 public class ExceptionEmptyLine extends Exception {
     private int line;

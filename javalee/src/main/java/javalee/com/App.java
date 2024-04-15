@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javalee.com.services.DataFile;
 
 import java.util.Map;
 
@@ -18,16 +19,12 @@ public class App extends Application {
 
     private static Scene scene;
 
-    //importCSV.fxml
     @Override
     public void start(Stage stage) throws IOException {
         Image image = new Image(getClass().getResourceAsStream("javalee.jpg"));
-
         stage.getIcons().add(image);
-
         scene = new Scene(loadFXML("importCSV"));
         stage.setScene(scene);
-        // stage.getIcons().add(new Image("/javalee.jpg"));
         stage.setTitle("Importar CSV");
         stage.show();
     }
@@ -44,7 +41,7 @@ public class App extends Application {
         AnalysisController controller = fxmlLoader.getController();
         controller.setDataFile(dataFile);
 
-        stage.setTitle("Dados Importados - " + dataFile.getSiglaCidade() + "/" + dataFile.getIdEstacao());
+        stage.setTitle("Dados Importados - " + dataFile.getCity() + "/" + dataFile.getStation());
         stage.show();
     }
 
@@ -56,7 +53,7 @@ public class App extends Application {
         PreviewDataController controller = fxmlLoader.getController();
         controller.setDataFile(dataFile);
 
-        stage.setTitle("Dados Importados - " + dataFile.getSiglaCidade() + "/" + dataFile.getIdEstacao());
+        stage.setTitle("Dados Importados - " + dataFile.getCity() + "/" + dataFile.getStation());
         stage.show();
     }
 

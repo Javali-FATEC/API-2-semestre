@@ -1,21 +1,13 @@
 package javalee.com;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.stage.FileChooser;
-
-
-import java.io.File;
-import java.io.FileReader;
-import java.io.BufferedReader;
-
+import javalee.com.exceptions.*;
+import javalee.com.services.*;
 
 public class ImportCSVController {
     ObservableList<String> separateRowsCSV = FXCollections.observableArrayList("virgula ( , )", "ponto e virgula ( ; )"); 
@@ -30,6 +22,7 @@ public class ImportCSVController {
     @FXML
     private void initialize(){
         separateChoiceBox.setItems(separateRowsCSV);
+        separateChoiceBox.setValue("ponto e virgula ( ; )");
         typeCsvChoiceBox.setItems(typeOfCsv);
     }
 
@@ -53,31 +46,18 @@ public class ImportCSVController {
 
     @FXML
     private void handleSelectFile(ActionEvent event){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Selecionar Arquivo CSV");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Arquivo CSV", "*.csv"));
-        File selecteFile = fileChooser.showOpenDialog(null);
-
         try{
-            if(selecteFile == null){
-                throw new FileException();
-            }
-            ExtractDataFileName dataFileName = new ExtractDataFileName(selecteFile.getName());
-
-            ListMeasurement listMeasurement = new ListMeasurement(new FileReader(selecteFile),typeCsvChoiceBox.getValue());
-            listMeasurement.setInterator(separateChoiceBox.getValue());         
-
-            DataFile dataFile = new DataFile(dataFileName.getCity(),dataFileName.getStation(),listMeasurement.getListDataFile(),listMeasurement.getLineErros());
+            DataFile dataFile = OpenCSV.OpenFileCSV(separateChoiceBox.getValue(),typeCsvChoiceBox.getValue());
             openNewWindow(event, dataFile);
         }
         catch(FileException e){
-            utilInterno.alertError(e.getMessage());
+            utilInterno.alertError(e.getMessage(),"Erro no Arquivo");
         }
-        catch(ExceptionInvalidFileName e){
-            utilInterno.alertError(e.getMessage());
+        catch(ExceptionFileNameInvalid e){
+            utilInterno.alertError(e.getMessage(),"Erro no Arquivo");
         }
         catch (IOException e) {
-            utilInterno.alertError("Impossível interpretar CSV");
+            utilInterno.alertError("Impossível interpretar CSV","Erro no Arquivo");
         }
     }
 }

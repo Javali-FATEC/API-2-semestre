@@ -1,16 +1,10 @@
 package javalee.com;
 
-import java.io.IOException;
-import java.util.LinkedList;
 import javafx.beans.property.SimpleStringProperty;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.event.ActionEvent;
-
-import java.util.List;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,39 +14,37 @@ import javafx.scene.control.ChoiceBox;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
-
+import javalee.com.services.DataFile;
+import javalee.com.services.DataMeasurement;
 
 public class PreviewDataController implements Initializable{
 
     private DataFile dataFile;
 
     ObservableList<String> rowsTypeMeasurement = FXCollections.observableArrayList(
-            "Temperatura",
-            "Umidade",
-            "Pressão",
-            "Velocidade do Vento",
-            "Direção do Vento",
-            "Nebulosidade",
-            "Insolação",
-            "Temperatura Máxima",
-            "Temperatura Mínima",
-            "Chuva",
-            "Temperatura Instantânea",
-            "Umidade Relativa Instantânea",
-            "Umidade Relativa Máxima",
-            "Umidade Relativa Mínima",
-            "Ponto de Orvalho Instantâneo",
-            "Ponto de Orvalho Máximo",
-            "Ponto de Orvalho Mínimo",
-            "Pressão Atmosférica Instantânea",
-            "Pressão Atmosférica Máxima",
-            "Pressão Atmosférica Mínima",
-            "Velocidade do Vento",
-            "Direção do Vento",
-            "Rajada de Vento",
-            "Radiação Solar"
-        ); 
+    "Chuva",
+    "Direção do Vento",
+    "Direção do Vento",
+    "Insolação",
+    "Nebulosidade",
+    "Ponto de Orvalho Instantâneo",
+    "Ponto de Orvalho Máximo",
+    "Ponto de Orvalho Mínimo",
+    "Pressão",
+    "Pressão Máxima",
+    "Pressão Mínima",
+    "Rajada de Vento",
+    "Radiação Solar",
+    "Temperatura",
+    "Temperatura Máxima",
+    "Temperatura Mínima",
+    "Umidade",
+    "Umidade Relativa Máxima",
+    "Umidade Relativa Mínima",
+    "Velocidade do Vento",
+    "Velocidade do Vento"
+);
+
     
     @FXML
     private ChoiceBox<String> typeMeasurement;

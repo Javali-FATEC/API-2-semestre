@@ -2,11 +2,12 @@ package javalee.com;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javalee.com.services.DataFile;
 import javafx.event.ActionEvent;
 import java.io.IOException;
-import javafx.scene.control.ChoiceBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,12 @@ public class AnalysisController implements Initializable {
     @FXML
     private Button cityNameLabel;
 
+    @FXML
+    private Label cityLabel;
+
+    @FXML
+    private Label stationLabel;
+
     private DataFile dataFile;
 
     @Override
@@ -24,11 +31,12 @@ public class AnalysisController implements Initializable {
 
     public void setDataFile(DataFile dataFile) {
         this.dataFile = dataFile;
+        cityLabel.setText("Cidade: " + this.dataFile.getCity());
+        stationLabel.setText("Estação: " + this.dataFile.getStation());
     }
 
     @FXML
     private void previweData(ActionEvent event){
-        System.out.println(this.dataFile.getIdEstacao());
         try{
             App.openPreviewData("preview-data",this.dataFile);
         } catch (IOException e){
@@ -38,7 +46,6 @@ public class AnalysisController implements Initializable {
 
     @FXML
     private void seeInconsistencies(ActionEvent event){
-        System.out.println(this.dataFile.getIdEstacao());
         try{
             App.openSeeInconsistencies("see-inconsistencies",this.dataFile.getLineErros());
         } catch (IOException e){

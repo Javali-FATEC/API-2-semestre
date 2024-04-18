@@ -1,4 +1,4 @@
-package javalee.com;
+package javalee.com.services;
 
 public class FileException extends Exception{
 

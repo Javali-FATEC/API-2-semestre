@@ -1,10 +1,10 @@
-package javalee.com;
+package javalee.com.exceptions;
 
 public class ExceptionEmptyLine extends Exception {
     private int line;
     public ExceptionEmptyLine(int line){
         super("Linha não possui as colunas iniciais");
-        this.line = line;
+        this.line = line -1;
     }
 
     public String getLine(){

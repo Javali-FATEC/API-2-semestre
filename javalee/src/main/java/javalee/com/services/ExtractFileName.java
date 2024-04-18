@@ -1,14 +1,16 @@
-package javalee.com;
+package javalee.com.services;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ExtractDataFileName {
+import javalee.com.exceptions.*;
+
+public class ExtractFileName {
     private String fileName;
     private String city;
     private String station;
 
-    public ExtractDataFileName(String fileName) throws ExceptionInvalidFileName {
+    public ExtractFileName(String fileName) throws ExceptionInvalidFileName {
         this.fileName = fileName;
         extractData();
     }

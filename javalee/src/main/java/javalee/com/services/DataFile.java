@@ -1,7 +1,6 @@
-package javalee.com;
+package javalee.com.services;
 
 import java.util.List;
-import java.util.HashMap;
 import java.util.Map;
 
 public class DataFile {
@@ -22,11 +21,11 @@ public class DataFile {
         return this.lineErros;
     }
 
-    public String getSiglaCidade(){
+    public String getCity(){
         return siglaCidade;
     }
 
-    public String getIdEstacao(){
+    public String getStation(){
         return idEstacao;
     }
 

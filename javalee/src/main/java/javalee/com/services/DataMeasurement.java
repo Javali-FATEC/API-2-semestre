@@ -1,9 +1,12 @@
-package javalee.com;
+package javalee.com.services;
+
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class DataMeasurement {
     private String typeMeasurement;
     private String unidade;
-    private Float value;
+    private BigDecimal value;
     private String hour;
     private String date;
 
@@ -17,7 +20,8 @@ public class DataMeasurement {
             }
             else
             {
-                this.value = Float.parseFloat(value.replace(',', '.'));
+                Double valueDouble = Double.parseDouble(value.replace(',', '.'));
+                this.value = BigDecimal.valueOf(valueDouble);
             }
         }catch( NumberFormatException e)
         {
@@ -35,7 +39,7 @@ public class DataMeasurement {
     public void convertTemp(){
         if(this.value != null)
         {
-            this.value = this.value + 273;
+            this.value = this.value.subtract(BigDecimal.valueOf(273.15));
         }
     }
 
@@ -49,7 +53,9 @@ public class DataMeasurement {
         if(value == null){
             return null;
         }
-        return String.valueOf(value).replace('.', ',');
+        DecimalFormat formatUsed = new DecimalFormat("#.##########");
+        String numberFormated = formatUsed.format(value);
+        return numberFormated.replace('.', ',');
     }
     public String getHour(){
         return hour;

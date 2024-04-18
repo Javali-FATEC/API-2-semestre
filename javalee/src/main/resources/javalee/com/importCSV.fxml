@@ -5,13 +5,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ImportCSVController">
+<AnchorPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="186.0" prefWidth="212.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ImportCSVController">
    <children>
-      <ChoiceBox fx:id="typeCsvChoiceBox" layoutX="62.0" layoutY="67.0" prefWidth="150.0" />
-      <Button fx:id="openWindowAnalysis" layoutX="220.0" layoutY="67.0" mnemonicParsing="false" text="?" onAction="#openToolTip" />
-      <ChoiceBox fx:id="separateChoiceBox" layoutX="62.0" layoutY="136.0" prefWidth="150.0" />
-      <Label layoutX="71.0" layoutY="50.0" text="Configuração do Arquivo" />
-      <Label layoutX="74.0" layoutY="119.0" prefHeight="17.0" prefWidth="126.0" text="Interador do Arquivo" />
-      <Button fx:id="openWindowAnalysis" layoutX="94.0" layoutY="196.0" mnemonicParsing="false" text="Importar Dados" onAction="#handleSelectFile" />
+      <ChoiceBox fx:id="typeCsvChoiceBox" layoutX="18.0" layoutY="44.0" prefHeight="25.0" prefWidth="148.0" />
+      <Button fx:id="openWindowAnalysis" layoutX="172.0" layoutY="44.0" mnemonicParsing="false" onAction="#openToolTip" text="?" />
+      <ChoiceBox fx:id="separateChoiceBox" layoutX="18.0" layoutY="113.0" prefHeight="25.0" prefWidth="176.0" />
+      <Label layoutX="18.0" layoutY="27.0" text="Configuração do Arquivo" />
+      <Label layoutX="18.0" layoutY="96.0" prefHeight="17.0" prefWidth="148.0" text="Interador do Arquivo" />
+      <Button fx:id="openWindowAnalysis" layoutX="18.0" layoutY="144.0" mnemonicParsing="false" onAction="#handleSelectFile" prefHeight="25.0" prefWidth="176.0" text="Importar Dados" />
    </children>
 </AnchorPane>

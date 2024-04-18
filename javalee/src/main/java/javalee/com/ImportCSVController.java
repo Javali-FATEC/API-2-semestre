@@ -53,7 +53,7 @@ public class ImportCSVController {
         catch(FileException e){
             utilInterno.alertError(e.getMessage(),"Erro no Arquivo");
         }
-        catch(ExceptionFileNameInvalid e){
+        catch(ExceptionInvalidFileName e){
             utilInterno.alertError(e.getMessage(),"Erro no Arquivo");
         }
         catch (IOException e) {

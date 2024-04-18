@@ -1,5 +1,5 @@
-class ExceptionFileNameInvalid extends Exception {
-    public ExceptionFileNameInvalid(String message) {
+class ExceptionInvalidFileName extends Exception {
+    public ExceptionInvalidFileName(String message) {
         super(message);
     }
 }

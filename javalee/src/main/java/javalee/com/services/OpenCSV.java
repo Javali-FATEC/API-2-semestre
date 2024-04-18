@@ -7,7 +7,7 @@ import javalee.com.exceptions.*;
 import java.io.File;
 
 public class OpenCSV {
-    public static DataFile OpenFileCSV(String patterUsed, String separete) throws FileException,ExceptionFileNameInvalid,IOException{
+    public static DataFile OpenFileCSV(String patterUsed, String separete) throws FileException,ExceptionInvalidFileName,IOException{
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Selecionar Arquivo CSV");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Arquivo CSV", "*.csv"));

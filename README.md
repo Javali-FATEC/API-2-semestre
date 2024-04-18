@@ -70,6 +70,10 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 ### Modelo Entidade relação
 ![Wireframe](readme_assets/mp.png)
 
+### Modelo Lógico do Banco de Dados
+
+![alt text](readme_assets/dblogico.png)
+
 ### Como configurar e rodar o projeto localmente
 
 🚧🔨 Em Construção 🔧🚧

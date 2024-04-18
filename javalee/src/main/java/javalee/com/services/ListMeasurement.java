@@ -14,12 +14,12 @@ import javalee.com.patters.PatterB;
 
 public class ListMeasurement {
     private LinkedList<DataMeasurement> listDataFile;
-    private boolean isPatternA;
+    private String pattern;
     private String interator;
     private Map<String, String> lineErros;
 
     public ListMeasurement(FileReader selecteFile, String pattern){
-        isPatternA = pattern == "Padrão A";
+        this.pattern = pattern;
         listDataFile = new LinkedList<DataMeasurement>();
         extractList(new BufferedReader(selecteFile));
     }
@@ -56,7 +56,7 @@ public class ListMeasurement {
                     if(this.interator=="virgula ( , )")
                     {
                         line = line.replace(",,", ", ,");
-                        parts = line.split(";");
+                        parts = line.split(",");
                     }
                     if(lineNumber>0)
                     {
@@ -67,7 +67,7 @@ public class ListMeasurement {
                         }}catch( ArrayIndexOutOfBoundsException e){
                             throw new ExceptionEmptyLine(lineNumber);
                         }
-                        if( this.isPatternA ){
+                        if( this.isPatternA(parts.length) ){
                             constructListPatterA(parts);
                         }
                         else{
@@ -82,6 +82,13 @@ public class ListMeasurement {
         }catch(IOException e){
 
         }
+    }
+
+    private boolean isPatternA(int numeberOfColuns){
+        if(this.pattern == "Automático") {
+            return numeberOfColuns != 10;
+        }
+        return this.pattern == "Padrão A";
     }
 
     public void constructListPatterA(String[] parts){

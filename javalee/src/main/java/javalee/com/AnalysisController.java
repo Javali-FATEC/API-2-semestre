@@ -31,8 +31,9 @@ public class AnalysisController implements Initializable {
 
     public void setDataFile(DataFile dataFile) {
         this.dataFile = dataFile;
-        cityLabel.setText("Cidade: " + this.dataFile.getCity());
-        stationLabel.setText("Estação: " + this.dataFile.getStation());
+        // cityLabel.setText("Cidade: " + this.dataFile.getCity());
+        cityLabel.setText(this.dataFile.getCity());
+        stationLabel.setText(this.dataFile.getStation());
     }
 
     @FXML

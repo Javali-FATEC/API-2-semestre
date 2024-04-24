@@ -23,10 +23,12 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         Image image = new Image(getClass().getResourceAsStream("javalee.jpg"));
         stage.getIcons().add(image);
-        scene = new Scene(loadFXML("importCSV"));
+        scene = new Scene(loadFXML("masterScreen"));
         stage.setScene(scene);
-        stage.setTitle("Importar CSV");
+        stage.setTitle("Tela inicial");
         stage.show();
+
+        stage.setOnCloseRequest(event -> System.exit(0));
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -81,6 +83,14 @@ public class App extends Application {
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+
+    static void openImportCSV(String analysisInterface) throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("importCSV");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Importar CSV");
+        stage.show();
     }
 
     public static void main(String[] args) {

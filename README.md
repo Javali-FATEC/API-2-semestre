@@ -72,6 +72,8 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 
 ### Como configurar e rodar o projeto localmente
 
+### 🚧🔨 Em Construção 🔧🚧
+
 ### 🪑🎲 Passo-a-passo para criar seu banco de dados local com PostgreSQL
 
 <p>1º - Vá para https://www.postgresql.org;</p>
@@ -83,6 +85,8 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 <p>7º - Configure suas credentiais (user: admin, password: admin) e mantenha a porta do SGBD como 5432;</p>
 <p>8º - Entre com suas credenciais e pronto, está tudo certo para você codar :D;</p>
 <p>9º - Para você executar seu código, é necessário selecionar todas as linhas e apertar o botão ▶.</p>
+
+### 👷‍♂️ Estamos trabalhando duro para trazer todas as informações! 💪✨
 
 ### Wireframe do Produto
 

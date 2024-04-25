@@ -70,10 +70,27 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 ### Modelo Entidade relação
 ![Wireframe](readme_assets/mp.png)
 
+### Modelo Lógico do Banco de Dados
+
+![alt text](readme_assets/modeloLogico.png)
+
 ### Como configurar e rodar o projeto localmente
 
-🚧🔨 Em Construção 🔧🚧
-👷‍♂️ Estamos trabalhando duro para trazer todas as informações! 💪✨ 
+### 🚧🔨 Em Construção 🔧🚧
+
+### 🪑🎲 Passo-a-passo para criar seu banco de dados local com PostgreSQL
+
+<p>1º - Vá para https://www.postgresql.org;</p>
+<p>2º - Encontre o botão que leva para a tela de download;</p>
+<p>3º - Selecione seu sistema operacional (windows, linux, ios, etc);</p>
+<p>4º - Click no texto com link (cor azul) "Download the installer";</p>
+<p>5º - Execute o instalador e instale o programa;</p>
+<p>6º - Leia e aperte "next" de acordo com suas preferências;</p>
+<p>7º - Configure suas credentiais (user: admin, password: admin) e mantenha a porta do SGBD como 5432;</p>
+<p>8º - Entre com suas credenciais e pronto, está tudo certo para você codar :D;</p>
+<p>9º - Para você executar seu código, é necessário selecionar todas as linhas e apertar o botão ▶.</p>
+
+### 👷‍♂️ Estamos trabalhando duro para trazer todas as informações! 💪✨
 
 ### Wireframe do Produto
 
@@ -86,7 +103,6 @@ Integrante | Linkedin
  -----------|---------|
 Vinícius Augusto da Silva Monteiro ![Static Badge](https://img.shields.io/badge/Dev-black) | [link](https://www.linkedin.com/in/viniciusvasm/) |
 Ricardo Campos ![Static Badge](https://img.shields.io/badge/Product_owner-blue)  ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/ricardo-campos-ba56091b5/)|
-Carla Daiane ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/carla-daiane/)|
 Elbert Jean ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/elbert-jean-1757b017b/)|
 Isaque Souza ![Static Badge](https://img.shields.io/badge/Dev-black)|[link](https://www.linkedin.com/in/isaque-souza-6760b8270/)|
 Maria Clara ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/c137santos/)|

@@ -70,6 +70,10 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 ### Modelo Entidade relação
 ![Wireframe](readme_assets/mp.png)
 
+### Modelo Lógico do Banco de Dados
+
+![alt text](readme_assets/modeloLogico.png)
+
 ### Como configurar e rodar o projeto localmente
 
 ### 🚧🔨 Em Construção 🔧🚧
@@ -99,7 +103,6 @@ Integrante | Linkedin
  -----------|---------|
 Vinícius Augusto da Silva Monteiro ![Static Badge](https://img.shields.io/badge/Dev-black) | [link](https://www.linkedin.com/in/viniciusvasm/) |
 Ricardo Campos ![Static Badge](https://img.shields.io/badge/Product_owner-blue)  ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/ricardo-campos-ba56091b5/)|
-Carla Daiane ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/carla-daiane/)|
 Elbert Jean ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/elbert-jean-1757b017b/)|
 Isaque Souza ![Static Badge](https://img.shields.io/badge/Dev-black)|[link](https://www.linkedin.com/in/isaque-souza-6760b8270/)|
 Maria Clara ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/c137santos/)|

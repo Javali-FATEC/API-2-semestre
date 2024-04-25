@@ -72,7 +72,7 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 
 ### Modelo Lógico do Banco de Dados
 
-![alt text](readme_assets/dblogico.png)
+![alt text](readme_assets/modeloLogico.png)
 
 ### Como configurar e rodar o projeto localmente
 

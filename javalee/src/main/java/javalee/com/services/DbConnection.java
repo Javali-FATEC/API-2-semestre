@@ -2,6 +2,7 @@ package javalee.com.services;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DbConnection {
@@ -34,6 +35,29 @@ public class DbConnection {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void Save(String comando) {
+
+        Connection conn = connect_to_db("db_javalee", "postgres", "1234");
+
+        try {
+            String insert = "INSERT INTO registro (typeMeasurement, unidade, date, hour, value) VALUES  (?,?,?,?,?)";
+            PreparedStatement stm = conn.prepareStatement(comando);
+            
+             stm.setString(1,"2" );
+             stm.setString(2,"2" );
+             stm.setString(3,"2" );
+             stm.setString(4,"2" );
+             stm.setString(5,"2" );
+            
+            stm.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Desconnect(conn);
+        }
+
     }
     public static void main(String[] args) {
 

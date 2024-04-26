@@ -24,6 +24,7 @@ public class ImportCSVController {
         separateChoiceBox.setItems(separateRowsCSV);
         separateChoiceBox.setValue("ponto e virgula ( ; )");
         typeCsvChoiceBox.setItems(typeOfCsv);
+        String selectedSeparator = separateChoiceBox.getValue();
     }
 
     @FXML
@@ -43,7 +44,7 @@ public class ImportCSVController {
             e.printStackTrace();
         }
     }
-
+    
     @FXML
     private void handleSelectFile(ActionEvent event){
         try{

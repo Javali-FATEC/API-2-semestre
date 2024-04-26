@@ -113,6 +113,8 @@ public class PreviewDataController implements Initializable{
         typeMeasurementLabel.setText(messageAboutData);
         tableDataMeasurement.setItems(dataTable);
     }
+    
+
 
 }
 

@@ -10,25 +10,19 @@ public class DataMeasurement {
     private String hour;
     private String date;
 
-    public DataMeasurement( String typeMeasurement, String unidade, String date, String hour, String value){
+    public DataMeasurement(String typeMeasurement, String unidade, String date, String hour, String value) {
         this.typeMeasurement = typeMeasurement;
-        try
-        {
-            if(value == "")
-            {
+        try {
+            if (value == "") {
                 this.value = null;
-            }
-            else
-            {
+            } else {
                 Double valueDouble = Double.parseDouble(value.replace(',', '.'));
                 this.value = BigDecimal.valueOf(valueDouble);
             }
-        }catch( NumberFormatException e)
-        {
+        } catch (NumberFormatException e) {
             this.value = null;
         }
-        if(hour != null)
-        {
+        if (hour != null) {
             hour = hour.substring(0, hour.length() - 2);
             this.hour = hour;
         }
@@ -36,31 +30,48 @@ public class DataMeasurement {
         this.unidade = unidade;
     }
 
-    public void convertTemp(){
-        if(this.value != null)
-        {
+    public void convertTemp() {
+        if (this.value != null) {
             this.value = this.value.subtract(BigDecimal.valueOf(273.15));
         }
     }
 
-    public String getTypeMeasurament(){
+    public String getTypeMeasurament() {
         return typeMeasurement;
     }
-    public String getUnidade(){
+
+    public String getUnidade() {
         return unidade;
     }
-    public String getValue(){
-        if(value == null){
+
+    public String getValue() {
+        if (value == null) {
             return null;
         }
         DecimalFormat formatUsed = new DecimalFormat("#.##########");
         String numberFormated = formatUsed.format(value);
         return numberFormated.replace('.', ',');
     }
-    public String getHour(){
+
+    public String getHour() {
         return hour;
     }
-    public String getDate(){
+
+    public String getDate() {
         return date;
     }
+
+    public String toInsertSql(String idEstacao) {
+
+        if (this.getValue() == null) {
+            return "";
+        }
+
+        String sql = "INSERT INTO registro (id_metrica, id_estacao, valor, data_hora) VALUES ('1','" + idEstacao + "','"
+                + this.getValue() + "', '2024-04-25 10:30:00');";
+
+        return sql;
+
+    }
+
 }

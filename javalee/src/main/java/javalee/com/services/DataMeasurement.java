@@ -61,17 +61,4 @@ public class DataMeasurement {
         return date;
     }
 
-    public String toInsertSql(String idEstacao) {
-
-        if (this.getValue() == null) {
-            return "";
-        }
-
-        String sql = "INSERT INTO registro (id_metrica, id_estacao, valor, data_hora) VALUES ('1','" + idEstacao + "','"
-                + this.getValue() + "', '2024-04-25 10:30:00');";
-
-        return sql;
-
-    }
-
 }

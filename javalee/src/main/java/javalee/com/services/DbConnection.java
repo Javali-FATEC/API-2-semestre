@@ -35,6 +35,12 @@ public class DbConnection {
             e.printStackTrace();
         }
     }
+    public static void main(String[] args) {
+
+        DbConnection db = new DbConnection();
+        db.connect_to_db("db_javalle", null, null);
+        
+    }
 
 
 }

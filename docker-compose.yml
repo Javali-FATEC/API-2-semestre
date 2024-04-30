@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: db_javalee_postgres
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=db_javalee
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=javalee
+    ports:
+      - 5432:5432
+volumes:
+  pg_data:
+

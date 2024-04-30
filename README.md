@@ -80,15 +80,34 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 
 ### 🪑🎲 Passo-a-passo para criar seu banco de dados local com PostgreSQL
 
-<p>1º - Vá para https://www.postgresql.org;</p>
-<p>2º - Encontre o botão que leva para a tela de download;</p>
-<p>3º - Selecione seu sistema operacional (windows, linux, ios, etc);</p>
-<p>4º - Click no texto com link (cor azul) "Download the installer";</p>
-<p>5º - Execute o instalador e instale o programa;</p>
-<p>6º - Leia e aperte "next" de acordo com suas preferências;</p>
-<p>7º - Configure suas credentiais (user: admin, password: admin) e mantenha a porta do SGBD como 5432;</p>
-<p>8º - Entre com suas credenciais e pronto, está tudo certo para você codar :D;</p>
-<p>9º - Para você executar seu código, é necessário selecionar todas as linhas e apertar o botão ▶.</p>
+#### 🐘 PostgreSQL Local
+
+* Instale o postgreSQL localmente [Tutorial](https://www.devmedia.com.br/instalando-postgresql/23364)
+* Realize a conexão conforme as variáveis do config [config.properties](./javalee/target/classes/javalee/com/configs/config.properties)
+* Abra um editor SQL e execute o script de criação do banco de dados (db_javalee.sql) javalee/src/main/resources/db_javalee.sql
+
+#### 🐘 PostgreSQL Docker
+
+O trabalho conta com docker-compose para facilitar a execução do banco de dados. Para isso, é necessário ter o docker e docker compose instalados em sua máquina.
+
+Roda o comando na raiz do projeto via terminal
+
+```bash
+docker compose up -d
+```
+
+A tecnologia de DBeaver é excelente para visualizar o banco de dados, conectar com docker e manipular os dados. [Download](https://dbeaver.io/download/)
+
+No Dbeaver, é possível realizar a conexão com as credenciais via URL
+
+```bash 
+jdbc:postgresql://localhost:5432/db_javalee
+```
+* Abra um editor SQL e execute o script de criação do banco de dados (db_javalee.sql) javalee/src/main/resources/db_javalee.sql
+Como você já vai ter criado o banco via Dbeaver com nome DB_javalee. Não é necessário rodar a primeira linha do script de criação do banco.
+
+-> CREATE DATABASE db_javalee;
+
 
 ### 👷‍♂️ Estamos trabalhando duro para trazer todas as informações! 💪✨
 

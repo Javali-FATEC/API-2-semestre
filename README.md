@@ -135,4 +135,3 @@ Isaque Souza ![Static Badge](https://img.shields.io/badge/Dev-black)|[link](http
 Maria Clara ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/c137santos/)|
 Marília Borgo ![Static Badge](https://img.shields.io/badge/Scrum_master-pink) ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/mariliaborgo/)|
 Paloma Soares ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/paloma-soares-83a949208/)|
-Aguinaldo Junior ![Static Badge](https://img.shields.io/badge/Dev-black)| [link]

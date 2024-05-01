@@ -76,8 +76,6 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 
 ### Como configurar e rodar o projeto localmente
 
-### 🚧🔨 Em Construção 🔧🚧
-
 ### 🪑🎲 Passo-a-passo para criar seu banco de dados local com PostgreSQL
 
 #### 🐘 PostgreSQL Local
@@ -116,6 +114,10 @@ jdbc:postgresql://localhost:5432/db_javalee
 Como você já vai ter criado o banco via Dbeaver com nome DB_javalee. Não é necessário rodar a primeira linha do script de criação do banco.
 
 -> ❌ CREATE DATABASE db_javale
+
+### 🚀 Rodando o projeto
+
+Rode o projeto via app.java na pasta [javalee](./javalee/src/main/java/javalee/com/App.java)
 
 ### 👷‍♂️ Estamos trabalhando duro para trazer todas as informações! 💪✨
 

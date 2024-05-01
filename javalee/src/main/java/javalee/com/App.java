@@ -93,6 +93,14 @@ public class App extends Application {
         stage.show();
     }
 
+    static void openStatusReport() throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("statusReport");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Relatório Situacional");
+        stage.show();
+    }
+
     public static void main(String[] args) {
         launch();
     }

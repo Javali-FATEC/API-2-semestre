@@ -18,8 +18,8 @@ CREATE TABLE db_javalee.metrica(
     FOREIGN KEY(id_unidade_medida) REFERENCES db_javalee.unidade_medida(id_unidade_medida)
 );
 
-CREATE TABLE db_javalee.cidade("
-	id_cidade SERIAL PRIMARY KEY,"
+CREATE TABLE db_javalee.cidade(
+	id_cidade SERIAL PRIMARY KEY,
 	sigla_cidade VARCHAR(255) NOT NULL,
     nome_cidade VARCHAR(255)
 );

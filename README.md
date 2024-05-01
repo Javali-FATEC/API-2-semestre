@@ -117,14 +117,7 @@ Como você já vai ter criado o banco via Dbeaver com nome DB_javalee. Não é n
 
 ### 🚀 Rodando o projeto
 
-#### 🚀 Via terminal
-
-```bash
-mvn clean install
-```
-
-
-
+Rode o projeto via app.java na pasta [javalee](./javalee/src/main/java/javalee/com/App.java)
 
 ### 👷‍♂️ Estamos trabalhando duro para trazer todas as informações! 💪✨
 

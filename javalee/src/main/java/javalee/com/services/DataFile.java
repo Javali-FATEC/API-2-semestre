@@ -8,6 +8,7 @@ public class DataFile {
     private String idEstacao;
     private List<DataMeasurement> dataMeasurements;
     private Map<String, String> lineErros;
+    
 
     public DataFile( String siglaCidade, String idEstacao, List<DataMeasurement> dataMeasurements, 
     Map<String, String> lineErros){
@@ -32,5 +33,6 @@ public class DataFile {
     public List<DataMeasurement> getDataMeasurements(){
         return this.dataMeasurements;
     }
+
     
 }

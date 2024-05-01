@@ -3,6 +3,7 @@ package javalee.com.bd_connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javalee.com.configs.*;
 
@@ -35,7 +36,10 @@ public class DbConnection {
         }
     }
 
-    public void Save(String comando) {
+    public void executeNotReturn(String comando) {
+
+        
+        ResultSet resultSet = null;
 
         try {
             PreparedStatement stm = this.conn.prepareStatement(comando);
@@ -44,6 +48,23 @@ public class DbConnection {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public ResultSet executeWithReturn(String comando) {
+
+        
+        ResultSet resultSet = null;
+
+        try {
+            PreparedStatement stm = this.conn.prepareStatement(comando);
+            
+            resultSet = stm.executeQuery();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
 
     }
 

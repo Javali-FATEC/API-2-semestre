@@ -43,6 +43,7 @@ CREATE TABLE db_javalee.registro(
     FOREIGN KEY(id_estacao) REFERENCES db_javalee.estacao(id_estacao)
 );
 
+
 INSERT INTO db_javalee.unidade_medida (nome, descricao) VALUES ('ºC', 'graus Celsius');
 INSERT INTO db_javalee.unidade_medida (nome, descricao) VALUES ('%', 'porcentagem');
 INSERT INTO db_javalee.unidade_medida (nome, descricao) VALUES ('hPa', 'hectopascais');
@@ -71,3 +72,4 @@ INSERT INTO db_javalee.metrica (nome, minimo_risco, maximo_risco, id_unidade_med
 INSERT INTO db_javalee.metrica (nome, minimo_risco, maximo_risco, id_unidade_medida) VALUES ('Umidade Máxima', NULL, NULL, 2);
 INSERT INTO db_javalee.metrica (nome, minimo_risco, maximo_risco, id_unidade_medida) VALUES ('Umidade Mínima', NULL, NULL, 2);
 INSERT INTO db_javalee.metrica (nome, minimo_risco, maximo_risco, id_unidade_medida) VALUES ('Velocidade do Vento', NULL, NULL, 4);
+

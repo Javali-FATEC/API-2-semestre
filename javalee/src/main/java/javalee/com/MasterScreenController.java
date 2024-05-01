@@ -15,4 +15,13 @@ public class MasterScreenController {
         e.printStackTrace();
       }
     }
+
+    @FXML
+    private void openScreenStatusReport(ActionEvent event) {
+      try {
+        App.openStatusReport();
+      } catch (IOException e){
+        e.printStackTrace();
+      }
+    }
 }

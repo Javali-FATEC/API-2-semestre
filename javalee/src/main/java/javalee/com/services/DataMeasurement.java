@@ -103,13 +103,11 @@ public class DataMeasurement {
         return numberFormated.replace(',', '.');
     }
 
-    public String toInsertSql(String idEstacao) {
-        
-        Metrics metrics = new Metrics();
+    public String toInsertSql(String idEstacao, Metrics metrics) {
         Metric metric = metrics.searchMetrics(typeMeasurement);
+        
         if (metric == null) {
             return "";
-            
         }
         
         if (this.getValue() == null) {

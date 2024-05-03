@@ -2,20 +2,20 @@ CREATE DATABASE db_javalee;
 
 CREATE SCHEMA db_javalee;
 
-CREATE TABLE db_javalee.unidade_medida (
+CREATE TABLE unidade_medida (
     id_unidade_medida SERIAL PRIMARY KEY,
     nome VARCHAR(255),
     descricao VARCHAR(255) 
 );
 
-CREATE TABLE db_javalee.metrica(
+CREATE TABLE metrica(
 	id_metrica SERIAL PRIMARY KEY,
 	nome VARCHAR(255),
     minimo_risco DECIMAL(15, 10),
     maximo_risco DECIMAL(15, 10),
     id_unidade_medida INTEGER,
     
-    FOREIGN KEY(id_unidade_medida) REFERENCES db_javalee.unidade_medida(id_unidade_medida)
+    FOREIGN KEY(id_unidade_medida) REFERENCES unidade_medida(id_unidade_medida)
 );
 
 CREATE TABLE db_javalee.cidade(
@@ -32,15 +32,15 @@ CREATE TABLE db_javalee.estacao(
     FOREIGN KEY(id_cidade) REFERENCES db_javalee.cidade(id_cidade)
 );
 
-CREATE TABLE db_javalee.registro(
+CREATE TABLE registro(
 	id_registro SERIAL PRIMARY KEY,
     id_metrica INT NOT NULL,
     id_estacao INT NOT NULL,
     valor DECIMAL(15, 10) NOT NULL,
     data_hora TIMESTAMP NOT NULL,
     
-    FOREIGN KEY(id_metrica) REFERENCES db_javalee.metrica(id_metrica),
-    FOREIGN KEY(id_estacao) REFERENCES db_javalee.estacao(id_estacao)
+    FOREIGN KEY(id_metrica) REFERENCES metrica(id_metrica),
+    FOREIGN KEY(id_estacao) REFERENCES estacao(id_estacao)
 );
 
 

@@ -3,15 +3,14 @@ package javalee.com.entities;
 public class Metric {
 
     private int idMetrica;
-    private String codigo;
+    private String nome;
 
-    public Metric(int idMetrica, String codigo) {
+    public Metric(int idMetrica, String nome) {
         this.idMetrica = idMetrica;
-        this.codigo = codigo;
+        this.nome = nome;
     }
 
     public Metric(String codigo){
-        this.codigo = codigo;
     }
     
     public String getIdMetrica() {
@@ -22,18 +21,7 @@ public class Metric {
         this.idMetrica = idMetrica;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-
-
-
-
-
-    
+    public String getNome() {
+        return nome;
+    }    
 }

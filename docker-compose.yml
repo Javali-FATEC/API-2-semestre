@@ -6,7 +6,7 @@ services:
     image: postgres
     restart: always
     environment:
-      - POSTGRES_DB=db_javalee
+      - POSTGRES_DB=db_javali
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=javalee
     ports:

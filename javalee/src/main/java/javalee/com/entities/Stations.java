@@ -1,0 +1,62 @@
+package javalee.com.entities;
+
+import java.sql.ResultSet;
+import java.util.LinkedList;
+import java.util.List;
+
+import javalee.com.bd_connection.DbConnection;
+
+public class Stations {
+
+    private List<Station> listStations;
+
+    public Stations() {
+        this.listStations = new LinkedList<Station>();
+    }
+
+    public Station searchStation(String code){
+
+        DbConnection db = new DbConnection();
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao WHERE codigo = '" + code + "'");
+        Station station = null;
+
+
+        try {
+            if (resultStation.next()) {
+                int idReturn = resultStation.getInt("id_estacao");
+                String codeReturn = resultStation.getString("codigo");
+                station = new Station(idReturn,codeReturn); 
+            }
+            
+        } catch (Exception e) {
+            
+        }
+        db.Desconnect();
+        
+        return station;
+    }
+
+    public void loadStation(){
+
+        DbConnection db = new DbConnection();
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao");
+
+
+
+        try {
+
+            while (resultStation.next()) {
+                int idReturn = resultStation.getInt("id_estacao");
+                String codeReturn = resultStation.getString("codigo");
+                this.listStations.add(new Station(idReturn,codeReturn)); 
+                
+            }
+            
+        } catch (Exception e) {
+            
+        }
+        db.Desconnect();
+    }
+
+
+}

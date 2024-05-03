@@ -10,7 +10,6 @@ public class ConfigBdReader {
     private String passwordBd;
     private String nameBd;
 
-
     public ConfigBdReader() {
         try {
             this.urlBd = "jdbc:postgresql://localhost:5432/";
@@ -18,10 +17,8 @@ public class ConfigBdReader {
             this.passwordBd = "javalee";
             this.nameBd = "postgres?currentSchema=db_javalee";
         } catch (Exception e) {
-           System.out.println("erro "+ e.getMessage());
+            System.out.println("erro " + e.getMessage());
         }
-
-
 
     }
 
@@ -29,24 +26,16 @@ public class ConfigBdReader {
         return urlBd;
     }
 
-
-
     public String getUserBd() {
         return userBd;
     }
-
-
 
     public String getPasswordBd() {
         return passwordBd;
     }
 
-
-
     public String getNameBd() {
         return nameBd;
     }
-
-
 
 }

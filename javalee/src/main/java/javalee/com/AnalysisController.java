@@ -52,7 +52,6 @@ public class AnalysisController implements Initializable {
         DbConnection db = new DbConnection();
         Stations stations = new Stations();
         Station station = stations.searchStation(this.dataFile.getStation());
-        
 
         for (DataMeasurement dataLine : this.dataFile.getDataMeasurements()) {
             if (dataLine.getValue() != null) {

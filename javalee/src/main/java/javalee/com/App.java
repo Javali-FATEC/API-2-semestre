@@ -35,7 +35,7 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    static void openWindowAnalysis(String analysisInterface, DataFile dataFile) throws IOException{
+    static void openWindowAnalysis(String analysisInterface, DataFile dataFile) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(analysisInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -47,7 +47,7 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openPreviewData(String opernPreviewDataInterface, DataFile dataFile) throws IOException{
+    static void openPreviewData(String opernPreviewDataInterface, DataFile dataFile) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -59,7 +59,7 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openWindowToolTip(String opernPreviewDataInterface) throws IOException{
+    static void openWindowToolTip(String opernPreviewDataInterface) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -68,7 +68,8 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openSeeInconsistencies(String opernPreviewDataInterface, Map<String, String> lineErrors) throws IOException{
+    static void openSeeInconsistencies(String opernPreviewDataInterface, Map<String, String> lineErrors)
+            throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -101,7 +102,24 @@ public class App extends Application {
         stage.show();
     }
 
+    static void openStatusReportByDate() throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("statusReportByDate");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Relatório Situacional 2");
+        stage.show();
+    }
+
+    static void openReportData() throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("reportData");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Dados do relatório");
+        stage.show();
+    }
+
     public static void main(String[] args) {
         launch();
     }
+
 }

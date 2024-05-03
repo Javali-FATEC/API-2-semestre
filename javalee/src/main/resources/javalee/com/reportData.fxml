@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ReportDataController">
+   <children>
+      <TableView layoutX="8.0" layoutY="7.0" prefHeight="450.0" prefWidth="569.0">
+        <columns>
+          <TableColumn prefWidth="232.79997634887695" text="Dados" />
+          <TableColumn prefWidth="160.0" text="Valor" />
+            <TableColumn prefWidth="133.60009765625" text="Unidade" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

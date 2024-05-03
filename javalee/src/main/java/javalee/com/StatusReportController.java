@@ -7,16 +7,17 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javalee.com.bd_connection.DbConnection;
 import javafx.event.ActionEvent;
 
-public class StatusReport {
+public class StatusReportController {
 
+    @FXML
     private ObservableList<String> cityList = FXCollections.observableArrayList();
 
     @FXML
-    private ChoiceBox<String> cityChoiceBox;
+    private ComboBox<String> cityChoiceBox;
 
     private String citySelected;
 

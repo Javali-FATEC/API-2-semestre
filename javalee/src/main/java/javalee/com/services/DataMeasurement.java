@@ -6,7 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javafx.scene.chart.PieChart.Data;
 import javalee.com.entities.Metric;
 import javalee.com.entities.Metrics;
 

@@ -1,8 +1,5 @@
 package javalee.com.configs;
 
-import java.io.FileInputStream;
-import java.util.Properties;
-
 public class ConfigBdReader {
 
     private String urlBd;
@@ -10,18 +7,16 @@ public class ConfigBdReader {
     private String passwordBd;
     private String nameBd;
 
-
     public ConfigBdReader() {
         try {
             this.urlBd = "jdbc:postgresql://localhost:5432/";
             this.userBd = "postgres";
             this.passwordBd = "javalee";
-            this.nameBd = "postgres?currentSchema=db_javalee";
+            this.nameBd = "db_javali";
+            
         } catch (Exception e) {
            System.out.println("erro "+ e.getMessage());
         }
-
-
 
     }
 

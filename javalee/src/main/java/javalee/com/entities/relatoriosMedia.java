@@ -34,10 +34,10 @@ public class relatoriosMedia {
                     " um.nome as unidade" +
                 " FROM" +
                    " db_javalee.registro r"+
-                " left join db_javalee.estacao e  on r.id_estacao = e.id_estacao"+
-                " left join db_javalee.cidade c  on c.id_cidade = e.id_cidade" +
-                " left join db_javalee.metrica m  on m.id_metrica = m.id_metrica"+
-                " left join db_javalee.unidade_medida um  on m.id_unidade_medida  = um.id_unidade_medida" +
+                " left join estacao e  on r.id_estacao = e.id_estacao"+
+                " left join cidade c  on c.id_cidade = e.id_cidade" +
+                " left join metrica m  on m.id_metrica = m.id_metrica"+
+                " left join unidade_medida um  on m.id_unidade_medida  = um.id_unidade_medida" +
                 " WHERE" +
                     " c.id_cidade=" + this.cidade_id +
                 " GROUP BY" +

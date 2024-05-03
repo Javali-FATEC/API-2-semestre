@@ -12,14 +12,11 @@ public class ConfigBdReader {
 
 
     public ConfigBdReader() {
-        Properties prop = new Properties();
         try {
-            prop.load(new FileInputStream("javalee\\src\\main\\java\\javalee\\com\\configs\\config.properties"));
-            this.urlBd = prop.getProperty("db.url");
-            this.userBd = prop.getProperty("db.user");
-            this.passwordBd = prop.getProperty("db.password");
-            this.nameBd = prop.getProperty("db.name");
-            
+            this.urlBd = "jdbc:postgresql://localhost:5432/";
+            this.userBd = "postgres";
+            this.passwordBd = "javalee";
+            this.nameBd = "postgres?currentSchema=db_javalee";
         } catch (Exception e) {
            System.out.println("erro "+ e.getMessage());
         }

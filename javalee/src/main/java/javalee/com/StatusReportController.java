@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javalee.com.bd_connection.DbConnection;
 import javafx.event.ActionEvent;
+import java.util.HashMap;
 
 public class StatusReportController {
 
@@ -21,22 +22,29 @@ public class StatusReportController {
 
     private int id_city;
 
+    private List<String> estacoes_ids;
+
+    private HashMap<String, String> metricasCadastradasDB = new HashMap<String, String>();
+
     
     @FXML
     private void initialize() throws SQLException {
         String sql = "SELECT * FROM cidade";
-        String typeReturn = "executeWithReturn";
-        ResultSet cityResult = helpDB(sql, typeReturn);
+        ResultSet cityResult = helpDB(sql);
         if (cityResult == null) {
             return;
         }
         while (cityResult.next()) {
             String cityName = cityResult.getString("nome_cidade");
             cityList.add(cityName);
-
         }
         cityChoiceBox.setItems(cityList);
-        System.out.println(cityList);
+        ResultSet metricasCadastradas = helpDB("SELECT * FROM metrica");
+        if (metricasCadastradas != null) {
+            while (metricasCadastradas.next()) {
+                metricasCadastradasDB.put(metricasCadastradas.getString("id_metrica"), metricasCadastradas.getString("nome_metrica"));
+            }
+        }
     }
 
 
@@ -49,25 +57,25 @@ public class StatusReportController {
             return;
         }
         String sql = "SELECT * FROM cidade WHERE nome_cidade = '" + citySelected + "'";
-        String typeReturn = "executeWithReturn";
-        ResultSet cityInformation = helpDB(sql, typeReturn);
+        ResultSet cityInformation = helpDB(sql);
         if(cityInformation.next()){
             id_city = cityInformation.getInt("id_cidade");
         }
-        List<String> estacoes_ids = getEstacoesIds();
+        estacoes_ids = getEstacoesIds();
         if (estacoes_ids == null) {
-            return;
+            estacoes_ids = new ArrayList<>();
         }
-        getResultsFromIdList(estacoes_ids);{
+        ResultSet mediaResult = getMediaResultsFromIdList();
 
+        while (mediaResult.next()) {
+            System.out.println(mediaResult.getString("valor"));
+            
         }
-
     };
 
     private List<String> getEstacoesIds() throws SQLException {
-        String query_estacao = "SELECT * FROM estacao WHERE id_cidade = '" + id_city + "'";
-        String typeReturn = "executeWithReturn";
-        ResultSet resultEstacoes = helpDB(query_estacao, typeReturn);
+        String sql = "SELECT * FROM estacao WHERE id_cidade = '" + id_city + "'";
+        ResultSet resultEstacoes = helpDB(sql);
         List<String> ids_estations = new ArrayList<String>();
     
         if (resultEstacoes == null) {
@@ -81,12 +89,15 @@ public class StatusReportController {
         return ids_estations;
     };
 
-    private ResultSet helpDB(String query, String typeReturn) {
-        DbConnection db = new DbConnection();
-        if (typeReturn == "executeWithReturn") {
-            ResultSet resultSet = db.executeWithReturn(query);
+    private ResultSet getMediaResultsFromIdList() {
+        String ids = estacoes_ids.toString().replace("[", "(").replace("]", ")");
+        String sql = "SELECT id_metrica, AVG(valor) AS media FROM registro WHERE id_estacao IN" + ids + " GROUP BY id_metrica";
+        ResultSet resultResults = helpDB(sql);
+        return resultResults;
+    }
 
-        }
+    private ResultSet helpDB(String query) {
+        DbConnection db = new DbConnection();
         ResultSet resultSet = db.executeWithReturn(query);
         db.Desconnect();
         return resultSet;

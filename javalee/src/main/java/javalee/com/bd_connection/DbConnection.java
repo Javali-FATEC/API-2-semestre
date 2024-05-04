@@ -43,9 +43,6 @@ public class DbConnection {
 
     public void executeNotReturn(String comando) {
 
-        
-        ResultSet resultSet = null;
-
         try {
             PreparedStatement stm = this.conn.prepareStatement(comando);
             stm.execute();

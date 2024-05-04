@@ -8,17 +8,12 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
-import javafx.stage.Stage;
 import javalee.com.bd_connection.DbConnection;
 import javafx.event.ActionEvent;
 import java.util.HashMap;
 
 public class StatusReportController {
-
-    private static Scene scene;
 
     @FXML
     private ObservableList<String> cityList = FXCollections.observableArrayList();
@@ -30,7 +25,7 @@ public class StatusReportController {
 
     private List<String> estacoes_ids = new ArrayList<>();;
 
-    private HashMap<String, HashMap<String, String>> mediasResults = new HashMap<String, HashMap<String, String>>();
+    private HashMap<String, String> mediasResults = new HashMap<String, String>();
 
     private HashMap<String, String> metricasCadastradasDB = new HashMap<String, String>();
     
@@ -55,7 +50,7 @@ public class StatusReportController {
     }
 
     @FXML
-    private void reportGenerate(ActionEvent event) throws SQLException {
+    private void reportGenerate(ActionEvent event) throws SQLException, IOException {
         citySelected = cityChoiceBox.getValue();
         if (citySelected == null) {
             return;
@@ -65,8 +60,7 @@ public class StatusReportController {
             return;
         }
 
-
-        System.out.println("Gerar relatório");
+        App.openStatusReportResult(mediasResults, citySelected);
                 
     };
 
@@ -93,15 +87,10 @@ public class StatusReportController {
         ResultSet resultResults = helpDB(sql);
         if (resultResults == null) {return;}
         while(resultResults.next()){
-            String metrica_id = resultResults.getString("id_metrica");
             String metrica_nome = resultResults.getString("nome");
             String media = resultResults.getString("media");
-        
-            HashMap<String, String> innerMap = new HashMap<>();
-            innerMap.put("metrica_nome", metrica_nome);
-            innerMap.put("media", media);
-        
-            mediasResults.put(metrica_id, innerMap);
+               
+            mediasResults.put(metrica_nome, media);
         }
     }
 
@@ -111,5 +100,6 @@ public class StatusReportController {
         db.Desconnect();
         return resultSet;
     }
+
 
 };

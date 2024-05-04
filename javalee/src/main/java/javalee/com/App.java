@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javalee.com.services.DataFile;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import java.io.IOException;
@@ -98,6 +99,18 @@ public class App extends Application {
         Parent root = loadFXML("statusReport");
         stage.setScene(new Scene(root));
         stage.setTitle("Relatório Situacional");
+        stage.show();
+    }
+
+    static void openStatusReportResult(HashMap<String, String> mediasResults, String cityName) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("resultReport.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        StatusReportResultController controller = fxmlLoader.getController();
+        controller.setData(mediasResults);
+
+        stage.setTitle("Dados Situacionais cidade "+cityName);
         stage.show();
     }
 

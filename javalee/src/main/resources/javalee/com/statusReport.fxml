@@ -13,7 +13,7 @@
    fx:controller="javalee.com.StatusReportController">
    <children>
       <ComboBox layoutX="93.0" layoutY="108.0" prefHeight="40.0" prefWidth="374.0"  fx:id="cityChoiceBox"/>
-      <Button layoutX="93.0" layoutY="156.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="374.0" text="Gerar Relatório" textFill="#282626">
+      <Button layoutX="93.0" layoutY="156.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="374.0" text="Gerar Relatório" textFill="#282626" onAction="#reportGenerate">
          <font>
             <Font size="24.0" />
          </font>

@@ -19,14 +19,14 @@ public class StatusReportController {
     @FXML
     private ComboBox<String> cityChoiceBox;
 
-    private String citySelected;
+    private int id_city;
 
     
     @FXML
     private void initialize() throws SQLException {
-        DbConnection db = new DbConnection();
-        ResultSet cityResult = db.executeWithReturn("SELECT * FROM cidade");
-        db.Desconnect();
+        String sql = "SELECT * FROM cidade";
+        String typeReturn = "executeWithReturn";
+        ResultSet cityResult = helpDB(sql, typeReturn);
         if (cityResult == null) {
             return;
         }
@@ -41,22 +41,34 @@ public class StatusReportController {
 
 
     @FXML
-    private void generateReport(ActionEvent event) {
-        DbConnection db = new DbConnection();
-
+    private void reportGenerate(ActionEvent event) throws SQLException {
+        System.out.println("Gerar relatório");
         String citySelected = cityChoiceBox.getValue();
-        List<String> estacoes = getEstacoes();
-        if (estacoes == null) {
+        System.out.println(citySelected);
+        if (citySelected == null) {
             return;
         }
+        String sql = "SELECT * FROM cidade WHERE nome_cidade = '" + citySelected + "'";
+        String typeReturn = "executeWithReturn";
+        ResultSet cityInformation = helpDB(sql, typeReturn);
+        if(cityInformation.next()){
+            id_city = cityInformation.getInt("id_cidade");
+        }
+        List<String> estacoes_ids = getEstacoesIds();
+        if (estacoes_ids == null) {
+            return;
+        }
+        getResultsFromIdList(estacoes_ids);{
+
+        }
+
     };
 
-    private List getEstacoes() throws SQLException {
-        DbConnection db = new DbConnection();
-        String query_estacao = "SELECT * FROM estacao WHERE nome_cidade = '" + citySelected + "'";
+    private List<String> getEstacoesIds() throws SQLException {
+        String query_estacao = "SELECT * FROM estacao WHERE id_cidade = '" + id_city + "'";
+        String typeReturn = "executeWithReturn";
+        ResultSet resultEstacoes = helpDB(query_estacao, typeReturn);
         List<String> ids_estations = new ArrayList<String>();
-        ResultSet resultEstacoes = db.executeWithReturn(query_estacao);
-        db.Desconnect();
     
         if (resultEstacoes == null) {
             return ids_estations;
@@ -68,4 +80,15 @@ public class StatusReportController {
         }
         return ids_estations;
     };
+
+    private ResultSet helpDB(String query, String typeReturn) {
+        DbConnection db = new DbConnection();
+        if (typeReturn == "executeWithReturn") {
+            ResultSet resultSet = db.executeWithReturn(query);
+
+        }
+        ResultSet resultSet = db.executeWithReturn(query);
+        db.Desconnect();
+        return resultSet;
+    }
 }

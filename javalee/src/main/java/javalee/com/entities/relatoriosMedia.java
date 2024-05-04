@@ -9,6 +9,25 @@ public class relatoriosMedia {
     
         public LinkedList<RelatorioMedia> listRelatorios;
         public int cidade_id;
+
+
+        public LinkedList<String> ListCidades(){
+            LinkedList<String> lista_cidades =  new LinkedList<String>();
+
+            DbConnection db = new DbConnection();
+
+            ResultSet resultCidade = db.executeWithReturn("SELECT cidade.nome_cidade FROM cidade ");    
+
+            try {
+                while (resultCidade.next()) {
+                    String cidade = resultCidade.getString("nome_cidade");
+                    lista_cidades.add(cidade);
+                }
+            } catch (Exception e) {
+            }
+
+            return lista_cidades;
+        }
     
 
         public LinkedList<RelatorioMedia> searchCidadeRelatorioMetric(String nome_cidade, String data_inicio, String data_final){
@@ -33,7 +52,7 @@ public class relatoriosMedia {
                     " m.nome as dado," + 
                     " um.nome as unidade" +
                 " FROM" +
-                   " db_javalee.registro r"+
+                   " registro r"+
                 " left join estacao e  on r.id_estacao = e.id_estacao"+
                 " left join cidade c  on c.id_cidade = e.id_cidade" +
                 " left join metrica m  on m.id_metrica = m.id_metrica"+
@@ -71,7 +90,12 @@ public class relatoriosMedia {
         relatoriosMedia relatorios = new relatoriosMedia();
 
         LinkedList<RelatorioMedia> resultados = relatorios.searchCidadeRelatorioMetric("Nova Iorque", "dataInicio", "dataFinal");
+        LinkedList<String> list_cidades = relatorios.ListCidades();
 
+        for (String cidade : list_cidades) {
+            System.out.println(cidade);
+        }
+                
         for (RelatorioMedia relatorio : resultados) {
             System.out.println("Hora: " + relatorio.getHoraMedia() + ", Valor: " + relatorio.getValor() + ", Dado: " + relatorio.getDado() + ", Unidade: " + relatorio.getUnidade());
         }

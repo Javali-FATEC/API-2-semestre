@@ -2,13 +2,14 @@ package javalee.com.entities;
 
 import java.sql.ResultSet;
 import java.util.LinkedList;
-
+import javafx.util.Callback;
 import javalee.com.bd_connection.DbConnection;
 
-public class relatoriosMedia {
+public class RelatoriosMedia {
 
     public LinkedList<RelatorioMedia> listRelatorios;
     public int cidade_id;
+    public LinkedList<String> lista_cidades;
 
     public LinkedList<RelatorioMedia> searchCidadeRelatorioMetric(String nome_cidade, String data_inicio,
             String data_final) {
@@ -34,10 +35,10 @@ public class relatoriosMedia {
                 " um.nome as unidade" +
                 " FROM" +
                 " registro r" +
-                " left join db_javalee.estacao e  on r.id_estacao = e.id_estacao" +
-                " left join db_javalee.cidade c  on c.id_cidade = e.id_cidade" +
-                " left join db_javalee.metrica m  on m.id_metrica = m.id_metrica" +
-                " left join db_javalee.unidade_medida um  on m.id_unidade_medida  = um.id_unidade_medida" +
+                " left join estacao e  on r.id_estacao = e.id_estacao" +
+                " left join cidade c  on c.id_cidade = e.id_cidade" +
+                " left join metrica m  on m.id_metrica = m.id_metrica" +
+                " left join unidade_medida um  on m.id_unidade_medida  = um.id_unidade_medida" +
                 " WHERE" +
                 " c.id_cidade=" + this.cidade_id +
                 " GROUP BY" +
@@ -66,15 +67,22 @@ public class relatoriosMedia {
         return listRelatorios;
     }
 
-    public static void main(String[] args) {
-        relatoriosMedia relatorios = new relatoriosMedia();
+    public LinkedList<String> ListCidades() {
+        LinkedList<String> lista_cidades = new LinkedList<String>();
 
-        LinkedList<RelatorioMedia> resultados = relatorios.searchCidadeRelatorioMetric("Nova Iorque", "dataInicio",
-                "dataFinal");
+        DbConnection db = new DbConnection();
 
-        for (RelatorioMedia relatorio : resultados) {
-            System.out.println("Hora: " + relatorio.getHoraMedia() + ", Valor: " + relatorio.getValor() + ", Dado: "
-                    + relatorio.getDado() + ", Unidade: " + relatorio.getUnidade());
+        ResultSet resultCidade = db.executeWithReturn("SELECT cidade.nome_cidade FROM cidade ");
+
+        try {
+            while (resultCidade.next()) {
+                String cidade = resultCidade.getString("nome_cidade");
+                lista_cidades.add(cidade);
+            }
+        } catch (Exception e) {
         }
+
+        return lista_cidades;
     }
+
 }

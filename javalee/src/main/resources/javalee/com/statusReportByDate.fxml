@@ -11,13 +11,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.StatusReport2Controller">
    <children>
-      <DatePicker layoutX="22.0" layoutY="115.0" promptText="Dara Inicial" />
-      <DatePicker layoutX="224.0" layoutY="115.0" promptText="Dara Final" />
+      <DatePicker fx:id="datePickerInicial" layoutX="22.0" layoutY="115.0" promptText="Data Inicial" />
+      <DatePicker fx:id="datePickerFinal" layoutX="224.0" layoutY="115.0" promptText="Data Final" />
       <Text layoutX="22.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Inicial" />
       <Text layoutX="224.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Final" />
       <Text layoutX="20.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade" />
-      <ComboBox fx:id="cBoxCidade" layoutX="20.0" layoutY="196.0" prefHeight="26.0" prefWidth="382.0" />
-      <Button fx:id="btnGerarRelatorio" layoutX="149.0" layoutY="245.0" mnemonicParsing="false" onAction="#openReportData" prefHeight="34.0" prefWidth="138.0" text="Gerar relatório">
+      <ComboBox fx:id="cBoxCidade" layoutX="20.0" layoutY="196.0" onAction="#initialize" prefHeight="26.0" prefWidth="382.0" />
+      <Button fx:id="btnGerarRelatorio" layoutX="149.0" layoutY="245.0" mnemonicParsing="false" onAction="#onBtnGerarRelorio" prefHeight="34.0" prefWidth="138.0" text="Gerar relatório">
          <font>
             <Font size="14.0" />
          </font></Button>

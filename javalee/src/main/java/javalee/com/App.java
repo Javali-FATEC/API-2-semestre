@@ -6,8 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javalee.com.entities.RelatorioMedia;
 import javalee.com.services.DataFile;
 
+import java.util.List;
 import java.util.Map;
 
 import java.io.IOException;
@@ -110,11 +112,15 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openReportData() throws IOException {
+    static void openReportData(List<RelatorioMedia> relatorio, String nomeCidade) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("reportData.fxml"));
         Stage stage = new Stage();
-        Parent root = loadFXML("reportData");
-        stage.setScene(new Scene(root));
-        stage.setTitle("Dados do relatório");
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        ReportDataController controller = fxmlLoader.getController();
+        controller.setRelatorio(relatorio);
+        stage.setTitle("Relatorio da cidade: " + nomeCidade);
         stage.show();
     }
 

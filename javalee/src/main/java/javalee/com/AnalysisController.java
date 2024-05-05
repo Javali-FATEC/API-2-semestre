@@ -74,8 +74,13 @@ public class AnalysisController implements Initializable {
         DbConnection db = new DbConnection();
         
         if(!cityIsExist){
+            String nameCity = dataFile.getCity();
+            if( cityNameTextField.getText() != null )
+            {
+                nameCity = cityNameTextField.getText();
+            }
             Cities cities = new Cities();
-            cities.createCity(dataFile.getCity(), cityNameTextField.getText());
+            cities.createCity(dataFile.getCity(), nameCity);
             cityUsed = cities.searchCity(dataFile.getCity());
         }
         Stations stations = new Stations();

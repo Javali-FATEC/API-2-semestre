@@ -16,7 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javalee.com.entities.RelatorioMedia;
 import javalee.com.entities.RelatoriosMedia;
-import javalee.com.entities.relatoriosMedia;
+import javalee.com.services.utilInterno;
 
 public class StatusReport2Controller {
 
@@ -52,19 +52,35 @@ public class StatusReport2Controller {
 
     @FXML
     private void onBtnGerarRelorio() {
-        try {
-            RelatoriosMedia relatorio = new RelatoriosMedia();
-            LocalDate dataInicial = datePickerInicial.getValue();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            String dataFormatadaInicial = dataInicial.format(formatter);
-            LocalDate dataFinal = datePickerFinal.getValue();
-            String dataFormatadaFinal = dataFinal.format(formatter);
-            List<RelatorioMedia> relatorioRetornado = relatorio.searchCidadeRelatorioMetric(cBoxCidade.getValue(),
-                    dataFormatadaInicial, dataFormatadaFinal);
-            App.openReportData(relatorioRetornado, cBoxCidade.getValue());
+        if (cBoxCidade.getValue() == null || datePickerInicial.getValue() == null
+                || datePickerFinal.getValue() == null) {
+            utilInterno.alertError("Não foi possível gerar o relatório devido a campos inválidos", "Erro");
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            if (utilInterno.isValidDate(datePickerInicial.getValue())
+                    || utilInterno.isValidDate(datePickerFinal.getValue())
+                    || utilInterno.isValidDateFormat(datePickerInicial.getValue())
+                    || utilInterno.isValidDateFormat(datePickerFinal.getValue())) {
+
+                try {
+
+                    RelatoriosMedia relatorio = new RelatoriosMedia();
+                    LocalDate dataInicial = datePickerInicial.getValue();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    String dataFormatadaInicial = dataInicial.format(formatter);
+                    LocalDate dataFinal = datePickerFinal.getValue();
+                    String dataFormatadaFinal = dataFinal.format(formatter);
+                    List<RelatorioMedia> relatorioRetornado = relatorio.searchCidadeRelatorioMetric(
+                            cBoxCidade.getValue(),
+                            dataFormatadaInicial, dataFormatadaFinal);
+                    App.openReportData(relatorioRetornado, cBoxCidade.getValue());
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                utilInterno.alertError("Data inválida", "Erro");
+            }
         }
     }
 

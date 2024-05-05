@@ -13,7 +13,7 @@ public class DataFile {
     public DataFile( String siglaCidade, String idEstacao, List<DataMeasurement> dataMeasurements, 
     Map<String, String> lineErros){
         this.siglaCidade = siglaCidade;
-        this.idEstacao = idEstacao;
+        this.idEstacao = idEstacao.replaceAll("[^0-9]", "");
         this.dataMeasurements = dataMeasurements;
         this.lineErros = lineErros;
     }

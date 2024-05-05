@@ -14,18 +14,20 @@ public class Stations {
         this.listStations = new LinkedList<Station>();
     }
 
-    public Station searchStation(String code){
+    public Station searchStation(String code, int idCity){
 
         DbConnection db = new DbConnection();
         ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao WHERE codigo = '" + code + "'");
         Station station = null;
-
 
         try {
             if (resultStation.next()) {
                 int idReturn = resultStation.getInt("id_estacao");
                 String codeReturn = resultStation.getString("codigo");
                 station = new Station(idReturn,codeReturn); 
+            }else{
+                db.executeNotReturn("INSERT INTO db_javalee.estacao (id_cidade, codigo) VALUES ("+idCity+", '"+code+"');");
+                return searchStation(code, idCity);
             }
             
         } catch (Exception e) {
@@ -41,10 +43,7 @@ public class Stations {
         DbConnection db = new DbConnection();
         ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao");
 
-
-
         try {
-
             while (resultStation.next()) {
                 int idReturn = resultStation.getInt("id_estacao");
                 String codeReturn = resultStation.getString("codigo");
@@ -52,11 +51,7 @@ public class Stations {
                 
             }
             
-        } catch (Exception e) {
-            
-        }
+        } catch (Exception e) {}
         db.Desconnect();
     }
-
-
 }

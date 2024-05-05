@@ -7,10 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javalee.com.configs.*;
 
-
 public class DbConnection {
 
     private Connection conn;
+
+    private static final String URL = "jdbc:postgresql://localhost:5432/db_javali?currentSchema=db_javalee";
+    private static final String USUARIO = "postgres";
+    private static final String SENHA = "1234";
 
     public DbConnection() {
         ConfigBdReader config = new ConfigBdReader();
@@ -18,7 +21,9 @@ public class DbConnection {
 
         try {
             Class.forName("org.postgresql.Driver");
-            this.conn = DriverManager.getConnection(config.getUrlBd() + config.getNameBd(), config.getUserBd(), config.getPasswordBd());
+
+            this.conn = DriverManager.getConnection(config.getUrlBd() + config.getNameBd(), config.getUserBd(),
+                    config.getPasswordBd());
 
         } catch (Exception e) {
             System.out.println(e);
@@ -38,6 +43,8 @@ public class DbConnection {
 
     public void executeNotReturn(String comando) {
 
+        ResultSet resultSet = null;
+
         try {
             PreparedStatement stm = this.conn.prepareStatement(comando);
             stm.execute();
@@ -50,14 +57,13 @@ public class DbConnection {
 
     public ResultSet executeWithReturn(String comando) {
 
-        
         ResultSet resultSet = null;
 
         try {
             PreparedStatement stm = this.conn.prepareStatement(comando);
-            
+
+
             resultSet = stm.executeQuery();
-            
         } catch (SQLException e) {
             e.printStackTrace();
         }

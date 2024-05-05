@@ -48,7 +48,7 @@ public class ImportCSVController {
     @FXML
     private void handleSelectFile(ActionEvent event){
         try{
-            DataFile dataFile = OpenCSV.OpenFileCSV(separateChoiceBox.getValue(),typeCsvChoiceBox.getValue());
+            DataFile dataFile = OpenCSV.OpenFileCSV(typeCsvChoiceBox.getValue(),separateChoiceBox.getValue());
             openNewWindow(event, dataFile);
         }
         catch(FileException e){

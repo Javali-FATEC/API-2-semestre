@@ -18,19 +18,7 @@
                </children></AnchorPane>
         </content>
       </TitledPane>
-      <TitledPane alignment="CENTER" animated="false" collapsible="true" expanded="false" layoutX="233.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" text="Gerenciar">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <Button layoutX="4.0" layoutY="13.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" text="Cidades" />
-                  <Button layoutX="4.0" layoutY="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" text="Estações" />
-                  <Button layoutX="4.0" layoutY="93.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" text="Unidades" />
-                  <Button layoutX="4.0" layoutY="133.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" text="Valores de Risco" />
-               </children>
-            </AnchorPane>
-         </content>
-      </TitledPane>
-      <TitledPane alignment="CENTER" animated="false" collapsible="true" expanded="false" layoutX="452.0" layoutY="14.0" prefHeight="135.0" prefWidth="200.0" text="Relatório">
+      <TitledPane alignment="CENTER" animated="false" collapsible="true" expanded="false" layoutX="233.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" text="Relatório">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -38,11 +26,6 @@
                   <Button layoutX="7.0" layoutY="60.0" mnemonicParsing="false" onAction="#openStatusReport2" prefHeight="40.0" prefWidth="190.0" text="Relatório de Valor Médio" />
                </children>
             </AnchorPane>
-         </content>
-      </TitledPane>
-      <TitledPane alignment="CENTER" animated="false" collapsible="true" expanded="false" layoutX="973.0" layoutY="14.0" prefHeight="120.0" prefWidth="200.0" text="Sobre">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
          </content>
       </TitledPane>
    </children>

@@ -2,17 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0" prefWidth="562.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="562.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.StatusReportController">
    <children>
-      <ComboBox layoutX="93.0" layoutY="108.0" prefHeight="40.0" prefWidth="374.0" />
-      <Button layoutX="93.0" layoutY="156.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="374.0" text="Gerar Relatório" textFill="#282626">
+      <ComboBox fx:id="cityChoiceBox" layoutX="93.0" layoutY="108.0" prefHeight="40.0" prefWidth="374.0" />
+      <Button layoutX="93.0" layoutY="156.0" mnemonicParsing="false" onAction="#reportGenerate" prefHeight="40.0" prefWidth="374.0" text="Gerar Relatório" textFill="#282626">
          <font>
             <Font size="24.0" />
          </font>
@@ -23,11 +21,15 @@
          </font>
       </Text>
       <Separator layoutY="60.0" prefHeight="0.0" prefWidth="562.0" />
-      <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatórios de valores médios por cidade" wrappingWidth="374.0">
+      <Text layoutX="94.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatórios de valores médios por cidade" wrappingWidth="374.0">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <RadioButton layoutX="524.0" layoutY="16.0" mnemonicParsing="false" textFill="#d71212" />
+      <Text fill="#eb1919" fx:id="alerts" layoutX="93.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alertas" wrappingWidth="374.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

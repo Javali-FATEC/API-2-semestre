@@ -17,7 +17,7 @@ public class Stations {
     public Station searchStation(String code, int idCity){
 
         DbConnection db = new DbConnection();
-        ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao WHERE codigo = '" + code + "'");
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM db_javalee.estacao WHERE codigo = '" + code + "'");
         Station station = null;
 
         try {
@@ -41,7 +41,7 @@ public class Stations {
     public void loadStation(){
 
         DbConnection db = new DbConnection();
-        ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao");
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM db_javalee.estacao");
 
         try {
             while (resultStation.next()) {

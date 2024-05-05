@@ -10,7 +10,7 @@ public class Cities {
 
     public City searchCity(String sigla){
         DbConnection db = new DbConnection();
-        ResultSet resultStation = db.executeWithReturn("SELECT * FROM cidade WHERE sigla_cidade = '" + sigla + "'");
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM db_javalee.cidade WHERE sigla_cidade = '" + sigla + "'");
         City city = null;
 
         try {

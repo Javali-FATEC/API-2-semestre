@@ -10,6 +10,7 @@ import javalee.com.entities.RelatorioMedia;
 import javalee.com.services.DataFile;
 
 import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import java.io.IOException;
@@ -121,6 +122,16 @@ public class App extends Application {
         ReportDataController controller = fxmlLoader.getController();
         controller.setRelatorio(relatorio);
         stage.setTitle("Relatorio da cidade: " + nomeCidade);
+        stage.show();
+    }
+
+    static void openStatusReportResult(HashMap<String, String> mediasResults, String cityName) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("resultReport.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        StatusReportResultController controller = fxmlLoader.getController();
+        controller.setData(mediasResults);
+        stage.setTitle("Dados Situacionais cidade "+cityName);
         stage.show();
     }
 

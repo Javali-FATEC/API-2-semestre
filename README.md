@@ -41,6 +41,18 @@ Com base no exposto, gostaríamos de um Sistema de Banco de Dados capaz de receb
 | 4ª sprint | 27/05 | 16/06 |
 | Feira de Soluções | 27/06 | 27/06 |
 
+**Sprint 1:**
+- Interpretar um documento CSV que contem dados metereólogicos
+**Sprint 2:**
+- Gerar relatórios de valor médio das variáveis climáticas por cidade
+- Gerar relatório de situação
+**Sprint 3:**
+- Gerar relatório para se plotar um gráfico boxplot
+- Gerenciar valores limites a serem utilizados como parametro para definir valores de risco nas medições
+**Sprint 4:**
+- Alterar valores de risco nas medições
+- Gerir as unidades de medida usadas no sistema.
+- Gerir as cidades e as estações, tal como a relações entre estação e cidade
 
 ### 🤖 Priorização das Sprints
 [Board Kanbam com a priorização](https://github.com/orgs/Javali-FATEC/projects/1)

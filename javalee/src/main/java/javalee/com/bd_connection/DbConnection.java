@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javalee.com.configs.*;
 
-
 public class DbConnection {
 
     private Connection conn;
@@ -18,7 +17,8 @@ public class DbConnection {
 
         try {
             Class.forName("org.postgresql.Driver");
-            this.conn = DriverManager.getConnection(config.getUrlBd() + config.getNameBd(), config.getUserBd(), config.getPasswordBd());
+            this.conn = DriverManager.getConnection(config.getUrlBd() + config.getNameBd(), config.getUserBd(),
+                    config.getPasswordBd());
 
         } catch (Exception e) {
             System.out.println(e);
@@ -38,6 +38,8 @@ public class DbConnection {
 
     public void executeNotReturn(String comando) {
 
+        ResultSet resultSet = null;
+
         try {
             PreparedStatement stm = this.conn.prepareStatement(comando);
             stm.execute();
@@ -50,14 +52,13 @@ public class DbConnection {
 
     public ResultSet executeWithReturn(String comando) {
 
-        
         ResultSet resultSet = null;
 
         try {
             PreparedStatement stm = this.conn.prepareStatement(comando);
-            
+
             resultSet = stm.executeQuery();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -15,7 +15,7 @@ public class ConfigBdReader {
             this.nameBd = "db_javalee";
             
         } catch (Exception e) {
-           System.out.println("erro "+ e.getMessage());
+            System.out.println("erro " + e.getMessage());
         }
 
     }
@@ -24,24 +24,16 @@ public class ConfigBdReader {
         return urlBd;
     }
 
-
-
     public String getUserBd() {
         return userBd;
     }
-
-
 
     public String getPasswordBd() {
         return passwordBd;
     }
 
-
-
     public String getNameBd() {
         return nameBd;
     }
-
-
 
 }

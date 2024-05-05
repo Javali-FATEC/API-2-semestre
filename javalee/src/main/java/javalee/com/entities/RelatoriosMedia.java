@@ -4,6 +4,9 @@ import java.sql.ResultSet;
 import java.util.LinkedList;
 import javafx.util.Callback;
 import javalee.com.bd_connection.DbConnection;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 
 public class RelatoriosMedia {
 
@@ -27,26 +30,37 @@ public class RelatoriosMedia {
 
         } catch (Exception e) {
         }
+        DateTimeFormatter formatoAtual = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter novoFormato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate data = LocalDate.parse(data_inicio, formatoAtual);
+        String data_inicio_formatada = data.format(novoFormato);
+        LocalDate datab = LocalDate.parse(data_final, formatoAtual);
+        String data_final_formatada = datab.format(novoFormato);
 
-        var sql = "SELECT" +
-                " DATE_TRUNC('hour', r.data_hora) AS hora_arredondada," +
-                " AVG(r.valor) AS valor," +
-                " m.nome as dado," +
-                " um.nome as unidade" +
-                " FROM" +
-                " registro r" +
-                " left join estacao e  on r.id_estacao = e.id_estacao" +
-                " left join cidade c  on c.id_cidade = e.id_cidade" +
-                " left join metrica m  on m.id_metrica = m.id_metrica" +
-                " left join unidade_medida um  on m.id_unidade_medida  = um.id_unidade_medida" +
-                " WHERE" +
-                " c.id_cidade=" + this.cidade_id +
-                " GROUP BY" +
-                " hora_arredondada," +
-                " m.nome," +
-                " um.nome" +
-                " ORDER BY " +
-                " hora_arredondada;";
+
+        var sql = "SELECT" +  
+        " DATE_TRUNC('hour', r.data_hora) AS hora_arredondada,"+
+        " AVG(r.valor) AS valor,"+
+        " m.nome as dado," + 
+        " um.nome as unidade" +
+        " FROM" +
+        " registro r"+
+        " left join estacao e  on r.id_estacao = e.id_estacao"+
+        " left join cidade c  on c.id_cidade = e.id_cidade" +
+        " left join metrica m  on m.id_metrica = m.id_metrica"+
+        " left join unidade_medida um  on m.id_unidade_medida  = um.id_unidade_medida" +
+        " WHERE" +
+            " c.id_cidade=" + this.cidade_id +
+            " AND r.data_hora BETWEEN '" + data_inicio_formatada + "' AND '" + data_final_formatada+"'" +
+        " GROUP BY" +
+            " hora_arredondada,"+
+            " m.nome,"+
+            " um.nome"+
+        " ORDER BY "+
+            " hora_arredondada;";
+
+        System.out.println(sql);
+
 
         ResultSet resultRelatorio = db.executeWithReturn(sql);
 

@@ -6,8 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javalee.com.entities.RelatorioMedia;
 import javalee.com.services.DataFile;
 
+import java.util.List;
 import java.util.Map;
 
 import java.io.IOException;
@@ -35,7 +37,7 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    static void openWindowAnalysis(String analysisInterface, DataFile dataFile) throws IOException{
+    static void openWindowAnalysis(String analysisInterface, DataFile dataFile) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(analysisInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -47,7 +49,7 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openPreviewData(String opernPreviewDataInterface, DataFile dataFile) throws IOException{
+    static void openPreviewData(String opernPreviewDataInterface, DataFile dataFile) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -59,7 +61,7 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openWindowToolTip(String opernPreviewDataInterface) throws IOException{
+    static void openWindowToolTip(String opernPreviewDataInterface) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -68,7 +70,8 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openSeeInconsistencies(String opernPreviewDataInterface, Map<String, String> lineErrors) throws IOException{
+    static void openSeeInconsistencies(String opernPreviewDataInterface, Map<String, String> lineErrors)
+            throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -101,7 +104,28 @@ public class App extends Application {
         stage.show();
     }
 
+    static void openStatusReportByDate() throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("statusReportByDate");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Relatório Situacional 2");
+        stage.show();
+    }
+
+    static void openReportData(List<RelatorioMedia> relatorio, String nomeCidade) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("reportData.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        ReportDataController controller = fxmlLoader.getController();
+        controller.setRelatorio(relatorio);
+        stage.setTitle("Relatorio da cidade: " + nomeCidade);
+        stage.show();
+    }
+
     public static void main(String[] args) {
         launch();
     }
+
 }

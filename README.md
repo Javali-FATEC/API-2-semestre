@@ -43,12 +43,15 @@ Com base no exposto, gostaríamos de um Sistema de Banco de Dados capaz de receb
 
 **Sprint 1:**
 - Interpretar um documento CSV que contem dados metereólogicos
+
 **Sprint 2:**
 - Gerar relatórios de valor médio das variáveis climáticas por cidade
 - Gerar relatório de situação
+
 **Sprint 3:**
 - Gerar relatório para se plotar um gráfico boxplot
 - Gerenciar valores limites a serem utilizados como parametro para definir valores de risco nas medições
+
 **Sprint 4:**
 - Alterar valores de risco nas medições
 - Gerir as unidades de medida usadas no sistema.

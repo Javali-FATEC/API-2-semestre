@@ -69,6 +69,7 @@ public class AnalysisController implements Initializable {
 
     @FXML
     private void saveData(ActionEvent event) {
+        
         salvarDados.setDisable(true);
         DbConnection db = new DbConnection();
         

@@ -27,7 +27,7 @@ public class Metrics {
         DbConnection db = new DbConnection();
         //List<Metric> listMetricsLoad = List.LinkedList();
         
-        ResultSet resultMetric = db.executeWithReturn("SELECT * FROM metrica");
+        ResultSet resultMetric = db.executeWithReturn("SELECT * FROM db_javalee.metrica");
         Metric metric = null;
 
         try {

@@ -106,10 +106,8 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("resultReport.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
-
         StatusReportResultController controller = fxmlLoader.getController();
         controller.setData(mediasResults);
-
         stage.setTitle("Dados Situacionais cidade "+cityName);
         stage.show();
     }

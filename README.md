@@ -83,7 +83,7 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 ![Alt text](readme_assets/ferramentas.png)
 
 ### Modelo Entidade relação
-![Wireframe](readme_assets/mp.png)
+![Wireframe](readme_assets/mer.png)
 
 ### Modelo Lógico do Banco de Dados
 

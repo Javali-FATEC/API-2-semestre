@@ -114,7 +114,6 @@ public class DataMeasurement {
         }
         
         String sql = "INSERT INTO db_javalee.registro (id_metrica, id_estacao, valor, data_hora) VALUES ('" + metric.getIdMetrica() + "','" + idEstacao + "','" + this.getValueFormatComma() + "', '" + this.getDateFormatSql() + " " + getHourFormatSql() + "');";
-        System.out.println("to aqui capeta" + sql);
         return sql;
     }
 }

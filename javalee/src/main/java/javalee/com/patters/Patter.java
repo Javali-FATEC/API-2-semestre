@@ -12,7 +12,7 @@ public class Patter {
     }
 
     public boolean isTemp(){
-        return this.name == "Temperatura";
+        return this.name == "Temperatura" || this.name == "Temperatura Mínima" || this.name == "Temperatura Máxima";
     }
 
     public String getName(){

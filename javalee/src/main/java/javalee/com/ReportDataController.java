@@ -69,7 +69,6 @@ public class ReportDataController implements Initializable {
 
             ObservableList<String[]> dataTable = FXCollections.observableArrayList();
             for (RelatorioMedia linhaRelatorio : relatorio) {
-                System.out.println("aknkajd " + linhaRelatorio.getUnidade());
                 String[] rowData = new String[] {
                         linhaRelatorio.getHoraMedia(), String.valueOf(linhaRelatorio.getValor()),
                         linhaRelatorio.getDado(), linhaRelatorio.getUnidade()

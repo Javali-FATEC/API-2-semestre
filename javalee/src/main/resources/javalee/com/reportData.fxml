@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ReportDataController">
+   <children>
+      <TableView fx:id="tableDataRelatorio" layoutX="14.0" layoutY="6.0" prefHeight="454.0" prefWidth="560.0">
+        <columns>
+          <TableColumn prefWidth="122.40002727508545" text="Data" />
+          <TableColumn prefWidth="159.99998474121094" text="Hora" />
+          <TableColumn prefWidth="133.5999755859375" text="Valor" />
+          <TableColumn prefWidth="144.800048828125" text="Data" />
+
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

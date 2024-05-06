@@ -6,7 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javalee.com.entities.RelatorioMedia;
+import javalee.com.services.DataFile;
 
+import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import java.io.IOException;
@@ -18,25 +22,23 @@ public class App extends Application {
 
     private static Scene scene;
 
-    //importCSV.fxml
     @Override
     public void start(Stage stage) throws IOException {
         Image image = new Image(getClass().getResourceAsStream("javalee.jpg"));
-
         stage.getIcons().add(image);
-
-        scene = new Scene(loadFXML("importCSV"));
+        scene = new Scene(loadFXML("masterScreen"));
         stage.setScene(scene);
-        // stage.getIcons().add(new Image("/javalee.jpg"));
-        stage.setTitle("Importar CSV");
+        stage.setTitle("Tela inicial");
         stage.show();
+
+        stage.setOnCloseRequest(event -> System.exit(0));
     }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
-    static void openWindowAnalysis(String analysisInterface, DataFile dataFile) throws IOException{
+    static void openWindowAnalysis(String analysisInterface, DataFile dataFile) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(analysisInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -44,11 +46,11 @@ public class App extends Application {
         AnalysisController controller = fxmlLoader.getController();
         controller.setDataFile(dataFile);
 
-        stage.setTitle("Dados Importados - " + dataFile.getSiglaCidade() + "/" + dataFile.getIdEstacao());
+        stage.setTitle("Dados Importados - " + dataFile.getCity() + "/" + dataFile.getStation());
         stage.show();
     }
 
-    static void openPreviewData(String opernPreviewDataInterface, DataFile dataFile) throws IOException{
+    static void openPreviewData(String opernPreviewDataInterface, DataFile dataFile) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -56,11 +58,11 @@ public class App extends Application {
         PreviewDataController controller = fxmlLoader.getController();
         controller.setDataFile(dataFile);
 
-        stage.setTitle("Dados Importados - " + dataFile.getSiglaCidade() + "/" + dataFile.getIdEstacao());
+        stage.setTitle("Dados Importados - " + dataFile.getCity() + "/" + dataFile.getStation());
         stage.show();
     }
 
-    static void openWindowToolTip(String opernPreviewDataInterface) throws IOException{
+    static void openWindowToolTip(String opernPreviewDataInterface) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -69,7 +71,8 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openSeeInconsistencies(String opernPreviewDataInterface, Map<String, String> lineErrors) throws IOException{
+    static void openSeeInconsistencies(String opernPreviewDataInterface, Map<String, String> lineErrors)
+            throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -86,7 +89,54 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    static void openImportCSV(String analysisInterface) throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("importCSV");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Importar CSV");
+        stage.show();
+    }
+
+    static void openStatusReport() throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("statusReport");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Relatório Situacional");
+        stage.show();
+    }
+
+    static void openStatusReportByDate() throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("statusReportByDate");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Relatório Situacional 2");
+        stage.show();
+    }
+
+    static void openReportData(List<RelatorioMedia> relatorio, String nomeCidade) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("reportData.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        ReportDataController controller = fxmlLoader.getController();
+        controller.setRelatorio(relatorio);
+        stage.setTitle("Relatorio da cidade: " + nomeCidade);
+        stage.show();
+    }
+
+    static void openStatusReportResult(HashMap<String, String> mediasResults, String cityName) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("resultReport.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        StatusReportResultController controller = fxmlLoader.getController();
+        controller.setData(mediasResults);
+        stage.setTitle("Dados Situacionais cidade "+cityName);
+        stage.show();
+    }
+
     public static void main(String[] args) {
         launch();
     }
+
 }

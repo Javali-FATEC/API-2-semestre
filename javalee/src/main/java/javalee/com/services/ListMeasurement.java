@@ -16,12 +16,18 @@ public class ListMeasurement {
     private LinkedList<DataMeasurement> listDataFile;
     private String pattern;
     private String interator;
+    private boolean isPatternAut;
     private Map<String, String> lineErros;
 
-    public ListMeasurement(FileReader selecteFile, String pattern){
+    public ListMeasurement(FileReader selecteFile, String pattern, boolean isPatternAut){
         this.pattern = pattern;
+        this.isPatternAut = isPatternAut;
         listDataFile = new LinkedList<DataMeasurement>();
         extractList(new BufferedReader(selecteFile));
+    }
+
+    public void setIsPatternAut(boolean isPatternAut){
+        this.isPatternAut = isPatternAut;
     }
 
     public void setInterator( String interator){
@@ -67,7 +73,7 @@ public class ListMeasurement {
                         }}catch( ArrayIndexOutOfBoundsException e){
                             throw new ExceptionEmptyLine(lineNumber);
                         }
-                        if( this.isPatternA(parts.length) ){
+                        if( !this.isPatternAut ){
                             constructListPatterA(parts);
                         }
                         else{
@@ -86,16 +92,18 @@ public class ListMeasurement {
 
     private boolean isPatternA(int numeberOfColuns){
         if(this.pattern == "Automático") {
-            return numeberOfColuns != 10;
+            return isPatternAut;
         }
         return this.pattern == "Padrão A";
     }
 
     public void constructListPatterA(String[] parts){
+        //System.out.println("AAAAAAAAAAA");
         for(PatterA enumPatter : PatterA.values()){
             Patter patter = enumPatter.getPatter();
             DataMeasurement dataMeasurement = new DataMeasurement(patter.getName(), patter.getUnidade(),parts[0],parts[1], checkedNull(parts,patter.getColuna()));
             if(patter.isTemp()){
+                System.out.println("TEMP");
                 dataMeasurement.convertTemp();
             }
             listDataFile.add(dataMeasurement);

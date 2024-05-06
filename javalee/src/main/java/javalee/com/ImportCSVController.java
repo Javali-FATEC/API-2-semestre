@@ -11,7 +11,7 @@ import javalee.com.services.*;
 
 public class ImportCSVController {
     ObservableList<String> separateRowsCSV = FXCollections.observableArrayList("virgula ( , )", "ponto e virgula ( ; )"); 
-    ObservableList<String> typeOfCsv = FXCollections.observableArrayList("Automático","Padrão A", "Padrão B");
+    ObservableList<String> typeOfCsv = FXCollections.observableArrayList("Automático");
 
     @FXML
     private ChoiceBox<String> separateChoiceBox;

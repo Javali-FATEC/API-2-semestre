@@ -18,7 +18,12 @@ public class OpenCSV {
         }
         ExtractFileName dataFileName = new ExtractFileName(selecteFile.getName());
 
-        ListMeasurement listMeasurement = new ListMeasurement(new FileReader(selecteFile),patterUsed);
+        char primeiraLetra = selecteFile.getName().charAt(0);
+        boolean isPatternA = primeiraLetra == 'A';
+        System.out.println("PA" + isPatternA);
+
+        ListMeasurement listMeasurement = new ListMeasurement(new FileReader(selecteFile),patterUsed,isPatternA);
+        listMeasurement.setIsPatternAut(isPatternA);
         listMeasurement.setInterator(separete);         
 
         DataFile dataFile = new DataFile(dataFileName.getCity(),dataFileName.getStation(),listMeasurement.getListDataFile(),listMeasurement.getLineErros());

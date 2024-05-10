@@ -5,7 +5,7 @@ services:
     container_name: db_javalee_postgres
     image: postgres
     volumes:
-      - pg_data:/data
+      - "pg_data:/var/lib/postgresql/data"
     restart: always
     environment:
       - POSTGRES_DB=db_javalee

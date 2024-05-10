@@ -25,6 +25,6 @@ public class City {
     }
 
     public String toInsertSql(){
-        return "INSERT INTO db_javalee.cidade (sigla_cidade, nome_cidade) VALUES ('"+sigla+"', '"+nome+"');";
+        return "INSERT INTO cidade (sigla_cidade, nome_cidade) VALUES ('"+sigla+"', '"+nome+"');";
     }
 }

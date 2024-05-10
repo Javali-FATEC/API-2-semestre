@@ -100,7 +100,7 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 ```
 bash
 db.url = "jdbc:postgresql://localhost:5432/"
-db.name = "dbjavalee"
+db.name = "db_javalee"
 db.user = "postgres"
 db.password = "javalee"
 ```

@@ -34,4 +34,14 @@ public class MasterScreenController {
     }
   }
 
+  @FXML
+  void openDefinitionRiskValues(ActionEvent event) {
+    try {
+      App.openDefinitionRiskValues();
+    } catch (Exception e) {
+      e.printStackTrace();
+
+    }
+  }
+
 }

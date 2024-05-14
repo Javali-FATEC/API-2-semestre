@@ -29,7 +29,7 @@ public class StatusReportController {
 
     private String citySelected;
 
-    private List<String> stations_ids = new ArrayList<>();;
+    private List<String> stations_ids = new ArrayList<>();
 
     private HashMap<String, String> averageResults = new HashMap<String, String>();
 

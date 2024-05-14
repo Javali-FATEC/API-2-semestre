@@ -7,23 +7,28 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="303.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.DefinitionRiskValuesController">
    <children>
-      <Label layoutX="35.0" layoutY="73.0" prefHeight="25.0" prefWidth="159.0" text="Tipo de Dado:">
+      <Label layoutX="35.0" layoutY="33.0" prefHeight="25.0" prefWidth="159.0" text="Tipo de Dado:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbDataType" layoutX="35.0" layoutY="109.0" prefHeight="25.0" prefWidth="226.0" promptText="Temperatura" />
-      <Label layoutX="35.0" layoutY="170.0" prefHeight="30.0" prefWidth="226.0" text="Valor Máximo sem Risco:">
+      <ComboBox fx:id="cbDataType" layoutX="35.0" layoutY="69.0" prefHeight="25.0" prefWidth="226.0" promptText="Temperatura" />
+      <Label layoutX="35.0" layoutY="130.0" prefHeight="30.0" prefWidth="226.0" text="Valor Máximo sem Risco:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txtRiskMax" layoutX="35.0" layoutY="206.0" prefHeight="25.0" prefWidth="169.0" />
-      <Label layoutX="35.0" layoutY="262.0" prefHeight="30.0" prefWidth="226.0" text="Valor Mínimo sem Risco:">
+      <TextField fx:id="txtRiskMax" layoutX="35.0" layoutY="166.0" prefHeight="25.0" prefWidth="169.0" />
+      <Label layoutX="35.0" layoutY="222.0" prefHeight="30.0" prefWidth="226.0" text="Valor Mínimo sem Risco:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="txtRiskMin" layoutX="35.0" layoutY="298.0" prefHeight="25.0" prefWidth="169.0" />
+      <TextField fx:id="txtRiskMin" layoutX="35.0" layoutY="258.0" prefHeight="25.0" prefWidth="169.0" />
+      <Button layoutX="86.0" layoutY="314.0" mnemonicParsing="false" onAction="#saveData" prefHeight="49.0" prefWidth="131.0" text="Salvar">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

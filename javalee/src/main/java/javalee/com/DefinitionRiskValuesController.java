@@ -1,23 +1,34 @@
 package javalee.com;
 
-import javafx.fxml.Initializable;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import java.sql.ResultSet;
-import java.sql.SQLClientInfoException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import javax.swing.plaf.synth.SynthIcon;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javalee.com.bd_connection.DbConnection;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
-public class DefinitionRiskValuesController{
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.event.ActionEvent;
+
+public class DefinitionRiskValuesController {
 
     @FXML
     private ObservableList<String> metricList = FXCollections.observableArrayList();
@@ -26,16 +37,13 @@ public class DefinitionRiskValuesController{
     private TextField txtRiskMax;
 
     @FXML
-    private ComboBox<?> cbDataType;
+    private ComboBox<String> cbDataType;
 
     @FXML
     private TextField txtRiskMin;
 
-    private Boolean status = false;
-    private String citySelected;
-    private List<String> stations_ids = new ArrayList<>();;
-
-    private HashMap<String, String> averageResults = new HashMap<String, String>();
+    @FXML
+    private List<String> metrics_ids = new ArrayList<>();
 
     private ResultSet helpDB(String query) {
         DbConnection db = new DbConnection();
@@ -44,22 +52,23 @@ public class DefinitionRiskValuesController{
         return resultSet;
     }
 
-    private void initialize() throws SQLClientInfoException{
+    @FXML
+    private void initialize() throws SQLException {
+
         String sql = "SELECT * FROM db_javalee.metrica";
-        ResultSet metricQueryResult = helpDB(sql);
-        if (metricQueryResult == null) {
-            System.out.println("ERRO");
-            
-        }
-        while (metricQueryResult.next()) {
-            String metricName = metricQueryResult.getString("nome");
+        ResultSet metricResultSet = helpDB(sql);
+        while (metricResultSet.next()) {
+
+            String metricName = metricResultSet.getString("nome");
+
             metricList.add(metricName);
         }
         cbDataType.setItems(metricList);
+
     }
 
+    @FXML
+    void saveData(ActionEvent event) {
 
-
-
+    }
 }
-

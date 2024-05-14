@@ -17,7 +17,7 @@ public class Stations {
     public Station searchStation(String code, int idCity){
 
         DbConnection db = new DbConnection();
-        ResultSet resultStation = db.executeWithReturn("SELECT * FROM db_javalee.estacao WHERE codigo = '" + code + "'");
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao WHERE codigo = '" + code + "'");
         Station station = null;
 
         try {
@@ -26,7 +26,7 @@ public class Stations {
                 String codeReturn = resultStation.getString("codigo");
                 station = new Station(idReturn,codeReturn); 
             }else{
-                db.executeNotReturn("INSERT INTO db_javalee.estacao (id_cidade, codigo) VALUES ("+idCity+", '"+code+"');");
+                db.executeNotReturn("INSERT INTO estacao (id_cidade, codigo) VALUES ("+idCity+", '"+code+"');");
                 return searchStation(code, idCity);
             }
             
@@ -41,7 +41,7 @@ public class Stations {
     public void loadStation(){
 
         DbConnection db = new DbConnection();
-        ResultSet resultStation = db.executeWithReturn("SELECT * FROM db_javalee.estacao");
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao");
 
         try {
             while (resultStation.next()) {

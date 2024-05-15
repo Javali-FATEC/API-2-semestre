@@ -33,12 +33,4 @@ public class InsertMaxMinValues {
             db.Desconnect();
         }
     }
-
-    public static void main(String[] args) {
-        InsertMaxMinValues valor = new InsertMaxMinValues();
-        valor.maximoValor = "11.7";
-        valor.minimoValor = "5";
-        valor.updateMaxValue("Chuva");
-        valor.updateMinValue("Chuva");
-    }
 }

@@ -44,7 +44,7 @@ public class RelatoriosMedia {
         " m.nome as dado," + 
         " um.nome as unidade" +
         " FROM" +
-        " db_javalee.registro r"+
+        " registro r"+
         " left join estacao e  on r.id_estacao = e.id_estacao"+
         " left join cidade c  on c.id_cidade = e.id_cidade" +
         " left join metrica m  on m.id_metrica = m.id_metrica"+

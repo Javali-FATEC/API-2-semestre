@@ -104,16 +104,18 @@ public class DataMeasurement {
 
     public String toInsertSql(String idEstacao, Metrics metrics) {
         Metric metric = metrics.searchMetrics(typeMeasurement);
-        
+
         if (metric == null) {
             return "";
         }
-        
+
         if (this.getValue() == null) {
             return "";
         }
-        
-        String sql = "INSERT INTO db_javalee.registro (id_metrica, id_estacao, valor, data_hora) VALUES ('" + metric.getIdMetrica() + "','" + idEstacao + "','" + this.getValueFormatComma() + "', '" + this.getDateFormatSql() + " " + getHourFormatSql() + "');";
+
+        String sql = "INSERT INTO registro (id_metrica, id_estacao, valor, data_hora) VALUES ('" + metric.getIdMetrica()
+                + "','" + idEstacao + "','" + this.getValueFormatComma() + "', '" + this.getDateFormatSql() + " "
+                + getHourFormatSql() + "');";
         return sql;
     }
 }

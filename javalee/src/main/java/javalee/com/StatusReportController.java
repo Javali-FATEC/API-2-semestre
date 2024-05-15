@@ -1,4 +1,5 @@
 package javalee.com;
+
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,7 +37,7 @@ public class StatusReportController {
     @FXML
     private void initialize() throws SQLException {
         changeAlert(status, "");
-        String sql = "SELECT * FROM db_javalee.cidade";
+        String sql = "SELECT * FROM cidade";
         ResultSet cityQueryResult = helpDB(sql);
         if (cityQueryResult == null) {
             changeAlert(true, "Não foi possível carregar as cidades");
@@ -47,7 +48,7 @@ public class StatusReportController {
             cityList.add(cityName);
         }
         cityChoiceBox.setItems(cityList);
-        
+
     }
 
     @FXML
@@ -66,17 +67,18 @@ public class StatusReportController {
         }
         App.openStatusReportResult(averageResults, citySelected);
         return;
-                
+
     };
 
-    private void generateMediaDateReport() throws SQLException{
+    private void generateMediaDateReport() throws SQLException {
         getWeatherStationsIds();
         getAverageResultsFromIdList();
     }
 
     private void getWeatherStationsIds() throws SQLException {
         changeAlert(false, "");
-        String sql = "SELECT e.id_estacao FROM db_javalee.cidade c JOIN db_javalee.estacao e ON c.id_cidade = e.id_cidade WHERE c.nome_cidade = '" + citySelected + "'";
+        String sql = "SELECT e.id_estacao FROM cidade c JOIN estacao e ON c.id_cidade = e.id_cidade WHERE c.nome_cidade = '"
+                + citySelected + "'";
         ResultSet stationsQueryResult = helpDB(sql);
         if (!stationsQueryResult.next()) {
             return;
@@ -88,18 +90,21 @@ public class StatusReportController {
         }
     }
 
-    private void getAverageResultsFromIdList() throws SQLException{
-        if (stations_ids.size() == 0){
+    private void getAverageResultsFromIdList() throws SQLException {
+        if (stations_ids.size() == 0) {
             return;
         }
         String ids = stations_ids.toString().replace("[", "(").replace("]", ")");
-        String sql = "SELECT m.nome, r.id_metrica, AVG(valor) AS media FROM db_javalee.registro r JOIN db_javalee.metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN" + ids + " GROUP BY r.id_metrica, m.nome";
+        String sql = "SELECT m.nome, r.id_metrica, AVG(valor) AS media FROM registro r JOIN metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN"
+                + ids + " GROUP BY r.id_metrica, m.nome";
         ResultSet resultQueryAverageResults = helpDB(sql);
-        if (resultQueryAverageResults == null) {return;}
-        while(resultQueryAverageResults.next()){
+        if (resultQueryAverageResults == null) {
+            return;
+        }
+        while (resultQueryAverageResults.next()) {
             String metrica_nome = resultQueryAverageResults.getString("nome");
             String average = resultQueryAverageResults.getString("media");
-               
+
             averageResults.put(metrica_nome, average);
         }
     }

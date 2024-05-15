@@ -16,15 +16,15 @@ public class City {
         this.nome = nome;
     }
 
-    public int getIdCidade(){
+    public int getIdCidade() {
         return idCidade;
     }
 
-    public String getNome(){
+    public String getNome() {
         return this.nome;
     }
 
-    public String toInsertSql(){
-        return "INSERT INTO db_javalee.cidade (sigla_cidade, nome_cidade) VALUES ('"+sigla+"', '"+nome+"');";
+    public String toInsertSql() {
+        return "INSERT INTO cidade (sigla_cidade, nome_cidade) VALUES ('" + sigla + "', '" + nome + "');";
     }
 }

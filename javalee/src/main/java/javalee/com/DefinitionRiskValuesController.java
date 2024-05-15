@@ -55,7 +55,7 @@ public class DefinitionRiskValuesController {
     @FXML
     private void initialize() throws SQLException {
 
-        String sql = "SELECT * FROM db_javalee.metrica";
+        String sql = "SELECT * FROM metrica";
         ResultSet metricResultSet = helpDB(sql);
         while (metricResultSet.next()) {
 

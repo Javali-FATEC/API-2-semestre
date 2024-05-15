@@ -1,13 +1,14 @@
 package javalee.com.services;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javalee.com.bd_connection.DbConnection;
 
 public class ReturnMaxMinValues {
-    private Float valorMaximo;
-    private Float valorMinimo;
+    private BigDecimal valorMaximo;
+    private BigDecimal valorMinimo;
 
     public ReturnMaxMinValues(String metrica){
         DbConnection db = new DbConnection();
@@ -15,8 +16,8 @@ public class ReturnMaxMinValues {
     
         try {
             if (resultMax.next()){
-                this.valorMaximo = resultMax.getFloat("maximo_risco");
-                this.valorMinimo = resultMax.getFloat("minimo_risco");
+                this.valorMaximo = resultMax.getBigDecimal("maximo_risco");
+                this.valorMinimo = resultMax.getBigDecimal("minimo_risco");
             }
         } catch (SQLException e){
             e.getSQLState();
@@ -25,11 +26,16 @@ public class ReturnMaxMinValues {
         }
     }
 
-    public Float getValorMaximo() {
+    public BigDecimal getValorMaximo() {
         return valorMaximo;
     }
 
-    public Float getValorMinimo() {
+    public BigDecimal getValorMinimo() {
         return valorMinimo;
+    }
+
+    public static void main(String[] args) {
+        ReturnMaxMinValues valor = new ReturnMaxMinValues("Chuva");
+        System.out.println(valor.getValorMinimo());
     }
 }

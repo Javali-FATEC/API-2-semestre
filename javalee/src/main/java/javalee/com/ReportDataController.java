@@ -49,8 +49,10 @@ public class ReportDataController implements Initializable {
             });
             coluna2.setCellValueFactory(cellData -> {
                 String[] rowData = cellData.getValue();
-                return new SimpleStringProperty(rowData[1]);
-            });
+                double valor = Double.parseDouble(rowData[1]) / 10.0;
+                String formattedValue = String.format("%.1f", valor);
+                return new SimpleStringProperty(formattedValue);
+          });
             coluna3.setCellValueFactory(cellData -> {
                 String[] rowData = cellData.getValue();
                 return new SimpleStringProperty(rowData[2]);

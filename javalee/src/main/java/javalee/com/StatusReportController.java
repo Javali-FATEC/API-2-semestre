@@ -77,8 +77,7 @@ public class StatusReportController {
 
     private void getWeatherStationsIds() throws SQLException {
         changeAlert(false, "");
-        String sql = "SELECT e.id_estacao FROM cidade c JOIN estacao e ON c.id_cidade = e.id_cidade WHERE c.nome_cidade = '"
-                + citySelected + "'";
+        String sql = "SELECT e.id_estacao FROM cidade c JOIN estacao e ON c.id_cidade = e.id_cidade WHERE c.nome_cidade = '" + citySelected + "'";
         ResultSet stationsQueryResult = helpDB(sql);
         if (!stationsQueryResult.next()) {
             return;
@@ -95,8 +94,7 @@ public class StatusReportController {
             return;
         }
         String ids = stations_ids.toString().replace("[", "(").replace("]", ")");
-        String sql = "SELECT m.nome, r.id_metrica, AVG(valor) AS media FROM registro r JOIN metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN"
-                + ids + " GROUP BY r.id_metrica, m.nome";
+        String sql = "SELECT m.nome, r.id_metrica, AVG(valor) AS media FROM registro r JOIN metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN" + ids + " GROUP BY r.id_metrica, m.nome";
         ResultSet resultQueryAverageResults = helpDB(sql);
         if (resultQueryAverageResults == null) {
             return;

@@ -14,7 +14,7 @@ public class Stations {
         this.listStations = new LinkedList<Station>();
     }
 
-    public Station searchStation(String code, int idCity){
+    public Station searchStation(String code, int idCity) {
 
         DbConnection db = new DbConnection();
         ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao WHERE codigo = '" + code + "'");
@@ -24,21 +24,22 @@ public class Stations {
             if (resultStation.next()) {
                 int idReturn = resultStation.getInt("id_estacao");
                 String codeReturn = resultStation.getString("codigo");
+
                 station = new Station(idReturn,codeReturn); 
             }else{
                 db.executeNotReturn("INSERT INTO estacao (id_cidade, codigo) VALUES ("+idCity+", '"+code+"');");
                 return searchStation(code, idCity);
             }
-            
+
         } catch (Exception e) {
-            
+
         }
         db.Desconnect();
-        
+
         return station;
     }
 
-    public void loadStation(){
+    public void loadStation() {
 
         DbConnection db = new DbConnection();
         ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao");
@@ -47,11 +48,12 @@ public class Stations {
             while (resultStation.next()) {
                 int idReturn = resultStation.getInt("id_estacao");
                 String codeReturn = resultStation.getString("codigo");
-                this.listStations.add(new Station(idReturn,codeReturn)); 
-                
+                this.listStations.add(new Station(idReturn, codeReturn));
+
             }
-            
-        } catch (Exception e) {}
+
+        } catch (Exception e) {
+        }
         db.Desconnect();
     }
 }

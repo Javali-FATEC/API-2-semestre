@@ -7,7 +7,6 @@ import javalee.com.bd_connection.DbConnection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
 public class RelatoriosMedia {
 
     public LinkedList<RelatorioMedia> listRelatorios;
@@ -37,7 +36,6 @@ public class RelatoriosMedia {
         LocalDate datab = LocalDate.parse(data_final, formatoAtual);
         String data_final_formatada = datab.format(novoFormato);
 
-
         var sql = "SELECT" +  
         " DATE_TRUNC('hour', r.data_hora) AS hora_arredondada,"+
         " AVG(r.valor) AS valor,"+
@@ -58,9 +56,6 @@ public class RelatoriosMedia {
             " um.nome"+
         " ORDER BY "+
             " hora_arredondada;";
-
-        // System.out.println(sql);
-
 
         ResultSet resultRelatorio = db.executeWithReturn(sql);
 

@@ -16,11 +16,11 @@ public class City {
         this.nome = nome;
     }
 
-    public int getIdCidade(){
+    public int getIdCidade() {
         return idCidade;
     }
 
-    public String getNome(){
+    public String getNome() {
         return this.nome;
     }
 

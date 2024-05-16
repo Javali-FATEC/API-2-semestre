@@ -8,25 +8,26 @@ import javalee.com.bd_connection.DbConnection;
 import javalee.com.services.DataMeasurement;
 
 public class Metrics {
-    
+
     private List<Metric> listMetrics;
 
     public Metrics() {
         this.listMetrics = new LinkedList<Metric>();
     }
-    public Metric searchMetrics(String nome){
+
+    public Metric searchMetrics(String nome) {
         for (Metric metric : this.listMetrics) {
-            if(metric.getNome().equals( nome)){
+            if (metric.getNome().equals(nome)) {
                 return metric;
             }
         }
 
         return null;
     }
-    public void loadMetrics(){
+
+    public void loadMetrics() {
         DbConnection db = new DbConnection();
-        //List<Metric> listMetricsLoad = List.LinkedList();
-        
+
         ResultSet resultMetric = db.executeWithReturn("SELECT * FROM metrica");
         Metric metric = null;
 
@@ -34,11 +35,12 @@ public class Metrics {
             while (resultMetric.next()) {
                 int idReturn = resultMetric.getInt("id_metrica");
                 String nameReturn = resultMetric.getString("nome");
-                metric = new Metric(idReturn,nameReturn); 
+                metric = new Metric(idReturn, nameReturn);
                 this.listMetrics.add(metric);
             }
-            
-        } catch (Exception e) {}
+
+        } catch (Exception e) {
+        }
 
         db.Desconnect();
     }

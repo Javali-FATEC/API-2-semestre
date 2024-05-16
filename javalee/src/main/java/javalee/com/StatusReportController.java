@@ -1,4 +1,5 @@
 package javalee.com;
+
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,7 +30,7 @@ public class StatusReportController {
 
     private String citySelected;
 
-    private List<String> stations_ids = new ArrayList<>();;
+    private List<String> stations_ids = new ArrayList<>();
 
     private HashMap<String, String> averageResults = new HashMap<String, String>();
 
@@ -47,7 +48,7 @@ public class StatusReportController {
             cityList.add(cityName);
         }
         cityChoiceBox.setItems(cityList);
-        
+
     }
 
     @FXML
@@ -66,10 +67,10 @@ public class StatusReportController {
         }
         App.openStatusReportResult(averageResults, citySelected);
         return;
-                
+
     };
 
-    private void generateMediaDateReport() throws SQLException{
+    private void generateMediaDateReport() throws SQLException {
         getWeatherStationsIds();
         getAverageResultsFromIdList();
     }
@@ -88,19 +89,21 @@ public class StatusReportController {
         }
     }
 
-    private void getAverageResultsFromIdList() throws SQLException{
-        if (stations_ids.size() == 0){
+    private void getAverageResultsFromIdList() throws SQLException {
+        if (stations_ids.size() == 0) {
             return;
         }
         String ids = stations_ids.toString().replace("[", "(").replace("]", ")");
         String maxDateHour = searchLastDate(ids);
         String sql = "SELECT m.nome, r.id_metrica, AVG(valor) AS media FROM registro r JOIN metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN " + ids + " AND TO_CHAR(r.data_hora, 'YYYY-MM-DD HH24:MI:SS') = '" + maxDateHour + "' GROUP BY r.id_metrica, m.nome";
         ResultSet resultQueryAverageResults = helpDB(sql);
-        if (resultQueryAverageResults == null) {return;}
-        while(resultQueryAverageResults.next()){
+        if (resultQueryAverageResults == null) {
+            return;
+        }
+        while (resultQueryAverageResults.next()) {
             String metrica_nome = resultQueryAverageResults.getString("nome");
             String average = resultQueryAverageResults.getString("media");
-               
+
             averageResults.put(metrica_nome, average);
         }
     }

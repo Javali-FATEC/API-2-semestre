@@ -135,6 +135,16 @@ public class App extends Application {
         stage.show();
     }
 
+    static void openDefinitionRiskValues() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("definitionRiskValues.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        DefinitionRiskValuesController controller = fxmlLoader.getController();
+        stage.setTitle("Definir valores de risco");
+        stage.show();
+        
+    }
+
     public static void main(String[] args) {
         launch();
     }

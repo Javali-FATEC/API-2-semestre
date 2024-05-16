@@ -1,6 +1,5 @@
-CREATE DATABASE db_javali;
+CREATE DATABASE db_javalee;
 
-CREATE SCHEMA db_javalee;
 
 CREATE TABLE unidade_medida (
     id_unidade_medida SERIAL PRIMARY KEY,

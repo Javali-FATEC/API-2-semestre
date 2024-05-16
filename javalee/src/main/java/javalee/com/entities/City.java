@@ -24,7 +24,7 @@ public class City {
         return this.nome;
     }
 
-    public String toInsertSql() {
-        return "INSERT INTO cidade (sigla_cidade, nome_cidade) VALUES ('" + sigla + "', '" + nome + "');";
+    public String toInsertSql(){
+        return "INSERT INTO cidade (sigla_cidade, nome_cidade) VALUES ('"+sigla+"', '"+nome+"');";
     }
 }

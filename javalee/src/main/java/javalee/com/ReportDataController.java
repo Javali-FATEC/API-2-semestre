@@ -11,11 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javalee.com.entities.RelatorioMedia;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javalee.com.entities.RelatorioMedia;
-import javalee.com.entities.RelatoriosMedia;
 
 import java.net.URL;
 

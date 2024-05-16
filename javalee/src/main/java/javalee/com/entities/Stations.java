@@ -24,9 +24,10 @@ public class Stations {
             if (resultStation.next()) {
                 int idReturn = resultStation.getInt("id_estacao");
                 String codeReturn = resultStation.getString("codigo");
-                station = new Station(idReturn, codeReturn);
-            } else {
-                db.executeNotReturn("INSERT INTO estacao (id_cidade, codigo) VALUES (" + idCity + ", '" + code + "');");
+
+                station = new Station(idReturn,codeReturn); 
+            }else{
+                db.executeNotReturn("INSERT INTO estacao (id_cidade, codigo) VALUES ("+idCity+", '"+code+"');");
                 return searchStation(code, idCity);
             }
 

@@ -77,8 +77,7 @@ public class StatusReportController {
 
     private void getWeatherStationsIds() throws SQLException {
         changeAlert(false, "");
-        String sql = "SELECT e.id_estacao FROM cidade c JOIN estacao e ON c.id_cidade = e.id_cidade WHERE c.nome_cidade = '"
-                + citySelected + "'";
+        String sql = "SELECT e.id_estacao FROM cidade c JOIN estacao e ON c.id_cidade = e.id_cidade WHERE c.nome_cidade = '" + citySelected + "'";
         ResultSet stationsQueryResult = helpDB(sql);
         if (!stationsQueryResult.next()) {
             return;
@@ -95,8 +94,10 @@ public class StatusReportController {
             return;
         }
         String ids = stations_ids.toString().replace("[", "(").replace("]", ")");
-        String sql = "SELECT m.nome, r.id_metrica, AVG(valor) AS media FROM registro r JOIN metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN"
-                + ids + " GROUP BY r.id_metrica, m.nome";
+
+        String maxDateHour = searchLastDate(ids);
+        String sql = "SELECT m.nome, r.id_metrica, AVG(valor) AS media FROM registro r JOIN metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN " + ids + " AND TO_CHAR(r.data_hora, 'YYYY-MM-DD HH24:MI:SS') = '" + maxDateHour + "' GROUP BY r.id_metrica, m.nome";
+
         ResultSet resultQueryAverageResults = helpDB(sql);
         if (resultQueryAverageResults == null) {
             return;
@@ -124,5 +125,16 @@ public class StatusReportController {
     private void prepareForNewResults() {
         averageResults.clear();
         stations_ids.clear();
+    }
+
+    private String searchLastDate(String ids) throws SQLException {
+        String sql =  "SELECT MAX(r.data_hora) FROM registro r JOIN metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN" + ids + "";
+        ResultSet resultQueryAverageResults = helpDB(sql);
+        if (resultQueryAverageResults.next()) {
+            String maxDateHour = resultQueryAverageResults.getString("max");
+            return maxDateHour;
+        }
+        return "";
+
     }
 };

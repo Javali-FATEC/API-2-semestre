@@ -27,7 +27,6 @@ public class Metrics {
 
     public void loadMetrics() {
         DbConnection db = new DbConnection();
-        // List<Metric> listMetricsLoad = List.LinkedList();
 
         ResultSet resultMetric = db.executeWithReturn("SELECT * FROM metrica");
         Metric metric = null;

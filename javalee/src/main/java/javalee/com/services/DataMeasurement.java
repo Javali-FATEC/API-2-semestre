@@ -113,9 +113,8 @@ public class DataMeasurement {
             return "";
         }
 
-        String sql = "INSERT INTO registro (id_metrica, id_estacao, valor, data_hora) VALUES ('" + metric.getIdMetrica()
-                + "','" + idEstacao + "','" + this.getValueFormatComma() + "', '" + this.getDateFormatSql() + " "
-                + getHourFormatSql() + "');";
+        
+        String sql = "INSERT INTO registro (id_metrica, id_estacao, valor, data_hora) VALUES ('" + metric.getIdMetrica() + "','" + idEstacao + "','" + this.getValueFormatComma() + "', '" + this.getDateFormatSql() + " " + getHourFormatSql() + "');";
         return sql;
     }
 }

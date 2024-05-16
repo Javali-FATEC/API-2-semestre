@@ -13,7 +13,7 @@ public class DbConnection {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/db_javalee";
     private static final String USUARIO = "postgres";
-    private static final String SENHA = "admin";
+    private static final String SENHA = "javalee";
 
     public DbConnection() {
         ConfigBdReader config = new ConfigBdReader();

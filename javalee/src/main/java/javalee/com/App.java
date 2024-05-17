@@ -113,6 +113,14 @@ public class App extends Application {
         stage.show();
     }
 
+    static void openBoxPlotReportData() throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("boxPlotReport");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Dados do relatório BoxPlot");
+        stage.show();
+    }
+
     static void openStatusReportByDate() throws IOException {
         Stage stage = new Stage();
         Parent root = loadFXML("statusReportByDate");

@@ -18,14 +18,14 @@
                </children></AnchorPane>
         </content>
       </TitledPane>
-      <TitledPane alignment="CENTER" animated="false" layoutX="226.0" layoutY="14.0" prefHeight="230.0" prefWidth="200.0" text="Relatório">
+      <TitledPane alignment="CENTER" animated="false" collapsible="true" expanded="false" layoutX="226.0" layoutY="14.0" prefHeight="230.0" prefWidth="200.0" text="Relatório">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <Button layoutX="5.0" layoutY="14.0" mnemonicParsing="false" onAction="#openScreenStatusReport" prefHeight="40.0" prefWidth="190.0" text="Relatório Situacional" />
                   <Button layoutX="5.0" layoutY="60.0" mnemonicParsing="false" onAction="#openStatusReport2" prefHeight="40.0" prefWidth="190.0" text="Relatório de Valor Médio" />
                   <Button layoutX="5.0" layoutY="109.0" mnemonicParsing="false" onAction="#openDefinitionRiskValues" prefHeight="40.0" prefWidth="190.0" text="Definir Valor de Risco" />
-                  <Button layoutX="5.0" layoutY="157.0" mnemonicParsing="false" onAction="#openScreenBoxPlotReport" prefHeight="40.0" prefWidth="190.0" text="Definir Valor de Risco" />
+                  <Button layoutX="5.0" layoutY="157.0" mnemonicParsing="false" onAction="#openScreenBoxPlotReport" prefHeight="40.0" prefWidth="190.0" text="Gerar relatório BoxPlot" />
                </children>
             </AnchorPane>
          </content>

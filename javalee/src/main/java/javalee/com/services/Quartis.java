@@ -41,9 +41,9 @@ public class Quartis {
                 " unidade_medida.nome");
             
             if (quartis.next()) {
-                terceiroQuartil = quartis.getString("q1");
+                terceiroQuartil = quartis.getString("q3");
                 segundoQuartil = quartis.getString("q2");
-                primeiroQuartil = quartis.getString("q3");
+                primeiroQuartil = quartis.getString("q1");
 
 
             }            

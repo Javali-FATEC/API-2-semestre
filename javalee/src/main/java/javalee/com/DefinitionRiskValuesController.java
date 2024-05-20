@@ -31,6 +31,9 @@ import javafx.event.ActionEvent;
 public class DefinitionRiskValuesController {
 
     @FXML
+    private ObservableList<String> metricList = FXCollections.observableArrayList();
+
+    @FXML
     private TextField txtRiskMax;
 
     @FXML
@@ -38,6 +41,31 @@ public class DefinitionRiskValuesController {
 
     @FXML
     private TextField txtRiskMin;
+
+    @FXML
+    private List<String> metrics_ids = new ArrayList<>();
+
+    private ResultSet helpDB(String query) {
+        DbConnection db = new DbConnection();
+        ResultSet resultSet = db.executeWithReturn(query);
+        db.Desconnect();
+        return resultSet;
+    }
+
+    @FXML
+    private void initialize() throws SQLException {
+
+        String sql = "SELECT * FROM metrica";
+        ResultSet metricResultSet = helpDB(sql);
+        while (metricResultSet.next()) {
+
+            String metricName = metricResultSet.getString("nome");
+
+            metricList.add(metricName);
+        }
+        cbDataType.setItems(metricList);
+
+    }
 
     @FXML
     void saveData(ActionEvent event) {

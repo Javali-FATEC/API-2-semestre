@@ -4,14 +4,21 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="painelPrincipal" maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ImportCSVController">
+<AnchorPane fx:id="painelPrincipal" maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ImportCSVController">
    <children>
-      <ChoiceBox fx:id="typeCsvChoiceBox" layoutX="45.0" layoutY="80.0" prefHeight="30.0" prefWidth="170.0" />
-      <Button fx:id="openWindowAnalysis" layoutX="225.0" layoutY="80.0" mnemonicParsing="false" onAction="#openToolTip" prefHeight="30.0" prefWidth="30.0" text="?" />
-      <ChoiceBox fx:id="separateChoiceBox" layoutX="45.0" layoutY="160.0" prefHeight="30.0" prefWidth="210.0" />
-      <Label layoutX="45.0" layoutY="50.0" prefHeight="30.0" text="Configuração do Arquivo" />
-      <Label layoutX="45.0" layoutY="130.0" prefHeight="30.0" prefWidth="148.0" text="Interador do Arquivo" />
-      <Button fx:id="openWindowAnalysis" layoutX="75.0" layoutY="220.0" mnemonicParsing="false" onAction="#handleSelectFile" prefHeight="30.0" prefWidth="150.0" text="Importar Dados" />
+      <ChoiceBox fx:id="typeCsvChoiceBox" layoutX="45.0" layoutY="80.0" prefHeight="30.0" prefWidth="170.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" />
+      <Button fx:id="openWindowAnalysis" layoutX="225.0" layoutY="80.0" mnemonicParsing="false" onAction="#openToolTip" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" text="?" />
+      <ChoiceBox fx:id="separateChoiceBox" layoutX="45.0" layoutY="160.0" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" />
+      <Label layoutX="45.0" layoutY="50.0" prefHeight="30.0" text="Configuração do Arquivo" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="45.0" layoutY="130.0" prefHeight="30.0" prefWidth="148.0" text="Interador do Arquivo" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Button fx:id="openWindowAnalysis" layoutX="75.0" layoutY="220.0" mnemonicParsing="false" onAction="#handleSelectFile" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" text="Importar Dados" />
    </children>
 </AnchorPane>

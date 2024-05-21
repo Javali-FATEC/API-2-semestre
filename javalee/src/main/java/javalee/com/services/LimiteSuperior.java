@@ -50,8 +50,8 @@ public class LimiteSuperior {
                 Float terceiroQuartilFloat = Float.parseFloat(minimo);
                 Float primeiroQuartilFloat = Float.parseFloat(maximo);
 
-                limiteSuperior = terceiroQuartilFloat + 1.5f * (primeiroQuartilFloat - terceiroQuartilFloat);
-                limiteInferior = primeiroQuartilFloat - 1.5f * (primeiroQuartilFloat - terceiroQuartilFloat);
+                limiteSuperior = terceiroQuartilFloat + 1.5f * (terceiroQuartilFloat - primeiroQuartilFloat);
+                limiteInferior = primeiroQuartilFloat - 1.5f * (terceiroQuartilFloat - primeiroQuartilFloat);
             }            
         } catch (SQLException e){
             e.printStackTrace();

@@ -10,6 +10,8 @@ public class LimiteSuperior {
     private String primeiroQuartil;
     private String terceiroQuartil;
     private Float limiteSuperior;
+    private Float limiteInferior;
+
     
     public LimiteSuperior(String estacao, String dataType, String dataRecebida){
         DbConnection db = new DbConnection();
@@ -48,7 +50,8 @@ public class LimiteSuperior {
                 Float terceiroQuartilFloat = Float.parseFloat(minimo);
                 Float primeiroQuartilFloat = Float.parseFloat(maximo);
 
-                limiteSuperior = primeiroQuartilFloat + 1.5f * (primeiroQuartilFloat - terceiroQuartilFloat);
+                limiteSuperior = terceiroQuartilFloat + 1.5f * (terceiroQuartilFloat - primeiroQuartilFloat);
+                limiteInferior = primeiroQuartilFloat - 1.5f * (terceiroQuartilFloat - primeiroQuartilFloat);
             }            
         } catch (SQLException e){
             e.printStackTrace();
@@ -69,11 +72,15 @@ public class LimiteSuperior {
         return limiteSuperior;
     }
 
+    public Float getLimiteInferior(){
+         return limiteInferior;
+    }
     public static void main(String[] args) {
         LimiteSuperior limite = new LimiteSuperior("83726", "Chuva", "01/11/2023");
 
         System.out.println(limite.getterceiroQuartil());
         System.out.println(limite.getprimeiroQuartil());
         System.out.println(limite.getLimiteSuperior());
+        System.out.println(limite.getLimiteInferior());
     }
 }

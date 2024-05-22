@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javalee.com.entities.RelatorioMedia;
@@ -143,6 +144,20 @@ public class App extends Application {
         stage.setTitle("Definir valores de risco");
         stage.show();
         
+    }
+
+    static void openPreviewRiskValues(String openPreviewRiskValues, DataFile dataFile ) throws IOException{
+
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(openPreviewRiskValues + ".fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        PreviewRiskValuesController controller = fxmlLoader.getController();
+        controller.setDataFile(dataFile);
+
+        stage.setTitle("Valores de Risco - " + dataFile.getCity() + "/" + dataFile.getStation());
+        stage.show();
+
     }
 
     public static void main(String[] args) {

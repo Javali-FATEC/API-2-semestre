@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="previewData" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="528.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.PreviewRiskValuesController">
+   <children>
+      <Label layoutX="14.0" layoutY="21.0" text="Selecione um tipo de medição:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="typeMeasurementRiskValue" layoutX="14.0" layoutY="49.0" onAction="#handleTypeMeasurementChangeRiskValue" prefHeight="26.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" />
+      <Label fx:id="typeMeasurementRiskValueLabel" layoutX="14.0" layoutY="82.0" text="Valores de Risco" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableDataMeasurementRiksValue" layoutX="14.0" layoutY="114.0" prefHeight="490.0" prefWidth="500.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="Data" />
+            <TableColumn prefWidth="75.0" text="Hora" />
+            <TableColumn prefWidth="75.0" text="Valor" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -116,4 +116,13 @@ public class AnalysisController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void previewRiskValues(ActionEvent event) {
+        try {
+            App.openPreviewRiskValues("previewRiskValues", this.dataFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -54,26 +54,16 @@ public class Quartis {
         }       
     }
 
-    public String getterceiroQuartil() {
+    public String getTerceiroQuartil() {
         return terceiroQuartil;
     }
 
-    public String getsegundoQuartil() {
+    public String getSegundoQuartil() {
         return segundoQuartil;
     }
 
-    public String getprimeiroQuartil() {
+    public String getPrimeiroQuartil() {
         return primeiroQuartil;
-    }
-
-
-
-    public static void main(String[] args) {
-        Quartis limite = new Quartis("83726", "Chuva", "01/11/2023");
-
-        System.out.println(limite.getterceiroQuartil());
-        System.out.println(limite.getprimeiroQuartil());
-        System.out.println(limite.getsegundoQuartil());
     }
 }
 

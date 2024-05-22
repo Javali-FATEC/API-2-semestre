@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
 import javalee.com.bd_connection.DbConnection;
+import javalee.com.services.utilInterno;
 import javafx.event.ActionEvent;
 import java.util.HashMap;
 
@@ -36,13 +37,12 @@ public class StatusReportController {
 
     @FXML
     private void initialize() throws SQLException {
-        changeAlert(status, "");
         String sql = "SELECT * FROM cidade";
         ResultSet cityQueryResult = helpDB(sql);
         if (cityQueryResult == null) {
-            changeAlert(true, "Não foi possível carregar as cidades");
-            return;
-        }
+            utilInterno.alertError("Não foi possível carregar as cidades"
+            , "Erro");
+                        }
         while (cityQueryResult.next()) {
             String cityName = cityQueryResult.getString("nome_cidade");
             cityList.add(cityName);
@@ -53,17 +53,15 @@ public class StatusReportController {
 
     @FXML
     private void reportGenerate(ActionEvent event) throws SQLException, IOException {
-        changeAlert(false, "");
         citySelected = cityChoiceBox.getValue();
         if (citySelected == null) {
-            changeAlert(true, "Selecione uma cidade");
-            return;
+            utilInterno.alertError("Selecione uma cidade", "Erro");
+     
         }
         prepareForNewResults();
         generateMediaDateReport();
         if (averageResults.isEmpty()) {
-            changeAlert(true, "Não existem Média dessa cidade");
-            return;
+            utilInterno.alertError("Não existem Média dessa cidade", "Dado inexistente");
         }
         App.openStatusReportResult(averageResults, citySelected);
         return;
@@ -76,7 +74,6 @@ public class StatusReportController {
     }
 
     private void getWeatherStationsIds() throws SQLException {
-        changeAlert(false, "");
         String sql = "SELECT e.id_estacao FROM cidade c JOIN estacao e ON c.id_cidade = e.id_cidade WHERE c.nome_cidade = '" + citySelected + "'";
         ResultSet stationsQueryResult = helpDB(sql);
         if (!stationsQueryResult.next()) {
@@ -119,6 +116,7 @@ public class StatusReportController {
         alerts.setText(message);
         alerts.setVisible(status);
     }
+
 
     private void prepareForNewResults() {
         averageResults.clear();

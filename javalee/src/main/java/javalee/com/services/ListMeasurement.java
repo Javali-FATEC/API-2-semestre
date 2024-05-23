@@ -4,13 +4,15 @@ import java.util.LinkedList;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javalee.com.patters.*;
+import javalee.com.entities.ValorRisco;
+import javalee.com.entities.ValoresRisco;
 import javalee.com.exceptions.ExceptionEmptyLine;
-import javalee.com.patters.PatterB;
 
 public class ListMeasurement {
     private LinkedList<DataMeasurement> listDataFile;
@@ -18,8 +20,11 @@ public class ListMeasurement {
     private String interator;
     private boolean isPatternAut;
     private Map<String, String> lineErros;
+    private ValoresRisco calculaValoresRisco;
 
     public ListMeasurement(FileReader selecteFile, String pattern, boolean isPatternAut){
+        this.calculaValoresRisco = new ValoresRisco();
+
         this.pattern = pattern;
         this.isPatternAut = isPatternAut;
         listDataFile = new LinkedList<DataMeasurement>();
@@ -39,7 +44,16 @@ public class ListMeasurement {
     }
 
     public Map<String, String> getLineErros(){
-        return this.lineErros;
+        Comparator<String> numericKeyComparator = new Comparator<String>() {
+            @Override
+            public int compare(String key1, String key2) {
+                return Integer.compare(Integer.parseInt(key1), Integer.parseInt(key2));
+            }
+        };
+
+        TreeMap<String, String> sortedMap = new TreeMap<>(numericKeyComparator);
+        sortedMap.putAll(this.lineErros);
+        return sortedMap;
     }
 
     private void extractList(BufferedReader reader){
@@ -74,10 +88,10 @@ public class ListMeasurement {
                             throw new ExceptionEmptyLine(lineNumber);
                         }
                         if( !this.isPatternAut ){
-                            constructListPatterA(parts);
+                            constructListPatterA(parts, lineNumber);
                         }
                         else{
-                            constructListPatterB(parts);
+                            constructListPatterB(parts, lineNumber);
                         }
                     }
                 }catch( ExceptionEmptyLine e){
@@ -97,24 +111,49 @@ public class ListMeasurement {
         return this.pattern == "Padrão A";
     }
 
-    public void constructListPatterA(String[] parts){
+    public void constructListPatterA(String[] parts, int lineNumber){
         //System.out.println("AAAAAAAAAAA");
         for(PatterA enumPatter : PatterA.values()){
             Patter patter = enumPatter.getPatter();
             DataMeasurement dataMeasurement = new DataMeasurement(patter.getName(), patter.getUnidade(),parts[0],parts[1], checkedNull(parts,patter.getColuna()));
             if(patter.isTemp()){
-                System.out.println("TEMP");
                 dataMeasurement.convertTemp();
             }
             listDataFile.add(dataMeasurement);
+            verificaValoresRisco(dataMeasurement, lineNumber);
         } 
     }
 
-    public void constructListPatterB(String[] parts){
+    private void verificaValoresRisco(DataMeasurement dataMeasurement , int lineNumber){
+        ValorRisco maxMinValues = calculaValoresRisco.buscaValoreRiscoMetrica(dataMeasurement.getTypeMeasurament());
+        if(dataMeasurement.getValueBigDecimal() != null){
+            boolean isMax = false;
+            boolean isMin = false;
+            if(maxMinValues.getValorMaximo() != null)
+            {
+                isMax = dataMeasurement.getValueBigDecimal().compareTo(maxMinValues.getValorMaximo()) > 0;
+            }
+            if(maxMinValues.getValorMinimo() != null)
+            {
+                isMin = dataMeasurement.getValueBigDecimal().compareTo(maxMinValues.getValorMinimo()) < 0;
+            }
+
+            if( isMax ){
+                lineErros.put(String.valueOf(lineNumber), "Valor acima do máximo recomendado para a variavel climática " + dataMeasurement.getTypeMeasurament());
+            }
+
+            if( isMin ){
+                lineErros.put(String.valueOf(lineNumber), "Valor abaixo do mínimo recomendado para a variavel climática " + dataMeasurement.getTypeMeasurament());
+            }
+        }
+    }
+
+    public void constructListPatterB(String[] parts, int lineNumber){
         for(PatterB enumPatter : PatterB.values()){
             Patter patter = enumPatter.getPatter();
             DataMeasurement dataMeasurement = new DataMeasurement(patter.getName(), patter.getUnidade(),parts[0],parts[1], checkedNull(parts,patter.getColuna()));
             listDataFile.add(dataMeasurement);
+            verificaValoresRisco(dataMeasurement, lineNumber);
         }
     }
 

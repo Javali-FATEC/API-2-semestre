@@ -7,28 +7,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="562.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.StatusReportController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="359.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.StatusReportController">
    <children>
-      <ComboBox fx:id="cityChoiceBox" layoutX="93.0" layoutY="108.0" prefHeight="40.0" prefWidth="374.0" />
-      <Button layoutX="93.0" layoutY="156.0" mnemonicParsing="false" onAction="#reportGenerate" prefHeight="40.0" prefWidth="374.0" text="Gerar Relatório" textFill="#282626">
+      <ComboBox fx:id="cityChoiceBox" layoutX="14.0" layoutY="109.0" prefHeight="30.0" prefWidth="323.0" />
+      <Button layoutX="100.0" layoutY="159.0" mnemonicParsing="false" onAction="#reportGenerate" prefHeight="30.0" prefWidth="151.0" text="Gerar Relatório" textFill="#282626" />
+      <Text fill="WHITE" layoutX="15.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade:">
          <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Text layoutX="94.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade">
-         <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Separator layoutY="60.0" prefHeight="0.0" prefWidth="562.0" />
-      <Text layoutX="94.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatórios de valores médios por cidade" wrappingWidth="374.0">
+      <Separator layoutX="15.0" layoutY="54.0" prefHeight="2.0" prefWidth="323.0" />
+      <Text fill="WHITE" layoutX="15.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatórios de valores médios por cidade" wrappingWidth="374.0">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#eb1919" fx:id="alerts" layoutX="93.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alertas" wrappingWidth="374.0">
+      <Text fx:id="alerts" fill="#eb1919" layoutX="154.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alertas" wrappingWidth="42.79997253417969">
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
          </font>
       </Text>
    </children>

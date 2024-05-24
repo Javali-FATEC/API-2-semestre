@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javalee.com.bd_connection.DbConnection;
+import javalee.com.services.InsertMaxMinValues;
+import javalee.com.services.utilInterno;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -29,6 +31,12 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 
 public class DefinitionRiskValuesController {
+
+    @FXML
+    private Button saveRiskValues;
+
+    @FXML
+    private Button editRiskValue;
 
     @FXML
     private ObservableList<String> metricList = FXCollections.observableArrayList();
@@ -65,10 +73,49 @@ public class DefinitionRiskValuesController {
         }
         cbDataType.setItems(metricList);
 
+        cbDataType.setItems(metricList);
+
+        cbDataType.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        txtRiskMax.clear();
+                        txtRiskMin.clear();
+                        saveRiskValues.setDisable(false);
+                        saveRiskValues.setText("Salvar");
+
+                    }
+                }
+        );
+
     }
 
     @FXML
     void saveData(ActionEvent event) {
+
+        String selectedMetric = cbDataType.getSelectionModel().getSelectedItem();
+        String maxInputValue = txtRiskMax.getText();
+        String minInputValue = txtRiskMin.getText();
+      
+        if (maxInputValue.isEmpty() || minInputValue.isEmpty()) {
+          utilInterno.alertError("Preencha os valores máximo e mínimo", "Erro");
+          return;
+        }
+    
+        String maxStringValue = Double.toString(Double.parseDouble(maxInputValue));
+        String minStringValue = Double.toString(Double.parseDouble(minInputValue));
+      
+        InsertMaxMinValues value = new InsertMaxMinValues();
+        value.updateMaxValue(selectedMetric, maxStringValue);
+        value.updateMinValue(selectedMetric, minStringValue);
+        saveRiskValues.setDisable(true);
+        saveRiskValues.setText("Sucesso!");
+      }
+    
+
+    @FXML
+    void edit(ActionEvent event) {
+        saveRiskValues.setDisable(false);
+        saveRiskValues.setText("Salvar");
 
     }
 }

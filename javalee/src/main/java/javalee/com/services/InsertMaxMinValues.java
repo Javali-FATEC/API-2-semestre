@@ -6,7 +6,7 @@ public class InsertMaxMinValues {
     private String maximoValor;
     private String minimoValor;
 
-    public void updateMaxValue(String metrica){
+    public void updateMaxValue(String metrica, String maximoValor){
         DbConnection db = new DbConnection();
 
         try{
@@ -21,7 +21,7 @@ public class InsertMaxMinValues {
         }
     }
 
-    public void updateMinValue(String metrica){
+    public void updateMinValue(String metrica, String minimoValor){
         DbConnection db = new DbConnection();
         Float changeToFloat = Float.parseFloat(minimoValor);
 

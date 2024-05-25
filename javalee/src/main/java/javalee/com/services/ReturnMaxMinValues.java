@@ -33,9 +33,4 @@ public class ReturnMaxMinValues {
     public BigDecimal getValorMinimo() {
         return valorMinimo;
     }
-
-    public static void main(String[] args) {
-        ReturnMaxMinValues valor = new ReturnMaxMinValues("Chuva");
-        System.out.println(valor.getValorMinimo());
-    }
 }

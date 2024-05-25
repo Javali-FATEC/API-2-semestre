@@ -28,7 +28,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="stationLabel" layoutX="123.0" layoutY="127.0" prefHeight="20.0">
+      <Label fx:id="stationLabel" layoutX="100.0" layoutY="154.0" prefHeight="20.0" prefWidth="85.0">
          <font>
             <Font size="14.0" />
          </font>

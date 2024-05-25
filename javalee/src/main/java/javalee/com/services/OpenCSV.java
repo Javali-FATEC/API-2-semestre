@@ -20,7 +20,6 @@ public class OpenCSV {
 
         char primeiraLetra = selecteFile.getName().charAt(0);
         boolean isPatternA = primeiraLetra == 'A';
-        System.out.println("PA" + isPatternA);
 
         ListMeasurement listMeasurement = new ListMeasurement(new FileReader(selecteFile),patterUsed,isPatternA);
         listMeasurement.setIsPatternAut(isPatternA);

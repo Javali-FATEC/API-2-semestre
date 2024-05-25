@@ -6,14 +6,15 @@ import java.time.format.DateTimeFormatter;
 
 import javalee.com.bd_connection.DbConnection;
 
-public class LimiteSuperior {
+public class RelatorioBoxPlot {
     private String primeiroQuartil;
+    private String segundoQuartil;
     private String terceiroQuartil;
     private Float limiteSuperior;
     private Float limiteInferior;
 
     
-    public LimiteSuperior(String estacao, String dataType, String dataRecebida){
+    public RelatorioBoxPlot(String estacao, String dataType, String dataRecebida){
         DbConnection db = new DbConnection();
 
         DateTimeFormatter formatoAtual = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -26,6 +27,7 @@ public class LimiteSuperior {
                 "SELECT " + 
                 " unidade_medida.nome AS unidade, " +
                 " CONCAT(PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY registro.valor), unidade_medida.nome) AS q1, " +
+                " CONCAT(PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY registro.valor), unidade_medida.nome) AS q2, " +
                 " CONCAT(PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY registro.valor), unidade_medida.nome) AS q3 " +
                 "FROM " +
                 " registro " +
@@ -42,6 +44,7 @@ public class LimiteSuperior {
             
             if (quartis.next()) {
                 terceiroQuartil = quartis.getString("q1");
+                segundoQuartil = quartis.getString("q2");
                 primeiroQuartil = quartis.getString("q3");
 
                 String minimo = terceiroQuartil.replaceAll("[^\\d\\.]", "");
@@ -61,11 +64,15 @@ public class LimiteSuperior {
     }
 
     public String getterceiroQuartil() {
-        return "Valor minimo: " + terceiroQuartil;
+        return terceiroQuartil;
+    }
+
+    public String getSegundoQuartil() {
+        return segundoQuartil;
     }
 
     public String getprimeiroQuartil() {
-        return "Valor maximo: " + primeiroQuartil;
+        return primeiroQuartil;
     }
 
     public Float getLimiteSuperior() {
@@ -75,12 +82,5 @@ public class LimiteSuperior {
     public Float getLimiteInferior(){
          return limiteInferior;
     }
-    public static void main(String[] args) {
-        LimiteSuperior limite = new LimiteSuperior("83726", "Chuva", "01/11/2023");
 
-        System.out.println(limite.getterceiroQuartil());
-        System.out.println(limite.getprimeiroQuartil());
-        System.out.println(limite.getLimiteSuperior());
-        System.out.println(limite.getLimiteInferior());
-    }
 }

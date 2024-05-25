@@ -7,27 +7,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.BoxPlotController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.BoxPlotController">
    <children>
-      <DatePicker layoutX="20.0" layoutY="55.0" promptText="Data Inicial" />
-      <Label layoutX="20.0" layoutY="25.0" prefHeight="30.0" prefWidth="182.0" text="Data:">
+      <DatePicker layoutX="20.0" layoutY="55.0" promptText="Data Inicial" fx:id="datePicker" />
+      <Label layoutX="20.0" layoutY="25.0" prefHeight="30.0" prefWidth="182.0" text="Data:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="20.0" layoutY="105.0" prefHeight="30.0" prefWidth="182.0" text="Cidade:">
+      <Label layoutX="20.0" layoutY="105.0" prefHeight="30.0" prefWidth="182.0" text="Cidade:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="20.0" layoutY="135.0" prefHeight="25.0" prefWidth="261.0" />
-      <Label layoutX="20.0" layoutY="165.0" prefHeight="30.0" prefWidth="182.0" text="Estação:">
+      <ChoiceBox fx:id="typeMeasurementCity" layoutX="20.0" layoutY="135.0" onAction="#selecionarCidade" prefHeight="25.0" prefWidth="261.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" />
+      <Label layoutX="20.0" layoutY="165.0" prefHeight="30.0" prefWidth="182.0" text="Estação:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="20.0" layoutY="195.0" prefHeight="25.0" prefWidth="261.0" />
-      <Button layoutX="82.0" layoutY="241.0" mnemonicParsing="false" onAction="#openScreenBoxPlotReportData" prefHeight="34.0" prefWidth="138.0" text="Gerar relatório">
+      <ChoiceBox fx:id="typeMeasurementStation" layoutX="20.0" layoutY="195.0" prefHeight="25.0" prefWidth="261.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" />
+      <Button layoutX="82.0" layoutY="241.0" mnemonicParsing="false" onAction="#openScreenBoxPlotReportData" prefHeight="34.0" prefWidth="138.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" text="Gerar relatório">
          <font>
             <Font size="14.0" />
          </font>

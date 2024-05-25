@@ -50,6 +50,18 @@ public class App extends Application {
         stage.show();
     }
 
+    static void openWindowReportBoxPlot(String boxPlotReport, String dataFile, String dataFormatada) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(boxPlotReport + ".fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        BoxPlotReportController controller = fxmlLoader.getController();
+        controller.setBoxPlotReport(dataFile, dataFormatada);
+
+        stage.setTitle("Relatório BoxPlot");
+        stage.show();
+    }
+
     static void openPreviewData(String opernPreviewDataInterface, DataFile dataFile) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();

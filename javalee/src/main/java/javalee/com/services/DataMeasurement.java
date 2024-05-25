@@ -102,6 +102,10 @@ public class DataMeasurement {
         return numberFormated.replace(',', '.');
     }
 
+    public BigDecimal getValueBigDecimal() {
+        return value;
+    }
+
     public String toInsertSql(String idEstacao, Metrics metrics) {
         Metric metric = metrics.searchMetrics(typeMeasurement);
 

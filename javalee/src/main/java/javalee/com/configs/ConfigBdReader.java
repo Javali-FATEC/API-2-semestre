@@ -11,7 +11,7 @@ public class ConfigBdReader {
         try {
             this.urlBd = "jdbc:postgresql://localhost:5432/";
             this.userBd = "postgres";
-            this.passwordBd = "javalee";
+            this.passwordBd = "admin";
             this.nameBd = "db_javalee";
             
         } catch (Exception e) {

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -95,16 +96,34 @@ public class StatusReportController {
         }
         String ids = stations_ids.toString().replace("[", "(").replace("]", ")");
         String maxDateHour = searchLastDate(ids);
-        String sql = "SELECT m.nome, r.id_metrica, AVG(valor) AS media FROM registro r JOIN metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN " + ids + " AND TO_CHAR(r.data_hora, 'YYYY-MM-DD HH24:MI:SS') = '" + maxDateHour + "' GROUP BY r.id_metrica, m.nome";
+        String sql = "SELECT" +
+            " m.nome, um.nome AS UNM, AVG(valor) AS media" +
+        " FROM" +
+            " registro r" +
+        " JOIN" +
+            " metrica m ON r.id_metrica = m.id_metrica" +
+        " JOIN" +
+            " unidade_medida um ON m.id_unidade_medida = um.id_unidade_medida" +
+        " WHERE" + 
+            " id_estacao IN " + ids + 
+        " AND" +
+        " TO_CHAR(r.data_hora, 'YYYY-MM-DD HH24:MI:SS') = '" + maxDateHour + 
+        "' GROUP BY" +
+        " m.nome, um.nome;";
+    
         ResultSet resultQueryAverageResults = helpDB(sql);
         if (resultQueryAverageResults == null) {
             return;
         }
         while (resultQueryAverageResults.next()) {
             String metrica_nome = resultQueryAverageResults.getString("nome");
-            String average = resultQueryAverageResults.getString("media");
+            String averageString = resultQueryAverageResults.getString("media");
+            double averageDouble = Double.parseDouble(averageString);
+            String formattedAverage = String.format(Locale.US, "%.2f", averageDouble);
+            String unidade_medida = resultQueryAverageResults.getString("UNM");
 
-            averageResults.put(metrica_nome, average);
+            String average_un = formattedAverage + "/" + unidade_medida;
+            averageResults.put(metrica_nome, average_un);
         }
     }
 

@@ -44,7 +44,7 @@ public class SeeInconsistenciesController implements Initializable{
         if(tableLineErrors.getColumns().isEmpty()) {
 
             TableColumn<String[], String> coluna1 = new TableColumn<>("Linha");
-            TableColumn<String[], String> coluna2 = new TableColumn<>("Erro");
+            TableColumn<String[], String> coluna2 = new TableColumn<>("Risco");
 
             coluna1.setCellValueFactory(cellData -> {
                 String[] rowData = cellData.getValue();
@@ -54,6 +54,9 @@ public class SeeInconsistenciesController implements Initializable{
                 String[] rowData = cellData.getValue();
                 return new SimpleStringProperty(rowData[1]);
             });
+            
+            coluna1.setPrefWidth(50);
+            coluna1.setMaxWidth(500);
 
             tableLineErrors.getColumns().addAll(coluna1, coluna2);
         }

@@ -63,7 +63,7 @@ public class RelatorioBoxPlot {
         }       
     }
 
-    public String getterceiroQuartil() {
+    public String getTerceiroQuartil() {
         return terceiroQuartil;
     }
 
@@ -71,7 +71,7 @@ public class RelatorioBoxPlot {
         return segundoQuartil;
     }
 
-    public String getprimeiroQuartil() {
+    public String getPrimeiroQuartil() {
         return primeiroQuartil;
     }
 

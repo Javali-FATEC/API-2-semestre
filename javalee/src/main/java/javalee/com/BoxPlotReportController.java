@@ -42,7 +42,6 @@ public class BoxPlotReportController implements Initializable{
     ObservableList<String> rowsTypeMeasurement = FXCollections.observableArrayList(
     "Chuva",
     "Direção do Vento",
-    "Direção do Vento",
     "Insolação",
     "Nebulosidade",
     "Ponto de Orvalho Instantâneo",
@@ -57,9 +56,8 @@ public class BoxPlotReportController implements Initializable{
     "Temperatura Máxima",
     "Temperatura Mínima",
     "Umidade",
-    "Umidade Relativa Máxima",
-    "Umidade Relativa Mínima",
-    "Velocidade do Vento",
+    "Umidade Máxima",
+    "Umidade Mínima",
     "Velocidade do Vento"
 );
 
@@ -91,14 +89,15 @@ public class BoxPlotReportController implements Initializable{
     
     public void handleTypeMeasurementChange(){
         RelatorioBoxPlot relatorioBoxPlot = new RelatorioBoxPlot(estacao, typeMeasurement.getValue(), this.data);
-        if (relatorioBoxPlot.getprimeiroQuartil() == null) {
+        if (relatorioBoxPlot.getPrimeiroQuartil() == null && relatorioBoxPlot.getSegundoQuartil() == null && relatorioBoxPlot.getTerceiroQuartil() == null) {
             messageNull.setText("Sem dados disponíveis");
+            paneLane.setVisible(false);
         } else {
             messageNull.setText("");
             paneLane.setVisible(true);
-            quartil1.setText(relatorioBoxPlot.getprimeiroQuartil());
+            quartil1.setText(relatorioBoxPlot.getPrimeiroQuartil());
             quartil2.setText(relatorioBoxPlot.getSegundoQuartil());
-            quartil3.setText(relatorioBoxPlot.getterceiroQuartil());
+            quartil3.setText(relatorioBoxPlot.getTerceiroQuartil());
             limiteSuperior.setText(String.valueOf(relatorioBoxPlot.getLimiteSuperior()));
             limiteInferior.setText(String.valueOf(relatorioBoxPlot.getLimiteInferior()));
         }

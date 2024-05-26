@@ -50,6 +50,18 @@ public class App extends Application {
         stage.show();
     }
 
+    static void openWindowReportBoxPlot(String boxPlotReport, String dataFile, String dataFormatada) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(boxPlotReport + ".fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        BoxPlotReportController controller = fxmlLoader.getController();
+        controller.setBoxPlotReport(dataFile, dataFormatada);
+
+        stage.setTitle("Relatório BoxPlot");
+        stage.show();
+    }
+
     static void openPreviewData(String opernPreviewDataInterface, DataFile dataFile) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
@@ -105,6 +117,22 @@ public class App extends Application {
         stage.show();
     }
 
+    static void openBoxPlotReport() throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("boxPlotScreen");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Gerar relatório BoxPlot");
+        stage.show();
+    }
+
+    static void openBoxPlotReportData() throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("boxPlotReport");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Dados do relatório BoxPlot");
+        stage.show();
+    }
+
     static void openStatusReportByDate() throws IOException {
         Stage stage = new Stage();
         Parent root = loadFXML("statusReportByDate");
@@ -133,6 +161,16 @@ public class App extends Application {
         controller.setData(mediasResults);
         stage.setTitle("Dados Situacionais cidade "+cityName);
         stage.show();
+    }
+
+    static void openDefinitionRiskValues() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("definitionRiskValues.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        DefinitionRiskValuesController controller = fxmlLoader.getController();
+        stage.setTitle("Definir valores de risco");
+        stage.show();
+        
     }
 
     public static void main(String[] args) {

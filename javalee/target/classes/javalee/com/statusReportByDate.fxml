@@ -3,30 +3,37 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.StatusReport2Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0" prefWidth="381.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.StatusReport2Controller">
    <children>
-      <DatePicker fx:id="datePickerInicial" layoutX="22.0" layoutY="115.0" promptText="Data Inicial" />
-      <DatePicker fx:id="datePickerFinal" layoutX="224.0" layoutY="115.0" promptText="Data Final" />
-      <Text layoutX="22.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Inicial" />
-      <Text layoutX="224.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Final" />
-      <Text layoutX="20.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade" />
-      <ComboBox fx:id="cBoxCidade" layoutX="20.0" layoutY="196.0" onAction="#initialize" prefHeight="26.0" prefWidth="382.0" />
-      <Button fx:id="btnGerarRelatorio" layoutX="149.0" layoutY="245.0" mnemonicParsing="false" onAction="#onBtnGerarRelorio" prefHeight="34.0" prefWidth="138.0" text="Gerar relatório">
+      <DatePicker fx:id="datePickerInicial" layoutX="22.0" layoutY="115.0" prefHeight="26.0" prefWidth="155.0" promptText="Data Inicial" />
+      <DatePicker fx:id="datePickerFinal" layoutX="196.0" layoutY="115.0" prefHeight="26.0" prefWidth="155.0" promptText="Data Final" />
+      <Text fill="WHITE" layoutX="22.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Inicial">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="196.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Final">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="22.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Text>
+      <ComboBox fx:id="cBoxCidade" layoutX="24.0" layoutY="196.0" onAction="#initialize" prefHeight="26.0" prefWidth="330.0" style="-fx-background-color: WHITE; -fx-border-color: #C1C1C1;" />
+      <Button fx:id="btnGerarRelatorio" layoutX="121.0" layoutY="255.0" mnemonicParsing="false" onAction="#onBtnGerarRelorio" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: WHITE; -fx-border-color: #C1C1C1;" text="Gerar relatório">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Separator layoutY="59.0" prefHeight="0.0" prefWidth="436.0" />
-      <Text layoutX="24.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatórios de valores médios por data" wrappingWidth="374.0">
+      <Separator layoutX="24.0" layoutY="53.0" prefHeight="0.0" prefWidth="314.0" />
+      <Text fill="WHITE" layoutX="24.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatórios de valores médios por data" wrappingWidth="374.0">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <RadioButton layoutX="390.0" layoutY="26.0" mnemonicParsing="false" textFill="#d71212" />
    </children>
 </AnchorPane>

@@ -1,9 +1,11 @@
 package javalee.com;
+
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
 import javalee.com.bd_connection.DbConnection;
+import javalee.com.services.utilInterno;
 import javafx.event.ActionEvent;
 import java.util.HashMap;
 
@@ -29,54 +32,50 @@ public class StatusReportController {
 
     private String citySelected;
 
-    private List<String> stations_ids = new ArrayList<>();;
+    private List<String> stations_ids = new ArrayList<>();
 
     private HashMap<String, String> averageResults = new HashMap<String, String>();
 
     @FXML
     private void initialize() throws SQLException {
-        changeAlert(status, "");
-        String sql = "SELECT * FROM db_javalee.cidade";
+        String sql = "SELECT * FROM cidade";
         ResultSet cityQueryResult = helpDB(sql);
         if (cityQueryResult == null) {
-            changeAlert(true, "Não foi possível carregar as cidades");
-            return;
-        }
+            utilInterno.alertError("Não foi possível carregar as cidades"
+            , "Erro");
+                        }
         while (cityQueryResult.next()) {
             String cityName = cityQueryResult.getString("nome_cidade");
             cityList.add(cityName);
         }
         cityChoiceBox.setItems(cityList);
-        
+
     }
 
     @FXML
     private void reportGenerate(ActionEvent event) throws SQLException, IOException {
-        changeAlert(false, "");
         citySelected = cityChoiceBox.getValue();
         if (citySelected == null) {
-            changeAlert(true, "Selecione uma cidade");
-            return;
+            utilInterno.alertError("Selecione uma cidade", "Erro");
+             return;
         }
         prepareForNewResults();
         generateMediaDateReport();
         if (averageResults.isEmpty()) {
-            changeAlert(true, "Não existem Média dessa cidade");
-            return;
+            utilInterno.alertError("Não existem Média dessa cidade", "Dado inexistente");
         }
         App.openStatusReportResult(averageResults, citySelected);
         return;
-                
+
     };
 
-    private void generateMediaDateReport() throws SQLException{
+    private void generateMediaDateReport() throws SQLException {
         getWeatherStationsIds();
         getAverageResultsFromIdList();
     }
 
     private void getWeatherStationsIds() throws SQLException {
-        changeAlert(false, "");
-        String sql = "SELECT e.id_estacao FROM db_javalee.cidade c JOIN db_javalee.estacao e ON c.id_cidade = e.id_cidade WHERE c.nome_cidade = '" + citySelected + "'";
+        String sql = "SELECT e.id_estacao FROM cidade c JOIN estacao e ON c.id_cidade = e.id_cidade WHERE c.nome_cidade = '" + citySelected + "'";
         ResultSet stationsQueryResult = helpDB(sql);
         if (!stationsQueryResult.next()) {
             return;
@@ -88,19 +87,40 @@ public class StatusReportController {
         }
     }
 
-    private void getAverageResultsFromIdList() throws SQLException{
-        if (stations_ids.size() == 0){
+    private void getAverageResultsFromIdList() throws SQLException {
+        if (stations_ids.size() == 0) {
             return;
         }
         String ids = stations_ids.toString().replace("[", "(").replace("]", ")");
-        String sql = "SELECT m.nome, r.id_metrica, AVG(valor) AS media FROM db_javalee.registro r JOIN db_javalee.metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN" + ids + " GROUP BY r.id_metrica, m.nome";
+        String maxDateHour = searchLastDate(ids);
+        String sql = "SELECT" +
+            " m.nome, um.nome AS UNM, AVG(valor) AS media" +
+        " FROM" +
+            " registro r" +
+        " JOIN" +
+            " metrica m ON r.id_metrica = m.id_metrica" +
+        " JOIN" +
+            " unidade_medida um ON m.id_unidade_medida = um.id_unidade_medida" +
+        " WHERE" + 
+            " id_estacao IN " + ids + 
+        " AND" +
+        " TO_CHAR(r.data_hora, 'YYYY-MM-DD HH24:MI:SS') = '" + maxDateHour + 
+        "' GROUP BY" +
+        " m.nome, um.nome;";
+    
         ResultSet resultQueryAverageResults = helpDB(sql);
-        if (resultQueryAverageResults == null) {return;}
-        while(resultQueryAverageResults.next()){
+        if (resultQueryAverageResults == null) {
+            return;
+        }
+        while (resultQueryAverageResults.next()) {
             String metrica_nome = resultQueryAverageResults.getString("nome");
-            String average = resultQueryAverageResults.getString("media");
-               
-            averageResults.put(metrica_nome, average);
+            String averageString = resultQueryAverageResults.getString("media");
+            double averageDouble = Double.parseDouble(averageString);
+            String formattedAverage = String.format(Locale.US, "%.2f", averageDouble);
+            String unidade_medida = resultQueryAverageResults.getString("UNM");
+
+            String average_un = formattedAverage + "/" + unidade_medida;
+            averageResults.put(metrica_nome, average_un);
         }
     }
 
@@ -116,8 +136,20 @@ public class StatusReportController {
         alerts.setVisible(status);
     }
 
+
     private void prepareForNewResults() {
         averageResults.clear();
         stations_ids.clear();
+    }
+
+    private String searchLastDate(String ids) throws SQLException {
+        String sql =  "SELECT MAX(r.data_hora) FROM registro r JOIN metrica m ON r.id_metrica = m.id_metrica WHERE id_estacao IN" + ids + "";
+        ResultSet resultQueryAverageResults = helpDB(sql);
+        if (resultQueryAverageResults.next()) {
+            String maxDateHour = resultQueryAverageResults.getString("max");
+            return maxDateHour;
+        }
+        return "";
+
     }
 };

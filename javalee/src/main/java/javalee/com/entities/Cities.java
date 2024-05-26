@@ -1,6 +1,7 @@
 package javalee.com.entities;
 
 import java.sql.ResultSet;
+import java.util.LinkedList;
 import java.util.List;
 
 import javalee.com.bd_connection.DbConnection;
@@ -8,9 +9,9 @@ import javalee.com.bd_connection.DbConnection;
 public class Cities {
     private List<City> listCity;
 
-    public City searchCity(String sigla){
+    public City searchCity(String sigla) {
         DbConnection db = new DbConnection();
-        ResultSet resultStation = db.executeWithReturn("SELECT * FROM db_javalee.cidade WHERE sigla_cidade = '" + sigla + "'");
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM cidade WHERE sigla_cidade = '" + sigla + "'");
         City city = null;
 
         try {
@@ -18,20 +19,21 @@ public class Cities {
                 int idCidade = resultStation.getInt("id_cidade");
                 String nomeCidade = resultStation.getString("nome_cidade");
 
-                city = new City(sigla,nomeCidade,idCidade); 
+                city = new City(sigla, nomeCidade, idCidade);
             }
-            
-        } catch (Exception e) {}
+
+        } catch (Exception e) {
+        }
         db.Desconnect();
-        
+
         return city;
     }
 
-    public boolean isExist(String sigla){
+    public boolean isExist(String sigla) {
         return searchCity(sigla) != null;
     }
 
-    public City createCity(String sigla,String nome){
+    public City createCity(String sigla, String nome) {
         City newCity = new City(sigla, nome);
         DbConnection db = new DbConnection();
         db.executeNotReturn(newCity.toInsertSql());
@@ -44,5 +46,23 @@ public class Cities {
         return listCity;
     }
 
+    public List<City> getAllCity() {
+        DbConnection db = new DbConnection();
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM cidade");
+        List<City> result = new LinkedList<>();
 
+        try {
+            while (resultStation.next()) {
+                int idCidade = resultStation.getInt("id_cidade");
+                String sigla = resultStation.getString("sigla_cidade");
+                String nomeCidade = resultStation.getString("nome_cidade");
+
+                result.add(new City(sigla, nomeCidade, idCidade));
+            }
+        } catch (Exception e) {
+        }
+        db.Desconnect();
+
+        return result;
+    }
 }

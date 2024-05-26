@@ -11,11 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javalee.com.entities.RelatorioMedia;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javalee.com.entities.RelatorioMedia;
-import javalee.com.entities.RelatoriosMedia;
 
 import java.net.URL;
 
@@ -54,8 +49,10 @@ public class ReportDataController implements Initializable {
             });
             coluna2.setCellValueFactory(cellData -> {
                 String[] rowData = cellData.getValue();
-                return new SimpleStringProperty(rowData[1]);
-            });
+                double valor = Double.parseDouble(rowData[1]) / 10.0;
+                String formattedValue = String.format("%.1f", valor);
+                return new SimpleStringProperty(formattedValue);
+          });
             coluna3.setCellValueFactory(cellData -> {
                 String[] rowData = cellData.getValue();
                 return new SimpleStringProperty(rowData[2]);

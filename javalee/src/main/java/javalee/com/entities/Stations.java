@@ -14,44 +14,66 @@ public class Stations {
         this.listStations = new LinkedList<Station>();
     }
 
-    public Station searchStation(String code, int idCity){
+    public Station searchStation(String code, int idCity) {
 
         DbConnection db = new DbConnection();
-        ResultSet resultStation = db.executeWithReturn("SELECT * FROM db_javalee.estacao WHERE codigo = '" + code + "'");
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao WHERE codigo = '" + code + "'");
         Station station = null;
 
         try {
             if (resultStation.next()) {
                 int idReturn = resultStation.getInt("id_estacao");
                 String codeReturn = resultStation.getString("codigo");
+
                 station = new Station(idReturn,codeReturn); 
             }else{
-                db.executeNotReturn("INSERT INTO db_javalee.estacao (id_cidade, codigo) VALUES ("+idCity+", '"+code+"');");
+                db.executeNotReturn("INSERT INTO estacao (id_cidade, codigo) VALUES ("+idCity+", '"+code+"');");
                 return searchStation(code, idCity);
             }
-            
+
         } catch (Exception e) {
-            
+
         }
         db.Desconnect();
-        
+
         return station;
     }
 
-    public void loadStation(){
+    public List<Station> buscarEstacoesCidade (String nomeCidade) {
+        List<Station> retorno = new LinkedList<Station>();
+        
+        DbConnection db = new DbConnection();
+        ResultSet resultStation = db.executeWithReturn("select * FROM estacao inner join cidade on cidade.id_cidade = estacao.id_cidade where cidade.nome_cidade = '"+nomeCidade+"'");
+
+        try {
+            while (resultStation.next()) {
+                int idEstacao = resultStation.getInt("id_estacao");
+                String codigo = resultStation.getString("codigo");
+
+                retorno.add(new Station(idEstacao, codigo));
+            }
+        } catch (Exception e) {
+        }
+        db.Desconnect();
+
+        return retorno;
+    }
+
+    public void loadStation() {
 
         DbConnection db = new DbConnection();
-        ResultSet resultStation = db.executeWithReturn("SELECT * FROM db_javalee.estacao");
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao");
 
         try {
             while (resultStation.next()) {
                 int idReturn = resultStation.getInt("id_estacao");
                 String codeReturn = resultStation.getString("codigo");
-                this.listStations.add(new Station(idReturn,codeReturn)); 
-                
+                this.listStations.add(new Station(idReturn, codeReturn));
+
             }
-            
-        } catch (Exception e) {}
+
+        } catch (Exception e) {
+        }
         db.Desconnect();
     }
 }

@@ -7,7 +7,6 @@ import javalee.com.bd_connection.DbConnection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
 public class RelatoriosMedia {
 
     public LinkedList<RelatorioMedia> listRelatorios;
@@ -21,7 +20,7 @@ public class RelatoriosMedia {
 
         DbConnection db = new DbConnection();
 
-        ResultSet resultMetric = db.executeWithReturn("SELECT * FROM db_javalee.cidade WHERE nome_cidade = '" + nome_cidade + "'");
+        ResultSet resultMetric = db.executeWithReturn("SELECT * FROM cidade WHERE nome_cidade = '" + nome_cidade + "'");
 
         try {
             if (resultMetric.next()) {
@@ -37,18 +36,17 @@ public class RelatoriosMedia {
         LocalDate datab = LocalDate.parse(data_final, formatoAtual);
         String data_final_formatada = datab.format(novoFormato);
 
-
         var sql = "SELECT" +  
         " DATE_TRUNC('hour', r.data_hora) AS hora_arredondada,"+
         " AVG(r.valor) AS valor,"+
         " m.nome as dado," + 
         " um.nome as unidade" +
         " FROM" +
-        " db_javalee.registro r"+
-        " left join db_javalee.estacao e  on r.id_estacao = e.id_estacao"+
-        " left join db_javalee.cidade c  on c.id_cidade = e.id_cidade" +
-        " left join db_javalee.metrica m  on m.id_metrica = m.id_metrica"+
-        " left join db_javalee.unidade_medida um  on m.id_unidade_medida  = um.id_unidade_medida" +
+        " registro r"+
+        " left join estacao e  on r.id_estacao = e.id_estacao"+
+        " left join cidade c  on c.id_cidade = e.id_cidade" +
+        " left join metrica m  on m.id_metrica = m.id_metrica"+
+        " left join unidade_medida um  on m.id_unidade_medida  = um.id_unidade_medida" +
         " WHERE" +
             " c.id_cidade=" + this.cidade_id +
             " AND r.data_hora BETWEEN '" + data_inicio_formatada + "' AND '" + data_final_formatada+"'" +
@@ -58,9 +56,6 @@ public class RelatoriosMedia {
             " um.nome"+
         " ORDER BY "+
             " hora_arredondada;";
-
-        // System.out.println(sql);
-
 
         ResultSet resultRelatorio = db.executeWithReturn(sql);
 
@@ -86,7 +81,7 @@ public class RelatoriosMedia {
 
         DbConnection db = new DbConnection();
 
-        ResultSet resultCidade = db.executeWithReturn("SELECT db_javalee.cidade.nome_cidade FROM db_javalee.cidade ");
+        ResultSet resultCidade = db.executeWithReturn("SELECT cidade.nome_cidade FROM cidade ");
 
         try {
             while (resultCidade.next()) {

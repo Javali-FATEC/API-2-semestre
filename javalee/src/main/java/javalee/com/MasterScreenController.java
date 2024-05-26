@@ -26,11 +26,30 @@ public class MasterScreenController {
   }
 
   @FXML
+  private void openScreenBoxPlotReport(ActionEvent event) {
+    try {
+      App.openBoxPlotReport();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
   private void openStatusReport2(ActionEvent event) {
     try {
       App.openStatusReportByDate();
     } catch (IOException e) {
       e.printStackTrace();
+    }
+  }
+
+  @FXML
+  void openDefinitionRiskValues(ActionEvent event) {
+    try {
+      App.openDefinitionRiskValues();
+    } catch (Exception e) {
+      e.printStackTrace();
+
     }
   }
 

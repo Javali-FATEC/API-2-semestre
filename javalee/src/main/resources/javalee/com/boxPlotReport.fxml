@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="520.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.BoxPlotReportController">
+   <children>
+      <Label fx:id="messageNull" layoutX="55.0" layoutY="144.0" prefHeight="20.0" prefWidth="219.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <ChoiceBox fx:id="typeMeasurement" layoutX="17.0" layoutY="51.0" onAction="#handleTypeMeasurementChange" prefHeight="27.0" prefWidth="487.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" />
+      <Pane fx:id="paneLane" layoutX="15.0" layoutY="89.0" prefHeight="287.0" prefWidth="487.0">
+         <children>
+            <Label layoutY="10.0" text="Quartil 1:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="quartil1" layoutX="77.0" layoutY="13.0" prefHeight="20.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="300.0" fill="WHITE" layoutX="1.0" layoutY="38.0" stroke="WHITE" strokeWidth="2.0" />
+            <Label layoutY="46.0" text="Quartil 2:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="quartil2" layoutX="77.0" layoutY="49.0" prefHeight="20.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="300.0" fill="WHITE" layoutX="1.0" layoutY="74.0" stroke="WHITE" strokeWidth="2.0" />
+            <Label layoutY="89.0" text="Quartil 3:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="quartil3" layoutX="77.0" layoutY="92.0" prefHeight="20.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="300.0" fill="WHITE" layoutX="1.0" layoutY="117.0" stroke="WHITE" strokeWidth="2.0" />
+            <Label layoutY="134.0" text="Limite Superior:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="limiteSuperior" layoutX="129.0" layoutY="137.0" prefHeight="20.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="300.0" fill="WHITE" layoutX="1.0" layoutY="162.0" stroke="WHITE" strokeWidth="2.0" />
+            <Label layoutY="176.0" text="Limite Inferior:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="limiteInferior" layoutX="120.0" layoutY="179.0" prefHeight="20.0" prefWidth="103.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="300.0" fill="WHITE" layoutX="1.0" layoutY="202.0" stroke="WHITE" strokeWidth="2.0" />
+            <Label fx:id="valoresDiscrepantes" layoutX="-1.0" layoutY="211.0" text="Valores discrepantes:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <Label layoutX="24.0" layoutY="31.0" text="Selecione um tipo de medição:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

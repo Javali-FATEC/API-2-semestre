@@ -11,7 +11,7 @@ public class DbConnection {
 
     private Connection conn;
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/db_javali?currentSchema=db_javalee";
+    private static final String URL = "jdbc:postgresql://localhost:5432/db_javalee";
     private static final String USUARIO = "postgres";
     private static final String SENHA = "admin";
 

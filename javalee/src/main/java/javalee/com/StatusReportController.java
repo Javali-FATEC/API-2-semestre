@@ -56,7 +56,7 @@ public class StatusReportController {
         citySelected = cityChoiceBox.getValue();
         if (citySelected == null) {
             utilInterno.alertError("Selecione uma cidade", "Erro");
-     
+             return;
         }
         prepareForNewResults();
         generateMediaDateReport();

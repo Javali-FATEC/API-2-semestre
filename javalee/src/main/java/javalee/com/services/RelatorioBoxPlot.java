@@ -46,9 +46,9 @@ public class RelatorioBoxPlot {
                 " unidade_medida.nome");
             
             if (quartis.next()) {
-                terceiroQuartil = quartis.getString("q1");
+                terceiroQuartil = quartis.getString("q3");
                 segundoQuartil = quartis.getString("q2");
-                primeiroQuartil = quartis.getString("q3");
+                primeiroQuartil = quartis.getString("q1");
 
                 String minimo = terceiroQuartil.replaceAll("[^\\d\\.]", "");
                 String maximo = primeiroQuartil.replaceAll("[^\\d\\.]", "");
@@ -90,7 +90,7 @@ public class RelatorioBoxPlot {
 
     public String getValoresOutliers(){
         String retorno = "Sem outliers nesse relatório.";
-        if(valoresOutliers.isEmpty())
+        if(valoresOutliers.size() != 0)
         {
             String delimitador = ",";
             retorno = String.join(delimitador, valoresOutliers);
@@ -111,7 +111,7 @@ public class RelatorioBoxPlot {
         try{
             ResultSet outliers = db.executeWithReturn(
                 "SELECT " + 
-                "valor" +
+                "registro.valor " +
                 "FROM " +
                 " registro " +
                 "INNER JOIN " +
@@ -122,11 +122,12 @@ public class RelatorioBoxPlot {
                 " estacao ON estacao.id_estacao = registro.id_estacao " +
                 "WHERE " +
                 " estacao.codigo = '"+ estacao +"' AND metrica.nome = '"+ dataType +"' AND DATE(registro.data_hora) = '"+dataParaBD+"'" +
-                "(valor > " + this.limiteSuperior + " OR valor < " + this.limiteInferior + ")" +
-                "GROUP BY " +
-                " unidade_medida.nome");
+                " AND (registro.valor > " + this.limiteSuperior + " OR registro.valor < " + this.limiteInferior + ") " +
+                " GROUP BY " +
+                " unidade_medida.nome " + ", registro.valor" );
             
             while (outliers.next()) {
+                System.out.println(outliers.getString("valor"));
                 this.valoresOutliers.add(outliers.getString("valor"));
             }
         } catch (SQLException e){

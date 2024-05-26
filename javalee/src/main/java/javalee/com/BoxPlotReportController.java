@@ -82,7 +82,8 @@ public class BoxPlotReportController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-         typeMeasurement.setItems(rowsTypeMeasurement);
+        paneLane.setVisible(false);
+        typeMeasurement.setItems(rowsTypeMeasurement);
     }
 
     public void setBoxPlotReport(String estacao, String dataFormatada) {

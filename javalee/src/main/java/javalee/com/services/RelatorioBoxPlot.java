@@ -3,6 +3,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.LinkedList;
 
 import javalee.com.bd_connection.DbConnection;
 
@@ -12,6 +14,7 @@ public class RelatorioBoxPlot {
     private String terceiroQuartil;
     private Float limiteSuperior;
     private Float limiteInferior;
+    private List<String> valoresOutliers; 
 
     
     public RelatorioBoxPlot(String estacao, String dataType, String dataRecebida){
@@ -55,6 +58,8 @@ public class RelatorioBoxPlot {
 
                 limiteSuperior = terceiroQuartilFloat + 1.5f * (terceiroQuartilFloat - primeiroQuartilFloat);
                 limiteInferior = primeiroQuartilFloat - 1.5f * (terceiroQuartilFloat - primeiroQuartilFloat);
+
+                obterValoresOutliers(estacao, dataType, dataRecebida);
             }            
         } catch (SQLException e){
             e.printStackTrace();
@@ -83,4 +88,50 @@ public class RelatorioBoxPlot {
          return limiteInferior;
     }
 
+    public String getValoresOutliers(){
+        String retorno = "Sem outliers nesse relatório.";
+        if(valoresOutliers.isEmpty())
+        {
+            String delimitador = ",";
+            retorno = String.join(delimitador, valoresOutliers);
+        }
+
+        return retorno;
+    }
+
+    private void obterValoresOutliers(String estacao, String dataType, String dataRecebida){
+        DbConnection db = new DbConnection();
+        this.valoresOutliers = new LinkedList<String>();
+
+        DateTimeFormatter formatoAtual = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter novoFormato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dataFormatada = LocalDate.parse(dataRecebida, formatoAtual);
+        String dataParaBD = dataFormatada.format(novoFormato);
+        
+        try{
+            ResultSet outliers = db.executeWithReturn(
+                "SELECT " + 
+                "valor" +
+                "FROM " +
+                " registro " +
+                "INNER JOIN " +
+                " metrica ON metrica.id_metrica = registro.id_metrica " +
+                "INNER JOIN " +
+                " unidade_medida ON unidade_medida.id_unidade_medida = metrica.id_unidade_medida " +
+                "INNER JOIN " +
+                " estacao ON estacao.id_estacao = registro.id_estacao " +
+                "WHERE " +
+                " estacao.codigo = '"+ estacao +"' AND metrica.nome = '"+ dataType +"' AND DATE(registro.data_hora) = '"+dataParaBD+"'" +
+                "(valor > " + this.limiteSuperior + " OR valor < " + this.limiteInferior + ")" +
+                "GROUP BY " +
+                " unidade_medida.nome");
+            
+            while (outliers.next()) {
+                this.valoresOutliers.add(outliers.getString("valor"));
+            }
+        } catch (SQLException e){
+        } finally {
+            db.Desconnect();
+        }
+    }
 }

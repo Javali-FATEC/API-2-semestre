@@ -22,10 +22,5 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fx:id="alerts" fill="#eb1919" layoutX="154.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alertas" wrappingWidth="42.79997253417969">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
    </children>
 </Pane>

@@ -39,6 +39,26 @@ public class Stations {
         return station;
     }
 
+    public List<Station> buscarEstacoesCidade (String nomeCidade) {
+        List<Station> retorno = new LinkedList<Station>();
+        
+        DbConnection db = new DbConnection();
+        ResultSet resultStation = db.executeWithReturn("select * FROM estacao inner join cidade on cidade.id_cidade = estacao.id_cidade where cidade.nome_cidade = '"+nomeCidade+"'");
+
+        try {
+            while (resultStation.next()) {
+                int idEstacao = resultStation.getInt("id_estacao");
+                String codigo = resultStation.getString("codigo");
+
+                retorno.add(new Station(idEstacao, codigo));
+            }
+        } catch (Exception e) {
+        }
+        db.Desconnect();
+
+        return retorno;
+    }
+
     public void loadStation() {
 
         DbConnection db = new DbConnection();

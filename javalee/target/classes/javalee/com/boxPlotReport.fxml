@@ -7,14 +7,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0" prefWidth="330.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.BoxPlotReportController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="520.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.BoxPlotReportController">
    <children>
       <Label fx:id="messageNull" layoutX="55.0" layoutY="144.0" prefHeight="20.0" prefWidth="219.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <ChoiceBox fx:id="typeMeasurement" layoutX="14.0" layoutY="49.0" onAction="#handleTypeMeasurementChange" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" />
-      <Pane fx:id="paneLane" layoutX="15.0" layoutY="89.0" prefHeight="219.0" prefWidth="302.0" visible="false">
+      <ChoiceBox fx:id="typeMeasurement" layoutX="17.0" layoutY="51.0" onAction="#handleTypeMeasurementChange" prefHeight="27.0" prefWidth="487.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" />
+      <Pane fx:id="paneLane" layoutX="15.0" layoutY="89.0" prefHeight="287.0" prefWidth="487.0">
          <children>
             <Label layoutY="10.0" text="Quartil 1:" textFill="WHITE">
                <font>
@@ -68,6 +68,12 @@
             <Label fx:id="limiteInferior" layoutX="120.0" layoutY="179.0" prefHeight="20.0" prefWidth="103.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="300.0" fill="WHITE" layoutX="1.0" layoutY="202.0" stroke="WHITE" strokeWidth="2.0" />
+            <Label fx:id="valoresDiscrepantes" layoutX="-1.0" layoutY="211.0" text="Valores discrepantes:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Label>
          </children></Pane>

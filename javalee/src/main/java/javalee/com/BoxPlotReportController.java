@@ -37,6 +37,9 @@ public class BoxPlotReportController implements Initializable{
     private Label limiteSuperior;
 
     @FXML
+    private Label valoresDiscrepantes;
+
+    @FXML
     private Label limiteInferior;
 
     ObservableList<String> rowsTypeMeasurement = FXCollections.observableArrayList(
@@ -100,6 +103,7 @@ public class BoxPlotReportController implements Initializable{
             quartil3.setText(relatorioBoxPlot.getTerceiroQuartil());
             limiteSuperior.setText(String.valueOf(relatorioBoxPlot.getLimiteSuperior()));
             limiteInferior.setText(String.valueOf(relatorioBoxPlot.getLimiteInferior()));
+            valoresDiscrepantes.setText(relatorioBoxPlot.getValoresOutliers());
         }
     }
 }

@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javalee.com.configs.*;
+
+import javalee.com.configs.ConfigBdReader;
 
 public class DbConnection {
 

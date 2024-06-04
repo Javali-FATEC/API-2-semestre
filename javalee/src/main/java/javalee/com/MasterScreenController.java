@@ -44,9 +44,28 @@ public class MasterScreenController {
   }
 
   @FXML
-  void openDefinitionRiskValues(ActionEvent event) {
+  public void openDefinitionRiskValues(ActionEvent event) {
     try {
       App.openDefinitionRiskValues();
+    } catch (Exception e) {
+      e.printStackTrace();
+
+    }
+  }
+
+  @FXML
+  void openManageStations(ActionEvent event){
+    try{
+      App.openManageStations();
+    } catch (Exception e){
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  void openManageCities(ActionEvent event) {
+    try {
+      App.openManageCities();
     } catch (Exception e) {
       e.printStackTrace();
 

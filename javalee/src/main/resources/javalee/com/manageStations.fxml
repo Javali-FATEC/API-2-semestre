@@ -20,14 +20,14 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="typeMeasurementStation" layoutX="24.0" layoutY="98.0" prefHeight="25.0" prefWidth="262.0" />
-      <Label layoutX="24.0" layoutY="152.0" text="Identificador">
+      <ComboBox fx:id="typeMeasurementStation"  onAction="#selectStation" layoutX="24.0" layoutY="98.0" prefHeight="25.0" prefWidth="262.0" />
+      <Label layoutX="24.0" layoutY="152.0" text="Novo Código">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="64.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Salvar" />
+      <Button onAction="#updateStationCode" layoutX="64.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Atualizar" />
       <Button layoutX="191.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Excluir" />
-      <TextField layoutX="24.0" layoutY="172.0" prefHeight="25.0" prefWidth="262.0" />
+      <TextField fx:id="identificador" layoutX="24.0" layoutY="172.0" prefHeight="25.0" prefWidth="262.0" />
    </children>
 </AnchorPane>

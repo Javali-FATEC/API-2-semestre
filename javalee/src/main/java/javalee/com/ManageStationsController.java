@@ -1,20 +1,16 @@
 package javalee.com;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.StackPane;
 import javalee.com.bd_connection.DbConnection;
 import javalee.com.entities.Cities;
 import javalee.com.entities.City;
@@ -70,6 +66,14 @@ public class ManageStationsController {
 
     public void updateStationCode(){
         DbConnection db = new DbConnection();
+        Stations stations = new Stations();
+        List<Station> listaDeEstacoes = stations.buscarEstacoesCidade(typeMeasurementCity.getValue());
+        List<String> nomeEstacoes = new LinkedList<>();
+
+        for (Station station : listaDeEstacoes){
+            nomeEstacoes.add(station.getCodigo());
+        }
+
         String cidade = typeMeasurementCity.getValue();
         String estacao = typeMeasurementStation.getValue();
         String changeToStrIdentificador = identificador.getText();
@@ -77,31 +81,38 @@ public class ManageStationsController {
         ResultSet resultIdCidade = db.executeWithReturn("SELECT id_cidade FROM cidade WHERE nome_cidade = '"+ cidade +"'");
 
         try {
-            if (estacao.equals(changeToStrIdentificador)){
+            boolean codigoJaExiste = false;
+            
+            for (Station estacaoLoop : listaDeEstacoes) {
+                if (estacaoLoop.getCodigo().equals(changeToStrIdentificador)) {
+                    codigoJaExiste = true;
+                    break;
+                }
+            }
+            
+            if (codigoJaExiste) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Falha ao Atualizar!");
                 alert.setHeaderText(null);
                 alert.setContentText("Código já relacionado a " + cidade + ".");
                 alert.showAndWait();
-
-                
-            }
-
-            if (resultIdCidade.next()) {
-                if (cidade != null && estacao != null && !estacao.equals(changeToStrIdentificador)){
-                    int idCidade = resultIdCidade.getInt("id_cidade");
-    
-                    db.executeNotReturn("UPDATE estacao SET codigo = '"+ changeToStrIdentificador +"' WHERE id_cidade = '"+ idCidade +"' AND codigo = '"+ estacao +"'");       
-                
-                    Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Sucesso ao Atualizar!");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Codigo alterado com sucesso!");
-                    alert.showAndWait();
-
-                    identificador.setText("");
-                    typeMeasurementCity.setValue(null);
-                    typeMeasurementStation.setValue(null);
+            } else {
+                if (resultIdCidade.next()) {
+                    if (cidade != null && estacao != null) {
+                        int idCidade = resultIdCidade.getInt("id_cidade");
+            
+                        db.executeNotReturn("UPDATE estacao SET codigo = '" + changeToStrIdentificador + "' WHERE id_cidade = '" + idCidade + "' AND codigo = '" + estacao + "'");
+                    
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle("Sucesso ao Atualizar!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Código alterado com sucesso!");
+                        alert.showAndWait();
+            
+                        identificador.setText("");
+                        typeMeasurementCity.setValue(null);
+                        typeMeasurementStation.setValue(null);
+                    }
                 }
             }
         } catch (Exception e) {

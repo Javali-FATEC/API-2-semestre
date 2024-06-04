@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="22.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de dados:" wrappingWidth="182.4697265625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="22.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor:" wrappingWidth="182.4697265625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="22.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unidade" wrappingWidth="182.4697265625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="22.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data:" wrappingWidth="182.4697265625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="22.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora:" wrappingWidth="182.4697265625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="22.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade: " wrappingWidth="182.4697265625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="22.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estação:" wrappingWidth="182.4697265625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

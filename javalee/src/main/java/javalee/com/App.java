@@ -170,7 +170,14 @@ public class App extends Application {
         DefinitionRiskValuesController controller = fxmlLoader.getController();
         stage.setTitle("Definir valores de risco");
         stage.show();
-        
+    }
+
+    static void openRegisterData() throws IOException {
+        Stage stage = new Stage();
+        Parent root = loadFXML("registerData");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Cadastrar Registro");
+        stage.show();
     }
 
     public static void main(String[] args) {

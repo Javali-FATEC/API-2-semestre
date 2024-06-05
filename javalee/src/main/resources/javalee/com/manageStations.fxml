@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="289.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ManageStationsController">
+   <children>
+      <Label layoutX="22.0" layoutY="14.0" text="Selecione uma cidade:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="typeMeasurementCity" onAction="#selecionarEstacao" layoutX="22.0" layoutY="34.0" prefHeight="25.0" prefWidth="262.0" />
+      <Label layoutX="24.0" layoutY="78.0" text="Selecione uma estação:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="typeMeasurementStation"  onAction="#selectStation" layoutX="24.0" layoutY="98.0" prefHeight="25.0" prefWidth="262.0" />
+      <Label layoutX="24.0" layoutY="152.0" text="Novo Código">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button onAction="#updateStationCode" layoutX="64.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Atualizar" />
+      <Button layoutX="191.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Excluir" />
+      <TextField fx:id="identificador" layoutX="24.0" layoutY="172.0" prefHeight="25.0" prefWidth="262.0" />
+   </children>
+</AnchorPane>

@@ -50,7 +50,8 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openWindowReportBoxPlot(String boxPlotReport, String dataFile, String dataFormatada) throws IOException {
+    static void openWindowReportBoxPlot(String boxPlotReport, String dataFile, String dataFormatada)
+            throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(boxPlotReport + ".fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
@@ -153,31 +154,39 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openStatusReportResult(HashMap<String, String> mediasResults, String cityName) throws IOException{
+    static void openStatusReportResult(HashMap<String, String> mediasResults, String cityName) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("resultReport.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
         StatusReportResultController controller = fxmlLoader.getController();
         controller.setData(mediasResults);
-        stage.setTitle("Dados Situacionais cidade "+cityName);
+        stage.setTitle("Dados Situacionais cidade " + cityName);
         stage.show();
     }
 
-    static void openDefinitionRiskValues() throws IOException{
+    static void openDefinitionRiskValues() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("definitionRiskValues.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
         DefinitionRiskValuesController controller = fxmlLoader.getController();
         stage.setTitle("Definir valores de risco");
         stage.show();
-        
+
     }
 
-    static void openManageStations() throws IOException{
+    static void openManageStations() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("manageStations.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(fxmlLoader.load()));
         stage.setTitle("Gerenciar Estações");
+        stage.show();
+    }
+
+    static void openMeasureManager() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("measureManager.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.setTitle("Gerenciar Unidades");
         stage.show();
     }
 

@@ -4,12 +4,15 @@ import java.sql.ResultSet;
 import java.util.LinkedList;
 import java.util.List;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javalee.com.bd_connection.DbConnection;
-import javalee.com.services.DataMeasurement;
 
 public class Metrics {
 
-    private List<Metric> listMetrics;
+    private List<Metric> listMetrics; 
+
+    private ObservableList<String> typeMetrics;
 
     public Metrics() {
         this.listMetrics = new LinkedList<Metric>();
@@ -43,6 +46,14 @@ public class Metrics {
         }
 
         db.Desconnect();
+    }
+
+    public ObservableList<String> getMetrics() {
+        typeMetrics = FXCollections.observableArrayList();
+        for (Metric metric : this.listMetrics) {
+            typeMetrics.add(metric.getNome());
+        }
+        return typeMetrics;
     }
 
 }

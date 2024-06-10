@@ -137,7 +137,7 @@ public class App extends Application {
         Stage stage = new Stage();
         Parent root = loadFXML("statusReportByDate");
         stage.setScene(new Scene(root));
-        stage.setTitle("Relatório Situacional 2");
+        stage.setTitle("Relatório Valor Médio");
         stage.show();
     }
 

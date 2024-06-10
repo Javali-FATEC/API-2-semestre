@@ -60,8 +60,6 @@ public class DefinitionRiskValuesController {
         }
         cbDataType.setItems(metricList);
 
-        cbDataType.setItems(metricList);
-
         cbDataType.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (newValue != null) {

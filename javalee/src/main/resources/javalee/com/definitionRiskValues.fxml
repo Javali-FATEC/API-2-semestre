@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="303.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.DefinitionRiskValuesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="303.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+ fx:controller="javalee.com.DefinitionRiskValuesController">
    <children>
       <Label layoutX="35.0" layoutY="43.0" prefHeight="25.0" prefWidth="159.0" text="Tipo de Dado:" textFill="WHITE">
          <font>

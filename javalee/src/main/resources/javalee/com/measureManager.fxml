@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="327.0" style="-fx-background-color: #93b1cd;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.MeasureManagerController">
+   <children>
+      <Label layoutX="43.0" layoutY="30.0" prefHeight="20.0" prefWidth="84.0" text="Unidade:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbUnity" layoutX="43.0" layoutY="56.0" prefHeight="25.0" prefWidth="228.0" onAction = "#handleMetricUnitySelection" />
+      <Label layoutX="43.0" layoutY="124.0" prefHeight="20.0" prefWidth="84.0" text="Descrição:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDescription" layoutX="43.0" layoutY="151.0" prefHeight="25.0" prefWidth="228.0" />
+      <TableView fx:id="tblUnitMeasurements" layoutX="43.0" layoutY="196.0" prefHeight="201.0" prefWidth="228.0">
+        <columns>
+          <TableColumn fx:id="measures" prefWidth="227.0" text="Medições com essa Unidade" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnSave" layoutX="64.0" layoutY="413.0" mnemonicParsing="false" onAction="#editMeasure" prefHeight="25.0" prefWidth="174.0" text="Salvar" />
+   </children>
+</AnchorPane>

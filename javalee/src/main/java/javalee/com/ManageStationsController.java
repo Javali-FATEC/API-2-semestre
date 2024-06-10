@@ -41,7 +41,7 @@ public class ManageStationsController {
         for (City city : listaDeCidades){
             nomeCidades.add(city.getNome());
         }
-
+        
         rowsTypeMeasurementStation = FXCollections.observableArrayList(nomeCidades);
         typeMeasurementCity.setItems(rowsTypeMeasurementStation);
     }

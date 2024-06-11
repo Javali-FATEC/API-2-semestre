@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -18,7 +19,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="22.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unidade" wrappingWidth="182.4697265625">
+      <Text layoutX="22.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unidade:" wrappingWidth="182.4697265625">
          <font>
             <Font size="18.0" />
          </font>
@@ -33,17 +34,22 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="22.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade: " wrappingWidth="182.4697265625">
+      <Text layoutX="22.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade: " wrappingWidth="182.4697265625">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="22.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estação:" wrappingWidth="182.4697265625">
+      <Text layoutX="22.0" layoutY="542.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estação:" wrappingWidth="182.4697265625">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <DatePicker fx:id="datePickerInitial" layoutX="15.0" layoutY="314.0" />
-      <ComboBox fx:id="cbDataType" layoutX="22.0" layoutY="72.0" prefHeight="21.0" prefWidth="278.0" promptText="Temperatura" />
+      <DatePicker fx:id="datePickerInitial" layoutX="22.0" layoutY="314.0" prefHeight="32.0" prefWidth="279.0" />
+      <ComboBox fx:id="cbDataType" layoutX="22.0" layoutY="72.0" prefHeight="32.0" prefWidth="279.0" promptText="Temperatura" />
+      <TextField layoutX="22.0" layoutY="157.0" prefHeight="32.0" prefWidth="279.0" />
+      <ComboBox fx:id="unitData" layoutX="22.0" layoutY="235.0" prefHeight="32.0" prefWidth="279.0" promptText="Celsius (ºC)" />
+      <ComboBox fx:id="cbDataType11" layoutX="22.0" layoutY="394.0" prefHeight="32.0" prefWidth="279.0" promptText="0" />
+      <ComboBox fx:id="cbDataType111" layoutX="22.0" layoutY="474.0" prefHeight="32.0" prefWidth="279.0" promptText="0" />
+      <ComboBox fx:id="cbDataType1111" layoutX="22.0" layoutY="554.0" prefHeight="32.0" prefWidth="279.0" promptText="0" />
    </children>
 </AnchorPane>

@@ -70,6 +70,15 @@ public class MasterScreenController {
       e.printStackTrace();
 
     }
+  
+  @FXML
+  public void openMeasureManager(ActionEvent event) {
+    try{
+      App.openMeasureManager();
+
+    }catch(Exception e){
+      e.printStackTrace();
+    }
   }
 
 }

@@ -13,8 +13,7 @@ public class RelatoriosMedia {
     public int cidade_id;
     public LinkedList<String> lista_cidades;
 
-    public LinkedList<RelatorioMedia> searchCidadeRelatorioMetric(String nome_cidade, String data_inicio,
-            String data_final) {
+    public LinkedList<RelatorioMedia> searchCidadeRelatorioMetric(String nome_cidade, String data_inicio,String data_final) {
 
         this.listRelatorios = new LinkedList<RelatorioMedia>();
 

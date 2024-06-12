@@ -53,8 +53,10 @@ public class Stations {
                 retorno.add(new Station(idEstacao, codigo));
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
+            db.Desconnect();
         }
-        db.Desconnect();
 
         return retorno;
     }

@@ -14,25 +14,25 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cBoxCity" layoutX="35.0" layoutY="69.0" onAction="#initialize" prefHeight="25.0" prefWidth="226.0" promptText="Cidade" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" />
+      <ComboBox fx:id="cBoxCity" layoutX="35.0" layoutY="69.0" onAction="#selecionaCidade" prefHeight="25.0" prefWidth="226.0" promptText="Cidade" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" />
       <Label layoutX="35.0" layoutY="113.0" prefHeight="30.0" prefWidth="226.0" text="Nome:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtRiskMax" layoutX="35.0" layoutY="144.0" prefHeight="26.0" prefWidth="226.0" />
+      <TextField fx:id="txtnome" layoutX="35.0" layoutY="144.0" prefHeight="26.0" prefWidth="226.0" />
       <Label layoutX="35.0" layoutY="187.0" prefHeight="30.0" prefWidth="226.0" text="Sigla:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtRiskMin" layoutX="35.0" layoutY="218.0" prefHeight="26.0" prefWidth="226.0" />
-      <Button layoutX="35.0" layoutY="265.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="103.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" text="Salvar">
+      <TextField fx:id="txtsigla" layoutX="35.0" layoutY="218.0" prefHeight="26.0" prefWidth="226.0" />
+      <Button fx:id="btnSaveCities" layoutX="35.0" layoutY="265.0" mnemonicParsing="false" onAction="#btnSaveCities" prefHeight="41.0" prefWidth="103.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" text="Salvar">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="158.0" layoutY="265.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="103.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" text="Excluir">
+      <Button fx:id="btnDeleteCities" layoutX="158.0" layoutY="265.0" mnemonicParsing="false" onAction="#btnDeleteCities" prefHeight="41.0" prefWidth="103.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" text="Excluir">
          <font>
             <Font size="13.0" />
          </font>

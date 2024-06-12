@@ -54,7 +54,7 @@ public class MasterScreenController {
   }
 
   @FXML
-  void openManageStations(ActionEvent event){
+  public void openManageStations(ActionEvent event){
     try{
       App.openManageStations();
     } catch (Exception e){
@@ -63,7 +63,7 @@ public class MasterScreenController {
   }
 
   @FXML
-  void openManageCities(ActionEvent event) {
+  public void openManageCities(ActionEvent event) {
     try {
       App.openManageCities();
     } catch (Exception e) {

@@ -146,7 +146,7 @@ public class SeeInconsistenciesController implements Initializable{
             coluna1.setPrefWidth(35);
             coluna1.setMaxWidth(500);
 
-            coluna2.setPrefWidth(55);
+            coluna2.setPrefWidth(140);
             coluna2.setMaxWidth(500);
 
             coluna3.setPrefWidth(45);

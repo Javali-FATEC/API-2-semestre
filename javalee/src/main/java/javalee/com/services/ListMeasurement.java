@@ -1,6 +1,7 @@
 package javalee.com.services;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import javalee.com.patters.*;
+import javalee.com.entities.LeituraSuspeita;
 import javalee.com.entities.ValorRisco;
 import javalee.com.entities.ValoresRisco;
 import javalee.com.exceptions.ExceptionEmptyLine;
@@ -19,7 +21,7 @@ public class ListMeasurement {
     private String pattern;
     private String interator;
     private boolean isPatternAut;
-    private Map<String, String> lineErros;
+    private List<LeituraSuspeita> lineErros;
     private ValoresRisco calculaValoresRisco;
 
     public ListMeasurement(FileReader selecteFile, String pattern, boolean isPatternAut){
@@ -43,23 +45,14 @@ public class ListMeasurement {
         return listDataFile;
     }
 
-    public Map<String, String> getLineErros(){
-        Comparator<String> numericKeyComparator = new Comparator<String>() {
-            @Override
-            public int compare(String key1, String key2) {
-                return Integer.compare(Integer.parseInt(key1), Integer.parseInt(key2));
-            }
-        };
-
-        TreeMap<String, String> sortedMap = new TreeMap<>(numericKeyComparator);
-        sortedMap.putAll(this.lineErros);
-        return sortedMap;
+    public List<LeituraSuspeita> getLineErros(){
+        return this.lineErros;
     }
 
     private void extractList(BufferedReader reader){
         int lineNumber = 0;
         
-        this.lineErros = new HashMap<>();
+        this.lineErros = new LinkedList<LeituraSuspeita>();
         String line;
         try{
             while ((line = reader.readLine()) != null) {
@@ -95,7 +88,8 @@ public class ListMeasurement {
                         }
                     }
                 }catch( ExceptionEmptyLine e){
-                    lineErros.put(e.getLine(), e.getMessage());
+                    //LeituraSuspeita leituraSuspeita = new LeituraSuspeita(e.getMessage(), "Linha vazia", e.getLine());
+                    //lineErros.put(e.getLine(), e.getMessage());
                 }
         }
         reader.close();
@@ -115,7 +109,7 @@ public class ListMeasurement {
         //System.out.println("AAAAAAAAAAA");
         for(PatterA enumPatter : PatterA.values()){
             Patter patter = enumPatter.getPatter();
-            DataMeasurement dataMeasurement = new DataMeasurement(patter.getName(), patter.getUnidade(),parts[0],parts[1], checkedNull(parts,patter.getColuna()));
+            DataMeasurement dataMeasurement = new DataMeasurement(patter.getName(), patter.getUnidade(),parts[0],parts[1], checkedNull(parts,patter.getColuna()),lineNumber);
             if(patter.isTemp()){
                 dataMeasurement.convertTemp();
             }
@@ -139,11 +133,13 @@ public class ListMeasurement {
             }
 
             if( isMax ){
-                lineErros.put(String.valueOf(lineNumber), "Valor acima do máximo recomendado para a variavel climática " + dataMeasurement.getTypeMeasurament());
+                LeituraSuspeita leituraSuspeita = new LeituraSuspeita( String.valueOf(lineNumber), "Valor acima do máximo recomendado", dataMeasurement);
+                lineErros.add(leituraSuspeita);
             }
 
             if( isMin ){
-                lineErros.put(String.valueOf(lineNumber), "Valor abaixo do mínimo recomendado para a variavel climática " + dataMeasurement.getTypeMeasurament());
+                LeituraSuspeita leituraSuspeita = new LeituraSuspeita( String.valueOf(lineNumber), "Valor abaixo do mínimo recomendado", dataMeasurement);
+                lineErros.add(leituraSuspeita);
             }
         }
     }
@@ -151,7 +147,7 @@ public class ListMeasurement {
     public void constructListPatterB(String[] parts, int lineNumber){
         for(PatterB enumPatter : PatterB.values()){
             Patter patter = enumPatter.getPatter();
-            DataMeasurement dataMeasurement = new DataMeasurement(patter.getName(), patter.getUnidade(),parts[0],parts[1], checkedNull(parts,patter.getColuna()));
+            DataMeasurement dataMeasurement = new DataMeasurement(patter.getName(), patter.getUnidade(),parts[0],parts[1], checkedNull(parts,patter.getColuna()),lineNumber);
             listDataFile.add(dataMeasurement);
             verificaValoresRisco(dataMeasurement, lineNumber);
         }

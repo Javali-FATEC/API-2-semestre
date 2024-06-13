@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javalee.com.entities.LeituraAjustada;
+import javalee.com.entities.LeituraSuspeita;
 import javalee.com.entities.RelatorioMedia;
 import javalee.com.services.DataFile;
 
@@ -84,7 +86,7 @@ public class App extends Application {
         stage.show();
     }
 
-    static void openSeeInconsistencies(String opernPreviewDataInterface, Map<String, String> lineErrors)
+    static List<LeituraAjustada> openSeeInconsistencies(String opernPreviewDataInterface, List<LeituraSuspeita> lineErrors)
             throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(opernPreviewDataInterface + ".fxml"));
         Stage stage = new Stage();
@@ -92,9 +94,12 @@ public class App extends Application {
 
         SeeInconsistenciesController controller = fxmlLoader.getController();
         controller.setLineErrors(lineErrors);
+        controller.setDialogStage(stage);
 
         stage.setTitle("Lista de Inconsistncias");
-        stage.show();
+        stage.showAndWait();
+
+        return controller.getCorrecaoDados();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

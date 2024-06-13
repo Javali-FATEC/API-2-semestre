@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javalee.com.bd_connection.DbConnection;
 import javalee.com.entities.Cities;
 import javalee.com.entities.City;
+import javalee.com.entities.LeituraAjustada;
 import javalee.com.entities.Metric;
 import javalee.com.entities.Metrics;
 import javalee.com.entities.Station;
@@ -17,7 +18,7 @@ import javalee.com.services.DataFile;
 import javalee.com.services.DataMeasurement;
 import javafx.event.ActionEvent;
 import java.io.IOException;
-
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.List;
@@ -111,9 +112,27 @@ public class AnalysisController implements Initializable {
     @FXML
     private void seeInconsistencies(ActionEvent event) {
         try {
-            App.openSeeInconsistencies("see-inconsistencies", this.dataFile.getLineErros());
+            List<LeituraAjustada> listaCorrecoes = App.openSeeInconsistencies("see-inconsistencies", this.dataFile.getLineErros());
+            if( listaCorrecoes != null ){
+                this.ajustarValoresDataFile(listaCorrecoes);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void ajustarValoresDataFile( List<LeituraAjustada> listaCorrcoes){
+        for( LeituraAjustada correcao : listaCorrcoes){
+            for( DataMeasurement data : this.dataFile.getDataMeasurements()){
+                if( data.verificaIgualdade(correcao.getLinha(), correcao.getVariavelClimatica()))
+                {
+                    System.out.println("Ajustando valor");
+                    Double valueDouble = Double.parseDouble(correcao.getValorNovo());
+                    data.setValue(BigDecimal.valueOf(valueDouble));
+                }
+            }
+        }
+
     }
 }

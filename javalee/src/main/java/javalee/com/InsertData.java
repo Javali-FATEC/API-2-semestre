@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javalee.com.entities.Cities;
 import javalee.com.entities.City;
 import javalee.com.entities.Metrics;
@@ -128,6 +129,8 @@ public class InsertData {
         db.executeNotReturn(sql);
         db.Desconnect();
         System.out.println("Valor adicionado");
+        Stage stage = (Stage) cityData.getScene().getWindow();
+        stage.close();
     }
 
     private void loadHoursComboBox() {

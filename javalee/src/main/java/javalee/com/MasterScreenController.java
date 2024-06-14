@@ -63,12 +63,23 @@ public class MasterScreenController {
   }
 
   @FXML
-  public void openManageStations(ActionEvent event){
+  void openManageStations(ActionEvent event){
     try{
       App.openManageStations();
     } catch (Exception e){
       e.printStackTrace();
     }
+  }
+
+  @FXML
+  void openMeasureManager(ActionEvent event) {
+    try{
+      App.openMeasureManager();
+
+    }catch(Exception e){
+      e.printStackTrace();
+    }
+
   }
 
 }

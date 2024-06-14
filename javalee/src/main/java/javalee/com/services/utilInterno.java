@@ -17,6 +17,14 @@ public class utilInterno {
         alert.showAndWait();
     }
 
+    public static void alertSucesso(String message, String title){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     public static boolean isValidDate(LocalDate date) {
         LocalDate dataMinima = LocalDate.of(1900, 1, 1);
         LocalDate dataMaxima = LocalDate.of(2100, 12, 31);

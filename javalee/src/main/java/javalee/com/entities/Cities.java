@@ -67,7 +67,7 @@ public class Cities {
         return listCity;
     }
 
-    public List<City> getAllCity() {
+    public static List<City> getAllCity() {
         DbConnection db = new DbConnection();
         ResultSet resultStation = db.executeWithReturn("SELECT * FROM cidade");
         List<City> result = new LinkedList<>();
@@ -86,6 +86,10 @@ public class Cities {
         db.Desconnect();
 
         return result;
+    }
+
+    public void editCities(){
+
     }
 
     public ObservableList<String> getAllNamesCities() {

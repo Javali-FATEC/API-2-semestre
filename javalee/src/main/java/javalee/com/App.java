@@ -203,6 +203,22 @@ public class App extends Application {
         stage.show();
     }
 
+    static void openManageStations() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("manageStations.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxmlLoader.load()));
+        stage.setTitle("Gerenciar Estações");
+        stage.show();
+    }
+
+    static void openManageCities() throws IOException{
+        Stage stage = new Stage();
+        Parent root = loadFXML("manageCities");
+        stage.setScene(new Scene(root));
+        stage.setTitle("Gerenciar cidades");
+        stage.show();
+    }
+
     public static void main(String[] args) {
         launch();
     }

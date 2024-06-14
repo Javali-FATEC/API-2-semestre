@@ -37,7 +37,7 @@ public class Cities {
         City city = null;
         try {
             if (resultStation.next()) {
-                String sigla = resultStation.getString("sigla_cidade")
+                String sigla = resultStation.getString("sigla_cidade");
                 int idCidade = resultStation.getInt("id_cidade");
                 String nomeCidade = resultStation.getString("nome_cidade");
 

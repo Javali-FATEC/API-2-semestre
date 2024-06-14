@@ -45,7 +45,7 @@ public class Cities {
             }
 
         } catch (Exception e) {
-        }
+        };
         db.Desconnect();
 
         return city;

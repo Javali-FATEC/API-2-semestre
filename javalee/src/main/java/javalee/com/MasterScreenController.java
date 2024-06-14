@@ -44,7 +44,7 @@ public class MasterScreenController {
   }
 
   @FXML
-  void openDefinitionRiskValues(ActionEvent event) {
+  public void openDefinitionRiskValues(ActionEvent event) {
     try {
       App.openDefinitionRiskValues();
     } catch (Exception e) {
@@ -54,7 +54,7 @@ public class MasterScreenController {
   }
 
   @FXML
-  void openManageStations(ActionEvent event){
+  public void openManageStations(ActionEvent event){
     try{
       App.openManageStations();
     } catch (Exception e){
@@ -63,14 +63,22 @@ public class MasterScreenController {
   }
 
   @FXML
-  void openMeasureManager(ActionEvent event) {
+  public void openManageCities(ActionEvent event) {
+    try {
+      App.openManageCities();
+    } catch (Exception e) {
+      e.printStackTrace();
+
+    }
+  
+  @FXML
+  public void openMeasureManager(ActionEvent event) {
     try{
       App.openMeasureManager();
 
     }catch(Exception e){
       e.printStackTrace();
     }
-
   }
 
 }

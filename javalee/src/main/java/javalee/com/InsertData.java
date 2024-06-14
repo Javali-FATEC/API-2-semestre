@@ -83,16 +83,6 @@ public class InsertData {
     public void btRegisterData(ActionEvent event) {
 
         if (cbDataType.getValue() == null || unitData.getValue() == null || cityData.getValue() == null || stationData.getValue() == null || datePickerInitial.getValue() == null || hourData.getValue() == null || valueResp.getText() == null){
-
-            System.out.println("cbDataType: " + cbDataType.getValue());
-            System.out.println("unitData: " + unitData.getValue());
-            System.out.println("cityData: " + cityData.getValue());
-            System.out.println("stationData: " + stationData.getValue());
-            System.out.println("datePickerInitial: " + datePickerInitial.getValue());
-            System.out.println("hourData: " + hourData.getValue());
-            System.out.println("valueResp: " + valueResp.getText());
-
-            System.err.println("Preencha todos os campos");
             return;
         }
 
@@ -128,7 +118,6 @@ public class InsertData {
         DbConnection db = new DbConnection();
         db.executeNotReturn(sql);
         db.Desconnect();
-        System.out.println("Valor adicionado");
         Stage stage = (Stage) cityData.getScene().getWindow();
         stage.close();
     }

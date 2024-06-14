@@ -26,7 +26,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <Button layoutX="4.0" layoutY="13.0" mnemonicParsing="false" onAction="#openScreenImportCSV" prefHeight="30.0" prefWidth="190.0" text="Importar dados" />
-                  <Button layoutX="4.0" layoutY="53.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" text="Cadastrar" />
+                  <Button layoutX="4.0" layoutY="53.0" mnemonicParsing="false" onAction="#openScreenRegisterData" prefHeight="30.0" prefWidth="190.0" text="Cadastrar" />
                </children></AnchorPane>
         </content>
       </TitledPane>

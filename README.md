@@ -104,7 +104,7 @@ db.name = "db_javalee"
 db.user = "postgres"
 db.password = "javalee"
 ```
-* Realize a conexão com postgresql com as mesmas variáveis no [DBeaver](https://alexdepaula18.medium.com/conectando-no-banco-de-dados-postgresql-utilizando-dbeaver-community-1275f4c9bcba) ou no [PgAdmin do postgresql](https://king.host/wiki/artigo/postgre-via-pgadmin/)
+* Realize a conexão com postgresql com as mesmas variáveis no [DBeaver](https://alexdepaula18.medium.com/conectando-no-banco-de-dados-postgresql-utilizando-dbeaver-community-1275f4c9bcba) ou no [Pgjavalee do postgresql](https://king.host/wiki/artigo/postgre-via-pgjavalee/)
 * Abra um editor SQL e execute o script de criação do banco de dados [db_javalee.sql](./javalee/src/main/database/db_javalee.sql)
 
 

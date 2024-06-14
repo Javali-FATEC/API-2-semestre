@@ -78,4 +78,17 @@ public class Stations {
         }
         db.Desconnect();
     }
+
+    public List<String> getAllCodStations(String nomeCidade) {
+        List<Station> stations = buscarEstacoesCidade(nomeCidade);
+
+        List<String> nomeEstacoes = new LinkedList<>();
+
+        for (Station station : stations) {
+          nomeEstacoes.add(station.getCodigo());
+        }
+        return nomeEstacoes;
+    }
+
+
 }

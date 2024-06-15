@@ -20,6 +20,12 @@ import javalee.com.entities.Stations;
 public class ManageStationsController {
     @FXML
     private TextField identificador;
+    
+    @FXML
+    private TextField latitude;
+    
+    @FXML
+    private TextField longitude;
 
     @FXML
     private ComboBox<String> typeMeasurementCity;
@@ -61,7 +67,17 @@ public class ManageStationsController {
     }
 
     public void selectStation(){
-        identificador.setDisable(false);
+        if (typeMeasurementCity.getValue() != null || typeMeasurementStation.getValue() != null){
+            identificador.setDisable(false);
+            Stations stations = new Stations();
+            
+            Station station = stations.searchStation(typeMeasurementCity.getValue(), typeMeasurementStation.getValue());
+            
+            if (station != null){
+                latitude.setText(station.getLatitude());
+                longitude.setText(station.getLongitude());
+            }
+        }
     }
 
     public void updateStationCode(){
@@ -76,6 +92,8 @@ public class ManageStationsController {
 
         String cidade = typeMeasurementCity.getValue();
         String estacao = typeMeasurementStation.getValue();
+        String latitudeTxt = latitude.getText();
+        String longitudeTxt = longitude.getText();
         String changeToStrIdentificador = identificador.getText();
 
         ResultSet resultIdCidade = db.executeWithReturn("SELECT id_cidade FROM cidade WHERE nome_cidade = '"+ cidade +"'");
@@ -101,7 +119,9 @@ public class ManageStationsController {
                     if (cidade != null && estacao != null) {
                         int idCidade = resultIdCidade.getInt("id_cidade");
             
-                        db.executeNotReturn("UPDATE estacao SET codigo = '" + changeToStrIdentificador + "' WHERE id_cidade = '" + idCidade + "' AND codigo = '" + estacao + "'");
+                        db.executeNotReturn("UPDATE estacao SET codigo = '" +
+                        changeToStrIdentificador + "', longitude = '"+ longitudeTxt +"', latitude = '"+ latitudeTxt +"' " + 
+                        "WHERE id_cidade = '" + idCidade + "' AND codigo = '" + estacao + "'");
                     
                         Alert alert = new Alert(AlertType.INFORMATION);
                         alert.setTitle("Sucesso ao Atualizar!");
@@ -121,4 +141,6 @@ public class ManageStationsController {
             db.Desconnect();
         }
     }
+
+
 }

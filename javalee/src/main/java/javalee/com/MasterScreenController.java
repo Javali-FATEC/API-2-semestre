@@ -68,7 +68,7 @@ public class MasterScreenController {
       App.openManageCities();
     } catch (Exception e) {
       e.printStackTrace();
-
+    }
     }
   
   @FXML

@@ -4,10 +4,19 @@ public class Station {
 
     private int idEstacao;
     private String codigo;
+    private String latitude;
+    private String longitude;
 
     public Station(int idEstacao, String codigo) {
         this.idEstacao = idEstacao;
         this.codigo = codigo;
+    }
+
+    public Station(int idEstacao, String codigo, String latitude, String longitude){
+        this.idEstacao = idEstacao;
+        this.codigo = codigo;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public Station(String codigo) {
@@ -30,7 +39,21 @@ public class Station {
         this.codigo = codigo;
     }
 
+    public String getLatitude() {
+        return latitude;
+    }
 
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
     
 
 

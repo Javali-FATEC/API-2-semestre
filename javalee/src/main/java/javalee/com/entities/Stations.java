@@ -79,6 +79,30 @@ public class Stations {
         db.Desconnect();
     }
 
+    public Station searchStation(String nomeCidade, String codigo){
+        DbConnection db = new DbConnection();
+        ResultSet resultStation = db.executeWithReturn("SELECT * FROM estacao INNER JOIN cidade ON estacao.id_cidade = cidade.id_cidade" +
+        " WHERE estacao.codigo = '" + codigo + "' AND cidade.nome_cidade = '"+ nomeCidade +"'");
+        Station station = null;
+
+        try {
+            if (resultStation.next()) {
+                int idReturn = resultStation.getInt("id_estacao");
+                String codeReturn = resultStation.getString("codigo");
+                String latitudeReturn = resultStation.getString("latitude");
+                String longitudeReturn = resultStation.getString("longitude");
+
+                station = new Station(idReturn,codeReturn, latitudeReturn, longitudeReturn); 
+            }
+
+        } catch (Exception e) {
+
+        }
+        db.Desconnect();
+
+        return station;
+    }
+
     public List<String> getAllCodStations(String nomeCidade) {
         List<Station> stations = buscarEstacoesCidade(nomeCidade);
 

@@ -76,9 +76,19 @@ public class MasterScreenController {
     try{
       App.openMeasureManager();
 
-    }catch(Exception e){
+    } catch(Exception e){
       e.printStackTrace();
     }
   }
+
+  @FXML
+  private void openScreenRegisterData(ActionEvent event) {
+    try {
+      App.openRegisterData();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
 
 }

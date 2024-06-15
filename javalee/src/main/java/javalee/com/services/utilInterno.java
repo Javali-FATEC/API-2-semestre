@@ -40,4 +40,14 @@ public class utilInterno {
         Matcher matcher = pattern.matcher(dateStr);
         return matcher.matches();
     }
+
+    public static boolean isNumeric(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (!Character.isDigit(ch) && ch != ',' && ch != '.') {
+                return false;
+            }
+        }
+        return true;
+    }
 }

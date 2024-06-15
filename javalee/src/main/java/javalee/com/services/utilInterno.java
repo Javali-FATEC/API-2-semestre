@@ -17,6 +17,14 @@ public class utilInterno {
         alert.showAndWait();
     }
 
+    public static void alertSucesso(String message, String title){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     public static boolean isValidDate(LocalDate date) {
         LocalDate dataMinima = LocalDate.of(1900, 1, 1);
         LocalDate dataMaxima = LocalDate.of(2100, 12, 31);
@@ -31,5 +39,15 @@ public class utilInterno {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(dateStr);
         return matcher.matches();
+    }
+
+    public static boolean isNumeric(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (!Character.isDigit(ch) && ch != ',' && ch != '.') {
+                return false;
+            }
+        }
+        return true;
     }
 }

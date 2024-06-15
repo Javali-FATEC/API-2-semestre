@@ -15,8 +15,9 @@ public class DataMeasurement {
     private BigDecimal value;
     private String hour;
     private String date;
+    private int line;
 
-    public DataMeasurement(String typeMeasurement, String unidade, String date, String hour, String value) {
+    public DataMeasurement(String typeMeasurement, String unidade, String date, String hour, String value, int linha) {
         this.typeMeasurement = typeMeasurement;
         try {
             if (value == "") {
@@ -34,6 +35,16 @@ public class DataMeasurement {
         }
         this.date = date;
         this.unidade = unidade;
+        this.line = linha;
+    }
+
+    public void setValue(BigDecimal value)
+    {
+        this.value = value;
+    }
+
+    public int getLine() {
+        return line;
     }
 
     public void convertTemp() {
@@ -120,5 +131,10 @@ public class DataMeasurement {
         
         String sql = "INSERT INTO registro (id_metrica, id_estacao, valor, data_hora) VALUES ('" + metric.getIdMetrica() + "','" + idEstacao + "','" + this.getValueFormatComma() + "', '" + this.getDateFormatSql() + " " + getHourFormatSql() + "');";
         return sql;
+    }
+
+    public boolean verificaIgualdade(int linha, String variaveClimatica)
+    {
+        return linha == this.line && variaveClimatica.equals(this.typeMeasurement);
     }
 }

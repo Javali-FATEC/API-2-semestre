@@ -5,15 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javalee.com.configs.*;
+
+import javalee.com.configs.ConfigBdReader;
 
 public class DbConnection {
 
     private Connection conn;
-
-    private static final String URL = "jdbc:postgresql://localhost:5432/db_javalee";
-    private static final String USUARIO = "postgres";
-    private static final String SENHA = "admin";
 
     public DbConnection() {
         ConfigBdReader config = new ConfigBdReader();

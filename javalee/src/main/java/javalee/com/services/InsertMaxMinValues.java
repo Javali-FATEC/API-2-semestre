@@ -8,14 +8,13 @@ public class InsertMaxMinValues {
 
     public void updateMaxValue(String metrica, String maximoValor){
         DbConnection db = new DbConnection();
+        String formattedMaxValue = maximoValor.replace(",", ".");
 
-        try{
-            Float changeToFloat = Float.parseFloat(maximoValor);
-
-            db.executeNotReturn("UPDATE metrica SET maximo_risco = '"+changeToFloat+"' WHERE nome = '"+metrica+"'");
+        try
+        {
+            db.executeNotReturn("UPDATE metrica SET maximo_risco = " + formattedMaxValue + " WHERE nome = '" + metrica + "'");
         } catch (Exception e){
             e.printStackTrace();
-            System.out.println("teste erro");
         } finally {
             db.Desconnect();
         }
@@ -23,10 +22,10 @@ public class InsertMaxMinValues {
 
     public void updateMinValue(String metrica, String minimoValor){
         DbConnection db = new DbConnection();
-        Float changeToFloat = Float.parseFloat(minimoValor);
+        String formattedMinValue = minimoValor.replace(",", ".");
 
         try {
-            db.executeNotReturn("UPDATE metrica SET minimo_risco = '"+changeToFloat+"' WHERE nome = '"+metrica+"' ");
+            db.executeNotReturn("UPDATE metrica SET minimo_risco = "+formattedMinValue+" WHERE nome = '"+metrica+"' ");
         } catch (Exception e){
             e.printStackTrace();
         } finally {

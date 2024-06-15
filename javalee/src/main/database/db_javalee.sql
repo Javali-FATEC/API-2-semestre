@@ -26,6 +26,8 @@ CREATE TABLE cidade(
 CREATE TABLE estacao(
 	id_estacao SERIAL PRIMARY KEY,
 	id_cidade INT,
+    latitude VARCHAR(255),
+    longitude VARCHAR(255),
     codigo VARCHAR(255),
     
     FOREIGN KEY(id_cidade) REFERENCES cidade(id_cidade)

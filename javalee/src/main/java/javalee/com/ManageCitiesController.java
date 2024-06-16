@@ -74,7 +74,7 @@ public class ManageCitiesController implements Initializable {
 private void loadCities() {
     cBoxCity.getItems().clear();
     Cities cities = new Cities();
-    List<City> cityList = Cities.getAllCity(); 
+    List<City> cityList = cities.getAllCity(); 
     listCity.addAll(cityList);
     cBoxCity.setItems(listCity);
 }

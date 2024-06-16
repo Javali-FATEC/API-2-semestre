@@ -75,7 +75,6 @@ public class MasterScreenController {
   public void openMeasureManager(ActionEvent event) {
     try{
       App.openMeasureManager();
-
     } catch(Exception e){
       e.printStackTrace();
     }
@@ -89,6 +88,4 @@ public class MasterScreenController {
       e.printStackTrace();
     }
   }
-
-
 }

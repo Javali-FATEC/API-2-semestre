@@ -22,7 +22,7 @@ import javalee.com.entities.Stations;
 public class ManageStationsController {
     @FXML
     private TextField identificador;
-    
+
     @FXML
     private TextField latitude;
     
@@ -45,7 +45,6 @@ public class ManageStationsController {
     private void initialize(){
         typeMeasurementStation.setDisable(true);
         btnSalvar.setText("Cadastrar");
-        
         Cities cities = new Cities();
         List<City> listaDeCidades = cities.getAllCity();
         List<String> nomeCidades = new LinkedList<>();
@@ -72,7 +71,8 @@ public class ManageStationsController {
         typeMeasurementStation.setItems(rowsTypeMeasurementStation);
     }
 
-    public void selectStation(){
+    public void selectStation()
+    {
         if (typeMeasurementCity.getValue() != null || typeMeasurementStation.getValue() != null){
             btnSalvar.setText("Atualizar");
             Stations stations = new Stations();
@@ -100,11 +100,11 @@ public class ManageStationsController {
         String estacao = typeMeasurementStation.getValue();
         String latitudeTxt = latitude.getText();
         String longitudeTxt = longitude.getText();
+
         String changeToStrIdentificador = identificador.getText();
 
         ResultSet resultIdCidade = db.executeWithReturn("SELECT id_cidade FROM cidade WHERE nome_cidade = '"+ cidade +"'");
 
-        System.out.println("Atualizando estação");
         try {
             boolean codigoJaExiste = false;
             
@@ -200,3 +200,4 @@ public class ManageStationsController {
         }
     } 
 }
+

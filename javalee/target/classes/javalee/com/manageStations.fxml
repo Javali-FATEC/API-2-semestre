@@ -27,7 +27,7 @@
          </font>
       </Label>
       <Button fx:id="btnSalvar" layoutX="24.0" layoutY="336.0" mnemonicParsing="false" onAction="#updateStationCode" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" prefHeight="25.0" prefWidth="124.0" text="Atualizar" />
-      <Button layoutX="160.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" text="Excluir" />
+      <Button layoutX="160.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" onAction="#deleteStation" prefWidth="124.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" text="Excluir" />
       <TextField fx:id="identificador" layoutX="24.0" layoutY="161.0" prefHeight="25.0" prefWidth="262.0" />
       <Label textFill="WHITE" layoutX="24.0" layoutY="203.0" text="Latitude">
          <font>

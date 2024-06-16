@@ -1,6 +1,7 @@
 package javalee.com;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -155,5 +156,47 @@ public class ManageStationsController {
         }
     }
 
-
+    public void deleteStation() {
+        DbConnection db = new DbConnection();
+        String cidade = typeMeasurementCity.getValue();
+        String estacao = typeMeasurementStation.getValue();
+    
+        ResultSet resultIdCidade = db.executeWithReturn("SELECT id_cidade FROM cidade WHERE nome_cidade = '" + cidade + "'");
+    
+        try {
+            if (resultIdCidade.next()) {
+                int idCidade = resultIdCidade.getInt("id_cidade");
+                
+                ResultSet registrosVinculados = db.executeWithReturn("SELECT COUNT(*) AS count FROM registro WHERE id_estacao = (SELECT id_estacao FROM estacao WHERE id_cidade = '" + idCidade + "' AND codigo = '" + estacao + "')");
+                registrosVinculados.next();
+                int count = registrosVinculados.getInt("count");
+                
+                if (count > 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erro ao Excluir Estação");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Impossível excluir estação pois há registros vinculados a ela.");
+                    alert.showAndWait();
+                } else {
+                    db.executeNotReturn("DELETE FROM estacao WHERE id_cidade = '" + idCidade + "' AND codigo = '" + estacao + "'");
+                    
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Exclusão Bem-Sucedida!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Estação excluída com sucesso!");
+                    alert.showAndWait();
+    
+                    identificador.setText("");
+                    latitude.setText("");
+                    longitude.setText("");
+                    typeMeasurementCity.setValue(null);
+                    typeMeasurementStation.setValue(null);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            db.Desconnect();
+        }
+    } 
 }

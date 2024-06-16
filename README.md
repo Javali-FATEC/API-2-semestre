@@ -9,15 +9,15 @@ Com base no exposto, gostaríamos de um Sistema de Banco de Dados capaz de receb
 
 ## Objetivos 
 ### 🤖 Competências
-- o Projetar Banco de Dados relacional com múltiplas entidades e relacionamentos;
-- o Organizar Equipes por Competências;
-- o Levantar e Registrar Requisitos Funcionais e Não Funcionais usando técnicas de Métodos Ágeis e Tradicionais;
-- o Projetar Arquitetura Lógica do Sistema;
-- o Implementar Aplicação (com persistência) usando Linguagem de Programação Java Desktop.
+- Projetar Banco de Dados relacional com múltiplas entidades e relacionamentos;
+- Organizar Equipes por Competências;
+- Levantar e Registrar Requisitos Funcionais e Não Funcionais usando técnicas de Métodos Ágeis e Tradicionais;
+- Projetar Arquitetura Lógica do Sistema;
+- Implementar Aplicação (com persistência) usando Linguagem de Programação Java Desktop.
 ### 🤖 Tecnologias
-- o Linguagem Java Desktop e conexão com Banco de Dados usando JDBC;
-- o Banco de Dados modelo Relacional;
-- o Git.
+- Linguagem Java Desktop e conexão com Banco de Dados usando JDBC;
+- Banco de Dados modelo Relacional;
+- Git.
 
 ### 🤖 Requisitos Funcionais
 - Relatório de valor médio das variáveis climáticas por cidade. Deve ser possível escolher uma cidade e um período de tempo. O relatório deve ter periodicidade horária (um registro a cada hora);
@@ -42,7 +42,7 @@ Com base no exposto, gostaríamos de um Sistema de Banco de Dados capaz de receb
 | Feira de Soluções | 27/06 | 27/06 |
 
 **Sprint 1:**
-- Interpretar um documento CSV que contem dados metereólogicos
+- Interpretar um documento CSV que contém dados metereólogicos
 
 **Sprint 2:**
 - Gerar relatórios de valor médio das variáveis climáticas por cidade
@@ -73,10 +73,16 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 | Pesquisador | Gerar relatório de situação                                                                            | Agilidade em obter os dados relacionados relacionados a situação atual                   | Alta           | 2          | Finalizado   |
 | Pesquisador | Gerar relatório para se plotar um gráfico boxplot                                                      | Agilidade em obter os dados para plottar um gráfico util para analise de dados           | Alta           | 3          | Finalizado   |
 | Pesquisador | Gerenciar valores limites a serem utilizados como parametro para definir valores de risco nas medições | Ter valores possivelmente suspeitos de acordo com a nescessidade                         | Média          | 3          | Finalizado   |
-| Pesquisador | Alterar valores de risco nas medições                                                                  | Manter dados com melhor verificação em todos os relatórios                               | Média          | 4          | Pendente   |
-| Pesquisador | Gerir as cidades e as estações, tal como a relações entre estação e cidade                             | Informações mais completas e personalizadas sobre as estações e cidades                  | Baixa          | 4          | Pendente   |
-| Pesquisador | Gerir as unidades de medida usadas no sistema.                                                         | Informações mais completas referente as unidades usadas no relatóro                      | Baixa          | 4          | Pendente   |
+| Pesquisador | Alterar valores de risco nas medições                                                                  | Manter dados com melhor verificação em todos os relatórios                               | Média          | 4          | Finalizado   |
+| Pesquisador | Gerir as cidades e as estações, tal como a relações entre estação e cidade                             | Informações mais completas e personalizadas sobre as estações e cidades                  | Baixa          | 4          | Finalizado   |
+| Pesquisador | Gerir as unidades de medida usadas no sistema.                                                         | Informações mais completas referente as unidades usadas no relatóro                      | Baixa          | 4          | Finalizado   |
 
+## Descrição das user stories feitas por sprint
+[User Stories](documentação/descritivo-user-stores.md)
+
+
+## Burndown do projeto
+[Burndown](documentação/burndown.md)
 
 ### Tecnologias e Ferramentas Utilizadas
 
@@ -98,7 +104,6 @@ Ao abrir os cards do kanbam será possível ver a priorização no lado direito 
 * Instale o postgreSQL localmente [Tutorial](https://www.devmedia.com.br/instalando-postgresql/23364)
 * Realize a conexão preenchendo as variáveis do config [config.properties](./javalee/target/classes/javalee/com/configs/config.properties)
 ```
-bash
 db.url = "jdbc:postgresql://localhost:5432/"
 db.name = "db_javalee"
 db.user = "postgres"
@@ -134,7 +139,9 @@ Como você já vai ter criado o banco via Dbeaver com nome DB_javalee. Não é n
 
 Rode o projeto via app.java na pasta [javalee](./javalee/src/main/java/javalee/com/App.java)
 
-### 👷‍♂️ Estamos trabalhando duro para trazer todas as informações! 💪✨
+Ou
+
+Faça o dowload da release mais recente!
 
 ### Wireframe do Produto
 
@@ -143,12 +150,13 @@ Rode o projeto via app.java na pasta [javalee](./javalee/src/main/java/javalee/c
 
 ## Equipe
 
-Integrante | Linkedin
- -----------|---------|
-Vinícius Augusto da Silva Monteiro ![Static Badge](https://img.shields.io/badge/Dev-black) | [link](https://www.linkedin.com/in/viniciusvasm/) |
-Ricardo Campos ![Static Badge](https://img.shields.io/badge/Product_owner-blue)  ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/ricardo-campos-ba56091b5/)|
-Elbert Jean ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/elbert-jean-1757b017b/)|
-Isaque Souza ![Static Badge](https://img.shields.io/badge/Dev-black)|[link](https://www.linkedin.com/in/isaque-souza-6760b8270/)|
-Maria Clara ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/c137santos/)|
-Marília Borgo ![Static Badge](https://img.shields.io/badge/Scrum_master-pink) ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/mariliaborgo/)|
-Paloma Soares ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/paloma-soares-83a949208/)|
+| Integrante | LinkedIn |
+|------|----------|
+| Vinícius Augusto da Silva Monteiro ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/viniciusvasm/) |
+| Ricardo Campos ![Static Badge](https://img.shields.io/badge/Product_owner-blue) ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ricardo-campos-ba56091b5/) |
+| Elbert Jean ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/elbert-jean-1757b017b/) |
+| Isaque Souza ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/isaque-souza-6760b8270/) |
+| Maria Clara ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/c137santos/) |
+| Marília Borgo ![Static Badge](https://img.shields.io/badge/Scrum_master-pink) ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mariliaborgo/) |
+| Paloma Soares ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/paloma-soares-83a949208/) |
+

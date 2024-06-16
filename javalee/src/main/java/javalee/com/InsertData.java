@@ -58,7 +58,6 @@ public class InsertData {
         cbDataType.setItems(metrics.getMetrics());
         Units units = new Units();
         units.loadUnits();
-        unitData.setItems(units.getUnitsNames());
         Cities cities = new Cities();
         cityData.setItems(cities.getAllNamesCities());
         loadHoursComboBox();
@@ -66,7 +65,6 @@ public class InsertData {
 
         datePickerInitial.setValue(LocalDate.now());
         cbDataType.setValue("Temperatura");
-        unitData.setValue("ºC");
         hourData.setValue("00");
     }
 

@@ -8,3 +8,6 @@ O burndown é uma ferramenta fundamental no gerenciamento ágil de projetos, esp
 
 ## Burndown - Sprint tres (15/04 - 26/05)
 ![alt text](image-1.png)
+
+## Burndown - Sprint quatro (27/05 - 16/06)
+![alt text](image-2.png)

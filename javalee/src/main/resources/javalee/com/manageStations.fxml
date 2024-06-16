@@ -7,27 +7,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="289.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ManageStationsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" style="-fx-background-color: #93b1cd;" minWidth="-Infinity" prefHeight="382.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javalee.com.ManageStationsController">
    <children>
-      <Label layoutX="22.0" layoutY="14.0" text="Selecione uma cidade:">
+      <Label textFill="WHITE" layoutX="22.0" layoutY="14.0" text="Selecione uma cidade:">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="typeMeasurementCity" onAction="#selecionarEstacao" layoutX="22.0" layoutY="34.0" prefHeight="25.0" prefWidth="262.0" />
-      <Label layoutX="24.0" layoutY="78.0" text="Selecione uma estação:">
+      <ComboBox fx:id="typeMeasurementCity" layoutX="22.0" layoutY="34.0" onAction="#selecionarEstacao" prefHeight="25.0" prefWidth="262.0" />
+      <Label textFill="WHITE" layoutX="24.0" layoutY="78.0" text="Selecione uma estação:">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="typeMeasurementStation"  onAction="#selectStation" layoutX="24.0" layoutY="98.0" prefHeight="25.0" prefWidth="262.0" />
-      <Label layoutX="24.0" layoutY="152.0" text="Novo Código">
+      <ComboBox fx:id="typeMeasurementStation" layoutX="24.0" layoutY="98.0" onAction="#selectStation" prefHeight="25.0" prefWidth="262.0" />
+      <Label textFill="WHITE" layoutX="24.0" layoutY="141.0" text="Código">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button onAction="#updateStationCode" layoutX="64.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Atualizar" />
-      <Button layoutX="191.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Excluir" />
-      <TextField fx:id="identificador" layoutX="24.0" layoutY="172.0" prefHeight="25.0" prefWidth="262.0" />
+      <Button fx:id="btnSalvar" layoutX="24.0" layoutY="336.0" mnemonicParsing="false" onAction="#updateStationCode" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" prefHeight="25.0" prefWidth="124.0" text="Atualizar" />
+      <Button layoutX="160.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" onAction="#deleteStation" prefWidth="124.0" style="-fx-background-color: white; -fx-border-color: #c1c1c1;" text="Excluir" />
+      <TextField fx:id="identificador" layoutX="24.0" layoutY="161.0" prefHeight="25.0" prefWidth="262.0" />
+      <Label textFill="WHITE" layoutX="24.0" layoutY="203.0" text="Latitude">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="latitude" layoutX="24.0" layoutY="223.0" prefHeight="25.0" prefWidth="262.0" />
+      <Label textFill="WHITE" layoutX="24.0" layoutY="261.0" text="Longitude">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="longitude" layoutX="24.0" layoutY="281.0" prefHeight="25.0" prefWidth="262.0" />
    </children>
 </AnchorPane>

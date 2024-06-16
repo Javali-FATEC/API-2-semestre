@@ -1,6 +1,7 @@
 package javalee.com;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javalee.com.bd_connection.DbConnection;
 import javalee.com.entities.Cities;
 import javalee.com.entities.City;
@@ -22,6 +24,12 @@ public class ManageStationsController {
     private TextField identificador;
 
     @FXML
+    private TextField latitude;
+    
+    @FXML
+    private TextField longitude;
+
+    @FXML
     private ComboBox<String> typeMeasurementCity;
     
     @FXML
@@ -31,9 +39,12 @@ public class ManageStationsController {
     ObservableList<String> rowsTypeMeasurementStation;
 
     @FXML
+    private Button btnSalvar;
+
+    @FXML
     private void initialize(){
         typeMeasurementStation.setDisable(true);
-        identificador.setDisable(true);
+        btnSalvar.setText("Cadastrar");
         Cities cities = new Cities();
         List<City> listaDeCidades = cities.getAllCity();
         List<String> nomeCidades = new LinkedList<>();
@@ -60,8 +71,19 @@ public class ManageStationsController {
         typeMeasurementStation.setItems(rowsTypeMeasurementStation);
     }
 
-    public void selectStation(){
-        identificador.setDisable(false);
+    public void selectStation()
+    {
+        if (typeMeasurementCity.getValue() != null || typeMeasurementStation.getValue() != null){
+            btnSalvar.setText("Atualizar");
+            Stations stations = new Stations();
+            
+            Station station = stations.searchStation(typeMeasurementCity.getValue(), typeMeasurementStation.getValue());
+            
+            if (station != null){
+                latitude.setText(station.getLatitude());
+                longitude.setText(station.getLongitude());
+            }
+        }
     }
 
     public void updateStationCode(){
@@ -76,6 +98,9 @@ public class ManageStationsController {
 
         String cidade = typeMeasurementCity.getValue();
         String estacao = typeMeasurementStation.getValue();
+        String latitudeTxt = latitude.getText();
+        String longitudeTxt = longitude.getText();
+
         String changeToStrIdentificador = identificador.getText();
 
         ResultSet resultIdCidade = db.executeWithReturn("SELECT id_cidade FROM cidade WHERE nome_cidade = '"+ cidade +"'");
@@ -98,21 +123,30 @@ public class ManageStationsController {
                 alert.showAndWait();
             } else {
                 if (resultIdCidade.next()) {
+                    String mensagemRetorno = "";
+                    int idCidade = resultIdCidade.getInt("id_cidade");
                     if (cidade != null && estacao != null) {
-                        int idCidade = resultIdCidade.getInt("id_cidade");
-            
-                        db.executeNotReturn("UPDATE estacao SET codigo = '" + changeToStrIdentificador + "' WHERE id_cidade = '" + idCidade + "' AND codigo = '" + estacao + "'");
-                    
-                        Alert alert = new Alert(AlertType.INFORMATION);
-                        alert.setTitle("Sucesso ao Atualizar!");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Código alterado com sucesso!");
-                        alert.showAndWait();
-            
-                        identificador.setText("");
-                        typeMeasurementCity.setValue(null);
-                        typeMeasurementStation.setValue(null);
+                        db.executeNotReturn("UPDATE estacao SET codigo = '" +
+                        changeToStrIdentificador + "', longitude = '"+ longitudeTxt +"', latitude = '"+ latitudeTxt +"' " + 
+                        "WHERE id_cidade = '" + idCidade + "' AND codigo = '" + estacao + "'");  
+                        mensagemRetorno= "Código alterado com sucesso!";                      
                     }
+                    else
+                    {                
+                        db.executeNotReturn("INSERT INTO estacao (id_cidade, latitude, longitude, codigo) VALUES ('" +
+                            idCidade + "', '" + latitudeTxt + "', '" + longitudeTxt + "', '" + changeToStrIdentificador + "')");
+                        mensagemRetorno = "Código cadastrado com sucesso!";
+                    }
+
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Sucesso ao Atualizar!");
+                    alert.setHeaderText(null);
+                    alert.setContentText(mensagemRetorno);
+                    alert.showAndWait();
+
+                    identificador.setText("");
+                    typeMeasurementCity.setValue(null);
+                    typeMeasurementStation.setValue(null);
                 }
             }
         } catch (Exception e) {
@@ -121,4 +155,49 @@ public class ManageStationsController {
             db.Desconnect();
         }
     }
+
+    public void deleteStation() {
+        DbConnection db = new DbConnection();
+        String cidade = typeMeasurementCity.getValue();
+        String estacao = typeMeasurementStation.getValue();
+    
+        ResultSet resultIdCidade = db.executeWithReturn("SELECT id_cidade FROM cidade WHERE nome_cidade = '" + cidade + "'");
+    
+        try {
+            if (resultIdCidade.next()) {
+                int idCidade = resultIdCidade.getInt("id_cidade");
+                
+                ResultSet registrosVinculados = db.executeWithReturn("SELECT COUNT(*) AS count FROM registro WHERE id_estacao = (SELECT id_estacao FROM estacao WHERE id_cidade = '" + idCidade + "' AND codigo = '" + estacao + "')");
+                registrosVinculados.next();
+                int count = registrosVinculados.getInt("count");
+                
+                if (count > 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erro ao Excluir Estação");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Impossível excluir estação pois há registros vinculados a ela.");
+                    alert.showAndWait();
+                } else {
+                    db.executeNotReturn("DELETE FROM estacao WHERE id_cidade = '" + idCidade + "' AND codigo = '" + estacao + "'");
+                    
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Exclusão Bem-Sucedida!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Estação excluída com sucesso!");
+                    alert.showAndWait();
+    
+                    identificador.setText("");
+                    latitude.setText("");
+                    longitude.setText("");
+                    typeMeasurementCity.setValue(null);
+                    typeMeasurementStation.setValue(null);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            db.Desconnect();
+        }
+    } 
 }
+

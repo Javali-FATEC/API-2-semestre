@@ -150,12 +150,13 @@ Faça o dowload da release mais recente!
 
 ## Equipe
 
-Integrante | Linkedin
- -----------|---------|
-Vinícius Augusto da Silva Monteiro ![Static Badge](https://img.shields.io/badge/Dev-black) | [link](https://www.linkedin.com/in/viniciusvasm/) |
-Ricardo Campos ![Static Badge](https://img.shields.io/badge/Product_owner-blue)  ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/ricardo-campos-ba56091b5/)|
-Elbert Jean ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/elbert-jean-1757b017b/)|
-Isaque Souza ![Static Badge](https://img.shields.io/badge/Dev-black)|[link](https://www.linkedin.com/in/isaque-souza-6760b8270/)|
-Maria Clara ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/c137santos/)|
-Marília Borgo ![Static Badge](https://img.shields.io/badge/Scrum_master-pink) ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/mariliaborgo/)|
-Paloma Soares ![Static Badge](https://img.shields.io/badge/Dev-black) |[link](https://www.linkedin.com/in/paloma-soares-83a949208/)|
+| Integrante | LinkedIn |
+|------|----------|
+| Vinícius Augusto da Silva Monteiro ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/viniciusvasm/) |
+| Ricardo Campos ![Static Badge](https://img.shields.io/badge/Product_owner-blue) ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ricardo-campos-ba56091b5/) |
+| Elbert Jean ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/elbert-jean-1757b017b/) |
+| Isaque Souza ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/isaque-souza-6760b8270/) |
+| Maria Clara ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/c137santos/) |
+| Marília Borgo ![Static Badge](https://img.shields.io/badge/Scrum_master-pink) ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mariliaborgo/) |
+| Paloma Soares ![Static Badge](https://img.shields.io/badge/Dev-black) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/paloma-soares-83a949208/) |
+

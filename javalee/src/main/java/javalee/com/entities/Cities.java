@@ -10,7 +10,6 @@ import javafx.collections.ObservableList;
 import javalee.com.bd_connection.DbConnection;
 
 public class Cities {
-    private List<City> listCity;
 
     public City searchCity(String buscador) {
         DbConnection db = new DbConnection();
@@ -63,11 +62,7 @@ public class Cities {
         return searchCity(sigla);
     }
 
-    public List<City> getListCity() {
-        return listCity;
-    }
-
-    public static List<City> getAllCity() {
+    public List<City> getAllCity() {
         DbConnection db = new DbConnection();
         ResultSet resultStation = db.executeWithReturn("SELECT * FROM cidade");
         List<City> result = new LinkedList<>();
@@ -79,7 +74,6 @@ public class Cities {
                 String nomeCidade = resultStation.getString("nome_cidade");
 
                 result.add(new City(sigla, nomeCidade, idCidade));
-                listCity.add(new City(sigla, nomeCidade, idCidade));
             }
         } catch (Exception e) {
         }

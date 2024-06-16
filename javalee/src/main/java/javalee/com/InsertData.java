@@ -99,7 +99,7 @@ public class InsertData {
 
         String hourFormat = hourData.getValue() + "00";
 
-        DataMeasurement dm = new DataMeasurement(cbDataType.getValue(), unitData.getValue(), dataFormatada, hourFormat, valueResp.getText(), 0);
+        DataMeasurement dm = new DataMeasurement(cbDataType.getValue(), "0", dataFormatada, hourFormat, valueResp.getText(), 0);
 
         Cities cities = new Cities();
         City city = cities.searchCity(cityData.getValue());
